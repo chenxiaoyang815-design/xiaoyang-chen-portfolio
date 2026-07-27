@@ -33,6 +33,7 @@ const processIcons = [Database, ShieldCheck, Network, ChartLineUp, TestTube];
 const projectIcons = [Flask, Network, ChartLineUp, Database];
 const capabilityIcons = [Code, Database, Sparkle, ChartLineUp, TreeStructure, TestTube];
 const signalIcons = [Database, UsersThree, ChartLineUp];
+const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 function LanguageToggle({ language, onChange, copy, compact = false }) {
   return (
@@ -117,14 +118,14 @@ function Header({ copy, language, setLanguage, menuOpen, setMenuOpen }) {
 function Hero({ copy, language }) {
   const resumeHref =
     language === "zh"
-      ? "/resume/%E9%99%88%E8%90%A7%E4%BB%B0-%E4%B8%AD%E6%96%87%E7%AE%80%E5%8E%86.pdf"
-      : "/resume/Xiaoyang-Chen-CV-EN.pdf";
+      ? assetPath("resume/%E9%99%88%E8%90%A7%E4%BB%B0-%E4%B8%AD%E6%96%87%E7%AE%80%E5%8E%86.pdf")
+      : assetPath("resume/Xiaoyang-Chen-CV-EN.pdf");
 
   return (
       <section className="hero" id="top">
         <img
           className="hero__data-background"
-          src="/profile/data-observatory-background-v2.png"
+          src={assetPath("profile/data-observatory-background-v2.png")}
           alt=""
           aria-hidden="true"
         />
@@ -165,7 +166,7 @@ function Hero({ copy, language }) {
           <div className="hero__portrait-frame">
             <img
               className="hero__portrait"
-              src="/profile/xiaoyang-chen.jpg"
+              src={assetPath("profile/xiaoyang-chen.jpg")}
               alt={copy.hero.portraitAlt}
               width="480"
               height="640"
@@ -591,8 +592,8 @@ function Profile({ copy }) {
 function Contact({ copy, language }) {
   const resumeHref =
     language === "zh"
-      ? "/resume/%E9%99%88%E8%90%A7%E4%BB%B0-%E4%B8%AD%E6%96%87%E7%AE%80%E5%8E%86.pdf"
-      : "/resume/Xiaoyang-Chen-CV-EN.pdf";
+      ? assetPath("resume/%E9%99%88%E8%90%A7%E4%BB%B0-%E4%B8%AD%E6%96%87%E7%AE%80%E5%8E%86.pdf")
+      : assetPath("resume/Xiaoyang-Chen-CV-EN.pdf");
 
   return (
     <footer className="contact" id="contact">
