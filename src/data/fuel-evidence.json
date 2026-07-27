@@ -1,0 +1,587 @@
+{
+  "meta": {
+    "sourceName": "NSW Government FuelCheck — January 2025",
+    "sourceUrl": "https://data.nsw.gov.au/data/en/dataset/fuel-check/resource/133c5415-9954-44e8-8699-2c2942d35a8b",
+    "license": "Creative Commons Attribution Share-Alike",
+    "period": {
+      "start": "2025-01-01",
+      "end": "2025-01-31"
+    },
+    "cleanedRows": 59256,
+    "stationCount": 2216,
+    "postcodeCount": 506,
+    "brandCount": 27,
+    "fuelTypeCount": 8,
+    "fuelTypes": [
+      "DL",
+      "E10",
+      "E85",
+      "LPG",
+      "P95",
+      "P98",
+      "PDL",
+      "U91"
+    ],
+    "priceRange": [
+      91.9,
+      244.9
+    ],
+    "medianPrice": 189.9
+  },
+  "quality": {
+    "rowsRead": 60151,
+    "rowsRepaired": 28151,
+    "rowsRejected": 0,
+    "blankRowsIgnored": 1,
+    "rowsRemovedDuringCleaning": 895,
+    "duplicateRowsObserved": 0,
+    "exactMatches": 57689,
+    "exactMatchRate": 97.36,
+    "postcodeFallbacks": 1567,
+    "fallbackRate": 2.64,
+    "unmatchedRows": 0,
+    "geographicCoverage": 100.0
+  },
+  "ownership": {
+    "all": {
+      "matchedStrata": 1284,
+      "meanDifference": -4.35,
+      "medianDifference": -2.0,
+      "independentCheaperShare": 61.99,
+      "q25": -8.55,
+      "q75": 0.51
+    },
+    "byFuel": {
+      "DL": {
+        "matchedStrata": 294,
+        "meanDifference": -3.85,
+        "medianDifference": -2.12,
+        "independentCheaperShare": 62.24,
+        "q25": -8.38,
+        "q75": 1.26
+      },
+      "E10": {
+        "matchedStrata": 165,
+        "meanDifference": -3.73,
+        "medianDifference": -1.53,
+        "independentCheaperShare": 61.82,
+        "q25": -7.03,
+        "q75": 0.5
+      },
+      "P95": {
+        "matchedStrata": 106,
+        "meanDifference": -5.46,
+        "medianDifference": -3.08,
+        "independentCheaperShare": 62.26,
+        "q25": -9.68,
+        "q75": 0.0
+      },
+      "P98": {
+        "matchedStrata": 266,
+        "meanDifference": -4.92,
+        "medianDifference": -2.28,
+        "independentCheaperShare": 65.79,
+        "q25": -8.98,
+        "q75": 0.0
+      },
+      "PDL": {
+        "matchedStrata": 95,
+        "meanDifference": -8.74,
+        "medianDifference": -7.0,
+        "independentCheaperShare": 81.05,
+        "q25": -15.73,
+        "q75": -1.53
+      },
+      "U91": {
+        "matchedStrata": 358,
+        "meanDifference": -3.12,
+        "medianDifference": -0.9,
+        "independentCheaperShare": 53.91,
+        "q25": -6.32,
+        "q75": 1.09
+      }
+    }
+  },
+  "regions": {
+    "eligibility": {
+      "minimumDays": 10,
+      "minimumStations": 2
+    },
+    "byFuel": {
+      "DL": {
+        "eligiblePostcodes": 130,
+        "medianPrice": 190.6,
+        "range": 33.0,
+        "lowest": [
+          {
+            "postcode": 2200,
+            "label": "Bankstown · 2200",
+            "price": 175.0,
+            "days": 12,
+            "stations": 2
+          },
+          {
+            "postcode": 2142,
+            "label": "Granville · 2142",
+            "price": 176.5,
+            "days": 15,
+            "stations": 5
+          },
+          {
+            "postcode": 2163,
+            "label": "Villawood · 2163",
+            "price": 176.8,
+            "days": 10,
+            "stations": 3
+          },
+          {
+            "postcode": 2325,
+            "label": "Cessnock · 2325",
+            "price": 177.2,
+            "days": 31,
+            "stations": 8
+          },
+          {
+            "postcode": 2322,
+            "label": "Beresfield · 2322",
+            "price": 177.3,
+            "days": 31,
+            "stations": 12
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2152,
+            "label": "Northmead · 2152",
+            "price": 208.1,
+            "days": 13,
+            "stations": 2
+          },
+          {
+            "postcode": 2750,
+            "label": "Penrith · 2750",
+            "price": 207.3,
+            "days": 14,
+            "stations": 3
+          },
+          {
+            "postcode": 2400,
+            "label": "Moree · 2400",
+            "price": 204.0,
+            "days": 12,
+            "stations": 3
+          },
+          {
+            "postcode": 2251,
+            "label": "Kincumber · 2251",
+            "price": 203.2,
+            "days": 13,
+            "stations": 2
+          },
+          {
+            "postcode": 2120,
+            "label": "Thornleigh · 2120",
+            "price": 202.5,
+            "days": 15,
+            "stations": 4
+          }
+        ]
+      },
+      "E10": {
+        "eligiblePostcodes": 167,
+        "medianPrice": 181.4,
+        "range": 34.3,
+        "lowest": [
+          {
+            "postcode": 2528,
+            "label": "Barrack Heights · 2528",
+            "price": 162.2,
+            "days": 31,
+            "stations": 8
+          },
+          {
+            "postcode": 2133,
+            "label": "Croydon Park · 2133",
+            "price": 163.7,
+            "days": 31,
+            "stations": 4
+          },
+          {
+            "postcode": 2478,
+            "label": "Ballina · 2478",
+            "price": 165.3,
+            "days": 31,
+            "stations": 5
+          },
+          {
+            "postcode": 2527,
+            "label": "Albion Park Rail · 2527",
+            "price": 166.2,
+            "days": 17,
+            "stations": 4
+          },
+          {
+            "postcode": 2177,
+            "label": "Bonnyrigg · 2177",
+            "price": 167.1,
+            "days": 28,
+            "stations": 6
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2487,
+            "label": "Chinderah · 2487",
+            "price": 196.5,
+            "days": 13,
+            "stations": 3
+          },
+          {
+            "postcode": 2152,
+            "label": "Northmead · 2152",
+            "price": 195.5,
+            "days": 12,
+            "stations": 5
+          },
+          {
+            "postcode": 2232,
+            "label": "Kirrawee · 2232",
+            "price": 195.2,
+            "days": 13,
+            "stations": 6
+          },
+          {
+            "postcode": 2039,
+            "label": "Rozelle · 2039",
+            "price": 193.8,
+            "days": 17,
+            "stations": 3
+          },
+          {
+            "postcode": 2749,
+            "label": "Cranebrook · 2749",
+            "price": 193.7,
+            "days": 12,
+            "stations": 3
+          }
+        ]
+      },
+      "P95": {
+        "eligiblePostcodes": 138,
+        "medianPrice": 200.3,
+        "range": 33.2,
+        "lowest": [
+          {
+            "postcode": 2478,
+            "label": "Ballina · 2478",
+            "price": 182.0,
+            "days": 31,
+            "stations": 10
+          },
+          {
+            "postcode": 2177,
+            "label": "Bonnyrigg · 2177",
+            "price": 183.8,
+            "days": 27,
+            "stations": 5
+          },
+          {
+            "postcode": 2325,
+            "label": "Cessnock · 2325",
+            "price": 184.2,
+            "days": 27,
+            "stations": 9
+          },
+          {
+            "postcode": 2296,
+            "label": "Islington · 2296",
+            "price": 185.3,
+            "days": 13,
+            "stations": 2
+          },
+          {
+            "postcode": 2133,
+            "label": "Croydon Park · 2133",
+            "price": 186.1,
+            "days": 10,
+            "stations": 2
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2487,
+            "label": "Chinderah · 2487",
+            "price": 215.2,
+            "days": 14,
+            "stations": 3
+          },
+          {
+            "postcode": 2152,
+            "label": "Northmead · 2152",
+            "price": 213.6,
+            "days": 12,
+            "stations": 5
+          },
+          {
+            "postcode": 2039,
+            "label": "Rozelle · 2039",
+            "price": 211.5,
+            "days": 13,
+            "stations": 3
+          },
+          {
+            "postcode": 2044,
+            "label": "Sydenham · 2044",
+            "price": 210.7,
+            "days": 12,
+            "stations": 4
+          },
+          {
+            "postcode": 2232,
+            "label": "Kirrawee · 2232",
+            "price": 210.6,
+            "days": 12,
+            "stations": 6
+          }
+        ]
+      },
+      "P98": {
+        "eligiblePostcodes": 187,
+        "medianPrice": 206.4,
+        "range": 37.7,
+        "lowest": [
+          {
+            "postcode": 2133,
+            "label": "Croydon Park · 2133",
+            "price": 186.3,
+            "days": 31,
+            "stations": 4
+          },
+          {
+            "postcode": 2528,
+            "label": "Barrack Heights · 2528",
+            "price": 188.7,
+            "days": 14,
+            "stations": 8
+          },
+          {
+            "postcode": 2527,
+            "label": "Albion Park Rail · 2527",
+            "price": 189.9,
+            "days": 16,
+            "stations": 6
+          },
+          {
+            "postcode": 2177,
+            "label": "Bonnyrigg · 2177",
+            "price": 190.5,
+            "days": 28,
+            "stations": 7
+          },
+          {
+            "postcode": 2478,
+            "label": "Ballina · 2478",
+            "price": 190.8,
+            "days": 31,
+            "stations": 9
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2518,
+            "label": "Corrimal · 2518",
+            "price": 224.0,
+            "days": 14,
+            "stations": 9
+          },
+          {
+            "postcode": 2152,
+            "label": "Northmead · 2152",
+            "price": 222.0,
+            "days": 12,
+            "stations": 5
+          },
+          {
+            "postcode": 2519,
+            "label": "Fairy Meadow · 2519",
+            "price": 220.7,
+            "days": 10,
+            "stations": 5
+          },
+          {
+            "postcode": 2039,
+            "label": "Rozelle · 2039",
+            "price": 220.3,
+            "days": 15,
+            "stations": 4
+          },
+          {
+            "postcode": 2713,
+            "label": "Finley · 2713",
+            "price": 219.6,
+            "days": 16,
+            "stations": 3
+          }
+        ]
+      },
+      "PDL": {
+        "eligiblePostcodes": 192,
+        "medianPrice": 192.6,
+        "range": 40.1,
+        "lowest": [
+          {
+            "postcode": 2221,
+            "label": "Blakehurst · 2221",
+            "price": 172.5,
+            "days": 31,
+            "stations": 3
+          },
+          {
+            "postcode": 2206,
+            "label": "Earlwood · 2206",
+            "price": 173.7,
+            "days": 19,
+            "stations": 2
+          },
+          {
+            "postcode": 2177,
+            "label": "Bonnyrigg · 2177",
+            "price": 173.7,
+            "days": 28,
+            "stations": 7
+          },
+          {
+            "postcode": 2304,
+            "label": "Mayfield · 2304",
+            "price": 174.7,
+            "days": 31,
+            "stations": 7
+          },
+          {
+            "postcode": 2307,
+            "label": "Shortland · 2307",
+            "price": 174.8,
+            "days": 31,
+            "stations": 2
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2283,
+            "label": "Toronto · 2283",
+            "price": 212.7,
+            "days": 10,
+            "stations": 3
+          },
+          {
+            "postcode": 2850,
+            "label": "Mudgee · 2850",
+            "price": 211.1,
+            "days": 10,
+            "stations": 3
+          },
+          {
+            "postcode": 2260,
+            "label": "Forresters Beach · 2260",
+            "price": 209.9,
+            "days": 14,
+            "stations": 2
+          },
+          {
+            "postcode": 2075,
+            "label": "St Ives · 2075",
+            "price": 209.9,
+            "days": 13,
+            "stations": 5
+          },
+          {
+            "postcode": 2526,
+            "label": "Unanderra · 2526",
+            "price": 208.4,
+            "days": 11,
+            "stations": 3
+          }
+        ]
+      },
+      "U91": {
+        "eligiblePostcodes": 190,
+        "medianPrice": 183.2,
+        "range": 37.2,
+        "lowest": [
+          {
+            "postcode": 2528,
+            "label": "Barrack Heights · 2528",
+            "price": 164.1,
+            "days": 31,
+            "stations": 7
+          },
+          {
+            "postcode": 2133,
+            "label": "Croydon Park · 2133",
+            "price": 166.1,
+            "days": 31,
+            "stations": 4
+          },
+          {
+            "postcode": 2527,
+            "label": "Albion Park Rail · 2527",
+            "price": 168.2,
+            "days": 15,
+            "stations": 4
+          },
+          {
+            "postcode": 2193,
+            "label": "Canterbury · 2193",
+            "price": 168.3,
+            "days": 11,
+            "stations": 2
+          },
+          {
+            "postcode": 2046,
+            "label": "Five Dock · 2046",
+            "price": 169.6,
+            "days": 15,
+            "stations": 3
+          }
+        ],
+        "highest": [
+          {
+            "postcode": 2152,
+            "label": "Northmead · 2152",
+            "price": 201.3,
+            "days": 13,
+            "stations": 4
+          },
+          {
+            "postcode": 2627,
+            "label": "Jindabyne · 2627",
+            "price": 199.7,
+            "days": 10,
+            "stations": 3
+          },
+          {
+            "postcode": 2232,
+            "label": "Kirrawee · 2232",
+            "price": 198.5,
+            "days": 10,
+            "stations": 6
+          },
+          {
+            "postcode": 2487,
+            "label": "Chinderah · 2487",
+            "price": 198.2,
+            "days": 12,
+            "stations": 2
+          },
+          {
+            "postcode": 2749,
+            "label": "Cranebrook · 2749",
+            "price": 197.5,
+            "days": 14,
+            "stations": 4
+          }
+        ]
+      }
+    }
+  }
+}
