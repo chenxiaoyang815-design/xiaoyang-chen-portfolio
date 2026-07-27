@@ -14,6 +14,7 @@ export const content = {
       work: "Selected work",
       experience: "Experience",
       capabilities: "Capabilities",
+      about: "About",
       profile: "Profile",
       contact: "Contact",
       menu: "Open navigation",
@@ -27,12 +28,19 @@ export const content = {
       role: "Data Engineering · Analytics · Software Delivery",
       summary:
         "I turn ambiguous requirements and complex datasets into reliable data systems, decision-ready analytics and software that people can trust.",
-      primary: "View project evidence",
+      primary: "View selected projects",
       secondary: "Download English CV",
       availability: "Open to data engineering, analytics and software opportunities",
       location: "Sydney, Australia",
-      scroll: "Explore",
+      scroll: "Experience & education",
       portraitAlt: "Portrait of Xiaoyang Chen",
+    },
+    metricsSummary: {
+      ariaLabel: "Cross-project evidence summary",
+      eyebrow: "CROSS-PROJECT EVIDENCE",
+      title: "Key outcomes across industry and data projects.",
+      intro:
+        "A combined snapshot of internship automation, fuel-data quality and database engineering—not results from a single Jira project.",
     },
     metrics: [
       {
@@ -320,7 +328,7 @@ export const content = {
     },
     experience: {
       eyebrow: "EXPERIENCE & EDUCATION",
-      title: "Built across industry and rigorous coursework.",
+      title: "Industry delivery and data training at Australia's #1 university.",
       industryTitle: "Industry experience",
       educationTitle: "Education",
       industry: {
@@ -341,6 +349,11 @@ export const content = {
           focus: "Data Science & Engineering",
           school: "University of New South Wales · Sydney",
           date: "Sep 2024 – Sep 2026 (expected)",
+          ranking: {
+            value: "#1 in Australia · #19 globally",
+            label: "QS World University Rankings 2027",
+            href: "https://www.unsw.edu.au/about-us/excellence/rankings-reputation",
+          },
           detail:
             "WAM 70/100. Core study: AI, machine learning, deep learning, big data management, graph data analytics, Python, databases and data structures.",
         },
@@ -424,6 +437,53 @@ export const content = {
         },
       ],
     },
+    about: {
+      eyebrow: "HOW I THINK & LIVE",
+      title: "Curiosity, discipline and a life beyond the screen.",
+      intro:
+        "The same habits shape my engineering and my life: stay open to the unknown, break complexity into workable parts and keep the whole system in view.",
+      academic: {
+        eyebrow: "ACADEMIC & ENGINEERING MINDSET",
+        title: "Evidence before complexity.",
+        text:
+          "I do not treat complexity itself as a sign of rigour. I start by defining the question and data boundaries, establish an interpretable baseline, and then use experiments, comparisons and error analysis to decide whether a more complex method earns its place. A result matters; knowing where it holds matters just as much.",
+        principles: [
+          {
+            title: "Question before tool",
+            text:
+              "Understand the decision, stakeholders and data constraints before selecting a model or architecture.",
+          },
+          {
+            title: "Evidence drives change",
+            text:
+              "Use baselines, ablations, automated tests and reproducible workflows to prove that an improvement is real.",
+          },
+          {
+            title: "State the boundary",
+            text:
+              "Record assumptions, risks and trade-offs, and distinguish descriptive evidence from causal claims.",
+          },
+        ],
+      },
+      life: {
+        eyebrow: "LIFE & EXPLORATION",
+        title: "I feel most alive when the route is unfamiliar.",
+        text:
+          "I love life, adventure and the freedom of travelling alone. An unfamiliar journey gives me space to observe new places without rushing to a conclusion, while Australia's blue skies, coastlines and open landscapes remind me to slow down and stay curious. Exploration helps me return to engineering with a wider view and a calmer mind.",
+        tagLabel: "Personal interests",
+        tags: ["Independent travel", "Nature", "Adventure", "Curiosity"],
+      },
+      cube: {
+        eyebrow: "FOCUS PRACTICE",
+        title: "A 13×13 cube is systems thinking in your hands.",
+        visualLabel: "HIGH-ORDER CUBE",
+        quote:
+          "Break complexity into solvable parts, focus on the next move and protect the stability of the whole.",
+        text:
+          "For me, a high-order cube is not simply a race for speed. Its centres, edges and local stages must be solved one at a time, yet every move can affect structures already built. That is close to engineering: make steady local progress without losing control of the global system.",
+        steps: ["Observe", "Decompose", "Solve locally", "Stabilise globally"],
+      },
+    },
     profile: {
       eyebrow: "LEADERSHIP, RECOGNITION & RESEARCH",
       title: "Technical discipline with a wider point of view.",
@@ -497,7 +557,10 @@ export const content = {
         "Based in Sydney and open to opportunities where rigorous engineering, practical analysis and clear client communication matter.",
       emailLabel: "Email",
       phoneLabel: "Phone",
+      phoneDisplay: "+61 490 366 340",
+      phoneHref: "+61490366340",
       linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
       locationLabel: "Location",
       location: "Sydney, NSW, Australia",
       download: "Download English CV",
@@ -519,6 +582,7 @@ export const content = {
       work: "精选项目",
       experience: "经历",
       capabilities: "能力",
+      about: "关于我",
       profile: "个人履历",
       contact: "联系",
       menu: "打开导航",
@@ -532,12 +596,19 @@ export const content = {
       role: "数据工程 · 数据分析 · 软件交付",
       summary:
         "我将模糊需求与复杂数据转化为可靠的数据系统、可用于决策的分析结果，以及值得用户信赖的软件产品。",
-      primary: "查看项目证据",
+      primary: "查看精选项目",
       secondary: "下载中文简历",
       availability: "开放数据工程、分析与软件方向工作机会",
       location: "澳大利亚 · 悉尼",
-      scroll: "继续浏览",
+      scroll: "工作与教育经历",
       portraitAlt: "陈萧仰的个人证件照",
+    },
+    metricsSummary: {
+      ariaLabel: "跨经历与项目成果摘要",
+      eyebrow: "跨经历成果摘要",
+      title: "一眼看清产业实践与数据项目的关键结果。",
+      intro:
+        "指标分别来自实习自动化、燃油数据质量与数据库工程，并非单一 Jira 项目的结果。",
     },
     metrics: [
       {
@@ -819,7 +890,7 @@ export const content = {
     },
     experience: {
       eyebrow: "工作与教育经历",
-      title: "在产业实践与严谨课程中持续构建。",
+      title: "产业实践与澳洲第一高校的数据训练。",
       industryTitle: "产业经历",
       educationTitle: "教育经历",
       industry: {
@@ -840,6 +911,11 @@ export const content = {
           focus: "数据科学与工程",
           school: "新南威尔士大学 · 悉尼",
           date: "2024年9月 – 2026年9月（预计）",
+          ranking: {
+            value: "澳洲第 1 · 全球第 19",
+            label: "2027 QS 世界大学排名",
+            href: "https://www.unsw.edu.au/about-us/excellence/rankings-reputation",
+          },
           detail:
             "加权平均分 70/100。核心课程：人工智能、机器学习、深度学习、大数据管理、图数据分析、Python、数据库系统与数据结构。",
         },
@@ -923,6 +999,49 @@ export const content = {
         },
       ],
     },
+    about: {
+      eyebrow: "思考方式与生活",
+      title: "保持好奇，也保持把复杂问题做完的耐心。",
+      intro:
+        "无论工程还是生活，我都愿意走进未知：先观察，再把复杂问题拆成可推进的部分，同时始终保留对整体系统的判断。",
+      academic: {
+        eyebrow: "学术与工程方法",
+        title: "让证据先于复杂度。",
+        text:
+          "我不会把复杂度本身当成专业。在学术与工程中，我习惯先定义问题和数据边界，建立可解释的基线，再用实验、对照与误差分析判断更复杂的方法是否真正值得。结果重要，知道结果在什么条件下成立同样重要。",
+        principles: [
+          {
+            title: "问题先于工具",
+            text: "先理解决策目标、利益相关者与数据限制，再选择模型或系统架构。",
+          },
+          {
+            title: "证据推动改进",
+            text: "用基线、消融、自动测试与可复现流程判断改进是否真实。",
+          },
+          {
+            title: "主动说明边界",
+            text: "记录假设、风险和工程取舍，并清楚区分描述性证据与因果结论。",
+          },
+        ],
+      },
+      life: {
+        eyebrow: "生活与探索",
+        title: "我喜欢没有预设答案的旅程。",
+        text:
+          "我热爱生活，也愿意走进未知。我享受独自旅行，在陌生的城市与路线中观察新的风景，也喜欢自由漫步于澳洲的蓝天、海岸和自然之间。旅行让我学会不急于对陌生环境下结论，而是先感受、理解，再找到自己的节奏；回到工程问题时，也因此拥有更开阔、更平静的视角。",
+        tagLabel: "个人兴趣",
+        tags: ["独自旅行", "自然探索", "冒险精神", "保持好奇"],
+      },
+      cube: {
+        eyebrow: "专注力训练",
+        title: "13阶魔方，是握在手中的系统工程。",
+        visualLabel: "超高阶魔方",
+        quote: "把复杂问题拆成可解的局部，专注当前一步，同时守住整个系统的稳定。",
+        text:
+          "对我而言，高阶魔方不只是追求速度。它需要把庞大的状态拆成中心、棱块和不同阶段，每一次只解决眼前可控的问题，却又不能破坏已经建立的整体结构。这与工程很像：让局部持续推进，同时始终保持对全局状态的掌握。",
+        steps: ["观察状态", "拆分结构", "解决局部", "稳定整体"],
+      },
+    },
     profile: {
       eyebrow: "领导力、荣誉与研究",
       title: "以更宽的视角支撑技术严谨性。",
@@ -995,7 +1114,10 @@ export const content = {
       text: "现居悉尼，期待加入重视严谨工程、实际分析能力与清晰客户沟通的团队。",
       emailLabel: "邮箱",
       phoneLabel: "电话",
+      phoneDisplay: "+86 18960752168",
+      phoneHref: "+8618960752168",
       linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
       locationLabel: "所在地",
       location: "澳大利亚 · 悉尼 NSW",
       download: "下载中文简历",
@@ -1007,7 +1129,6 @@ export const content = {
 
 export const contactDetails = {
   email: "18960752168@163.com",
-  phoneDisplay: "+61 490 366 340",
-  phoneHref: "+61490366340",
   linkedin: "https://www.linkedin.com/in/xiaoyang-chen-1a273b334",
+  github: "https://github.com/chenxiaoyang815-design/xiaoyang-chen-portfolio",
 };

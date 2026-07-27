@@ -4,15 +4,19 @@ import {
   ArrowRight,
   BookOpenText,
   Briefcase,
+  Brain,
   ChartLineUp,
   Check,
   Code,
+  Compass,
+  Cube,
   Database,
   DownloadSimple,
   EnvelopeSimple,
   FileText,
   Flask,
   GraduationCap,
+  GithubLogo,
   LinkedinLogo,
   List,
   MapPin,
@@ -67,9 +71,10 @@ function SectionHeader({ eyebrow, title, intro, align = "left" }) {
 
 function Header({ copy, language, setLanguage, menuOpen, setMenuOpen }) {
   const links = [
-    ["work", copy.nav.work],
     ["experience", copy.nav.experience],
+    ["work", copy.nav.work],
     ["capabilities", copy.nav.capabilities],
+    ["about", copy.nav.about],
     ["profile", copy.nav.profile],
     ["contact", copy.nav.contact],
   ];
@@ -143,7 +148,7 @@ function Hero({ copy, language }) {
           </div>
           <p className="hero__summary">{copy.hero.summary}</p>
           <div className="hero__actions">
-            <a className="button button--primary" href="#spotlight">
+            <a className="button button--primary" href="#work">
               {copy.hero.primary}
               <ArrowRight size={18} weight="bold" aria-hidden="true" />
             </a>
@@ -180,7 +185,7 @@ function Hero({ copy, language }) {
           </div>
         </div>
 
-        <a className="hero__scroll" href="#spotlight">
+        <a className="hero__scroll" href="#experience">
           <span>{copy.hero.scroll}</span>
           <ArrowDown size={18} aria-hidden="true" />
         </a>
@@ -190,15 +195,28 @@ function Hero({ copy, language }) {
 
 function Metrics({ copy }) {
   return (
-    <section className="metrics" id="evidence-strip" aria-label="Evidence summary">
-      {copy.metrics.map((metric, index) => (
-        <article className="metric" key={metric.value} data-reveal>
-          <span className="metric__index">0{index + 1}</span>
-          <strong>{metric.value}</strong>
-          <h3>{metric.label}</h3>
-          <p>{metric.detail}</p>
-        </article>
-      ))}
+    <section
+      className="metrics-section"
+      id="evidence-strip"
+      aria-label={copy.metricsSummary.ariaLabel}
+    >
+      <div className="section-shell">
+        <SectionHeader
+          eyebrow={copy.metricsSummary.eyebrow}
+          title={copy.metricsSummary.title}
+          intro={copy.metricsSummary.intro}
+        />
+      </div>
+      <div className="metrics">
+        {copy.metrics.map((metric, index) => (
+          <article className="metric" key={metric.value} data-reveal>
+            <span className="metric__index">0{index + 1}</span>
+            <strong>{metric.value}</strong>
+            <h3>{metric.label}</h3>
+            <p>{metric.detail}</p>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -526,6 +544,17 @@ function Experience({ copy }) {
                 <h4>{item.degree}</h4>
                 <p className="education-item__focus">{item.focus}</p>
                 <p>{item.school}</p>
+                {item.ranking ? (
+                  <a
+                    className="education-item__ranking"
+                    href={item.ranking.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <strong>{item.ranking.value}</strong>
+                    <span>{item.ranking.label}</span>
+                  </a>
+                ) : null}
                 <p className="education-item__detail">{item.detail}</p>
               </div>
             ))}
@@ -558,6 +587,85 @@ function Capabilities({ copy }) {
             </article>
           );
         })}
+      </div>
+    </section>
+  );
+}
+
+function About({ copy }) {
+  const principleIcons = [Target, ChartLineUp, ShieldCheck];
+
+  return (
+    <section className="about section-shell" id="about">
+      <SectionHeader
+        eyebrow={copy.about.eyebrow}
+        title={copy.about.title}
+        intro={copy.about.intro}
+      />
+
+      <div className="about-grid">
+        <article className="about-card about-card--academic" data-reveal>
+          <header>
+            <Brain size={30} weight="duotone" aria-hidden="true" />
+            <div>
+              <span>{copy.about.academic.eyebrow}</span>
+              <h3>{copy.about.academic.title}</h3>
+            </div>
+          </header>
+          <p>{copy.about.academic.text}</p>
+          <div className="about-principles">
+            {copy.about.academic.principles.map((principle, index) => {
+              const Icon = principleIcons[index];
+              return (
+                <div key={principle.title}>
+                  <Icon size={21} aria-hidden="true" />
+                  <h4>{principle.title}</h4>
+                  <p>{principle.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </article>
+
+        <article className="about-card about-card--life" data-reveal>
+          <header>
+            <Compass size={30} weight="duotone" aria-hidden="true" />
+            <div>
+              <span>{copy.about.life.eyebrow}</span>
+              <h3>{copy.about.life.title}</h3>
+            </div>
+          </header>
+          <p>{copy.about.life.text}</p>
+          <div className="about-life__tags" aria-label={copy.about.life.tagLabel}>
+            {copy.about.life.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        </article>
+
+        <article className="about-card about-card--cube" data-reveal>
+          <div className="about-cube__visual" aria-hidden="true">
+            <Cube size={64} weight="duotone" />
+            <strong>13 × 13</strong>
+            <span>{copy.about.cube.visualLabel}</span>
+          </div>
+          <div className="about-cube__content">
+            <header>
+              <span>{copy.about.cube.eyebrow}</span>
+              <h3>{copy.about.cube.title}</h3>
+            </header>
+            <blockquote>{copy.about.cube.quote}</blockquote>
+            <p>{copy.about.cube.text}</p>
+            <ol className="about-cube__steps">
+              {copy.about.cube.steps.map((step, index) => (
+                <li key={step}>
+                  <span>0{index + 1}</span>
+                  <strong>{step}</strong>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </article>
       </div>
     </section>
   );
@@ -699,11 +807,11 @@ function Contact({ copy, language }) {
               {contactDetails.email}
             </span>
           </a>
-          <a href={`tel:${contactDetails.phoneHref}`}>
+          <a href={`tel:${copy.contact.phoneHref}`}>
             <Phone size={22} aria-hidden="true" />
             <span>
               <small>{copy.contact.phoneLabel}</small>
-              {contactDetails.phoneDisplay}
+              {copy.contact.phoneDisplay}
             </span>
           </a>
           <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">
@@ -711,6 +819,13 @@ function Contact({ copy, language }) {
             <span>
               <small>{copy.contact.linkedinLabel}</small>
               linkedin.com/in/xiaoyang-chen
+            </span>
+          </a>
+          <a href={contactDetails.github} target="_blank" rel="noreferrer">
+            <GithubLogo size={22} aria-hidden="true" />
+            <span>
+              <small>{copy.contact.githubLabel}</small>
+              github.com/chenxiaoyang815-design
             </span>
           </a>
           <span>
@@ -811,15 +926,16 @@ export function App() {
       />
       <main>
         <Hero copy={copy} language={language} />
-        <Spotlight copy={copy} language={language} />
+        <Experience copy={copy} />
         <Metrics copy={copy} />
         <Work
           copy={copy}
           onOpenFuelLab={() => setFuelLabOpen(true)}
           onOpenSolarLab={() => setSolarLabOpen(true)}
         />
-        <Experience copy={copy} />
+        <Spotlight copy={copy} language={language} />
         <Capabilities copy={copy} />
+        <About copy={copy} />
         <Profile copy={copy} />
       </main>
       <Contact copy={copy} language={language} />
