@@ -1,0 +1,6 @@
+node_modules/
+node_modules-install-backup/
+.npm-cache/
+dist/
+.DS_Store
+*.log
