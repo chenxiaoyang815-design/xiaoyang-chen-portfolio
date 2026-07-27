@@ -197,18 +197,20 @@ export const content = {
       projectLabel: "Project",
       projects: [
         {
+          id: "solar-evidence-lab",
           type: "MACHINE LEARNING · TIME SERIES",
-          title: "Solar Radiation Forecasting",
+          title: "24-Year Solar Forecasting Lab",
           date: "Mar 2026",
           summary:
-            "A reusable PyTorch workflow for multi-step solar-radiation forecasting, uncertainty estimation and feature-level interpretation.",
+            "An evidence-led PyTorch workflow that integrates 24 annual files, forecasts seven future horizons and tests whether additional model complexity delivers measurable value.",
           points: [
-            "Engineered Fourier cycles, seven-day rolling statistics and lag variables.",
-            "Compared single-output and multi-output models for seven-day-ahead prediction.",
-            "Applied custom loss strategies, transfer learning, MC Dropout and attention heatmaps.",
-            "Validated results with ablation studies, paired t-tests and structured error analysis.",
+            "Integrated 8,766 daily records from 1996–2019 and removed 1,163 quality-flagged observations.",
+            "Trained 22 model artefacts across custom losses, transfer learning, multi-task learning, MC Dropout and attention.",
+            "Pseudo-Huber achieved the lowest later-period MAE at 44.07 W/m²; multi-task and the simpler multi-output MLP were effectively tied on RMSE.",
+            "Ablation and regime analysis showed seasonal and rolling features mattered most, while high-radiation and longer-horizon forecasts remained hardest.",
           ],
-          tech: ["Python", "PyTorch", "Time series", "Statistics"],
+          tech: ["PyTorch", "Time-series ML", "Data quality", "Model evaluation"],
+          labCta: "Explore forecast lab",
         },
         {
           type: "BIG DATA · MAPREDUCE",
@@ -639,18 +641,20 @@ export const content = {
       projectLabel: "项目",
       projects: [
         {
+          id: "solar-evidence-lab",
           type: "机器学习 · 时间序列",
-          title: "太阳辐射多步预测",
+          title: "24 年太阳辐射预测实验室",
           date: "2026年3月",
           summary:
-            "构建可复用的 PyTorch 多步预测流程，覆盖数据处理、模型对比、不确定性估计与特征解释。",
+            "构建以证据为核心的 PyTorch 预测流程：整合 24 个年度文件、预测未来 7 个时间跨度，并验证增加模型复杂度是否真正带来价值。",
           points: [
-            "完成 Fourier 周期特征、7 天 Rolling 统计量与 Lag 特征工程。",
-            "对比单输出与多输出模型的 7 天超前预测能力。",
-            "结合自定义损失、迁移学习、MC Dropout 与 Attention 热力图。",
-            "使用消融实验、配对 t-test 和结构化误差分析验证模型。",
+            "整合 1996–2019 年 8,766 条逐日记录，剔除 1,163 条质量异常观测。",
+            "训练 22 个模型权重，覆盖自定义损失、迁移学习、多任务学习、MC Dropout 与 Attention。",
+            "Pseudo-Huber 在后期评估集取得最低 MAE 44.07 W/m²；多任务模型与更简单的多输出 MLP 在 RMSE 上几乎持平。",
+            "消融与运行场景分析表明周期、Rolling 特征最有价值，高辐射和长期预测仍是主要困难。",
           ],
-          tech: ["Python", "PyTorch", "时间序列", "统计分析"],
+          tech: ["PyTorch", "时间序列机器学习", "数据质量", "模型评估"],
+          labCta: "查看预测实验室",
         },
         {
           type: "大数据 · MAPREDUCE",

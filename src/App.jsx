@@ -29,6 +29,7 @@ import {
 } from "@phosphor-icons/react";
 import { contactDetails, content } from "./content";
 import { FuelEvidenceLab } from "./FuelEvidenceLab";
+import { SolarEvidenceLab } from "./SolarEvidenceLab";
 
 const processIcons = [Database, ShieldCheck, Network, ChartLineUp, TestTube];
 const projectIcons = [Flask, Network, ChartLineUp, Database];
@@ -361,7 +362,7 @@ function Spotlight({ copy, language }) {
   );
 }
 
-function Work({ copy, onOpenFuelLab }) {
+function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
   return (
     <section className="work section-shell" id="work">
       <SectionHeader
@@ -397,12 +398,17 @@ function Work({ copy, onOpenFuelLab }) {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                {project.id === "fuel-evidence-lab" ? (
+                {project.id === "fuel-evidence-lab" ||
+                project.id === "solar-evidence-lab" ? (
                   <div className="project__actions">
                     <button
                       className="project__lab-button"
                       type="button"
-                      onClick={onOpenFuelLab}
+                      onClick={
+                        project.id === "solar-evidence-lab"
+                          ? onOpenSolarLab
+                          : onOpenFuelLab
+                      }
                     >
                       {project.labCta}
                       <ArrowRight size={18} aria-hidden="true" />
@@ -674,6 +680,7 @@ export function App() {
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const [fuelLabOpen, setFuelLabOpen] = useState(false);
+  const [solarLabOpen, setSolarLabOpen] = useState(false);
   const copy = content[language];
 
   useEffect(() => {
@@ -712,10 +719,13 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (!fuelLabOpen) return undefined;
+    if (!fuelLabOpen && !solarLabOpen) return undefined;
     const previousOverflow = document.body.style.overflow;
     const closeOnEscape = (event) => {
-      if (event.key === "Escape") setFuelLabOpen(false);
+      if (event.key === "Escape") {
+        setFuelLabOpen(false);
+        setSolarLabOpen(false);
+      }
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
@@ -723,7 +733,7 @@ export function App() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [fuelLabOpen]);
+  }, [fuelLabOpen, solarLabOpen]);
 
   return (
     <div className={`portfolio portfolio--${language}`}>
@@ -738,7 +748,11 @@ export function App() {
         <Hero copy={copy} language={language} />
         <Spotlight copy={copy} language={language} />
         <Metrics copy={copy} />
-        <Work copy={copy} onOpenFuelLab={() => setFuelLabOpen(true)} />
+        <Work
+          copy={copy}
+          onOpenFuelLab={() => setFuelLabOpen(true)}
+          onOpenSolarLab={() => setSolarLabOpen(true)}
+        />
         <Experience copy={copy} />
         <Capabilities copy={copy} />
         <Profile copy={copy} />
@@ -749,6 +763,13 @@ export function App() {
           language={language}
           onLanguageChange={() => setLanguage(language === "en" ? "zh" : "en")}
           onClose={() => setFuelLabOpen(false)}
+        />
+      ) : null}
+      {solarLabOpen ? (
+        <SolarEvidenceLab
+          language={language}
+          onLanguageChange={() => setLanguage(language === "en" ? "zh" : "en")}
+          onClose={() => setSolarLabOpen(false)}
         />
       ) : null}
     </div>

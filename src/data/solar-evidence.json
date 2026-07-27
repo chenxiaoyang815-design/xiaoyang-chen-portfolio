@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "periodStart": "1996-01-01",
+    "periodEnd": "2019-12-31",
+    "annualFiles": 24,
+    "rawRows": 8766,
+    "cleanRows": 7603,
+    "qualityRemoved": 1163,
+    "qualityRemovedRate": 13.27,
+    "forecastHorizons": 7,
+    "modelArtifacts": 22,
+    "evaluationRows": 2019
+  },
+  "splits": [
+    {
+      "key": "train",
+      "years": "1996–2008",
+      "rows": 4711,
+      "share": 62.1
+    },
+    {
+      "key": "validation",
+      "years": "2009–2010",
+      "rows": 484,
+      "share": 6.4
+    },
+    {
+      "key": "test",
+      "years": "2011–2013",
+      "rows": 354,
+      "share": 4.7
+    },
+    {
+      "key": "evaluation",
+      "years": "2014–2019",
+      "rows": 2019,
+      "share": 26.6
+    }
+  ],
+  "models": [
+    {
+      "key": "multitask",
+      "rmse": 58.889709,
+      "mae": 45.117649,
+      "p95": 119.164534
+    },
+    {
+      "key": "multiOutput",
+      "rmse": 58.890202,
+      "mae": 45.148159,
+      "p95": 119.116483
+    },
+    {
+      "key": "individual",
+      "rmse": 59.025173,
+      "mae": 45.248829,
+      "p95": 119.525726
+    },
+    {
+      "key": "sequential",
+      "rmse": 59.131649,
+      "mae": 45.311985,
+      "p95": 118.989448
+    },
+    {
+      "key": "mcDropout",
+      "rmse": 59.182404,
+      "mae": 45.749718,
+      "p95": 117.208137
+    },
+    {
+      "key": "pseudoHuber",
+      "rmse": 59.342339,
+      "mae": 44.066795,
+      "p95": 126.888903
+    },
+    {
+      "key": "attention",
+      "rmse": 60.527039,
+      "mae": 46.536285,
+      "p95": 123.000722
+    },
+    {
+      "key": "quantile",
+      "rmse": 79.043617,
+      "mae": 53.803440,
+      "p95": 178.187131
+    }
+  ],
+  "horizonErrors": [
+    {
+      "horizon": "t+1",
+      "rmse": 57.139423,
+      "mae": 44.595474
+    },
+    {
+      "horizon": "t+2",
+      "rmse": 58.736828,
+      "mae": 45.775715
+    },
+    {
+      "horizon": "t+3",
+      "rmse": 60.130962,
+      "mae": 47.088135
+    },
+    {
+      "horizon": "t+4",
+      "rmse": 60.972042,
+      "mae": 47.581600
+    },
+    {
+      "horizon": "t+5",
+      "rmse": 62.16959,
+      "mae": 48.217564
+    },
+    {
+      "horizon": "t+6",
+      "rmse": 63.73975,
+      "mae": 49.326485
+    },
+    {
+      "horizon": "t+7",
+      "rmse": 65.229347,
+      "mae": 50.355572
+    }
+  ],
+  "ablations": [
+    {
+      "key": "fourier",
+      "rmseChange": 6.919106,
+      "maeChange": 3.339291
+    },
+    {
+      "key": "rolling",
+      "rmseChange": 5.221169,
+      "maeChange": 1.746513
+    },
+    {
+      "key": "lagged",
+      "rmseChange": -4.200645,
+      "maeChange": -3.247372
+    },
+    {
+      "key": "attention",
+      "rmseChange": -3.952862,
+      "maeChange": -3.143776
+    }
+  ],
+  "diagnostics": {
+    "season": [
+      {
+        "key": "winter",
+        "rmse": 43.333778,
+        "mae": 38.002945
+      },
+      {
+        "key": "spring",
+        "rmse": 80.171501,
+        "mae": 68.102303
+      },
+      {
+        "key": "summer",
+        "rmse": 60.084244,
+        "mae": 50.927879
+      },
+      {
+        "key": "autumn",
+        "rmse": 59.189117,
+        "mae": 50.239204
+      }
+    ],
+    "horizon": [
+      {
+        "key": "shortTerm",
+        "rmse": 60.896454,
+        "mae": 47.70657
+      },
+      {
+        "key": "longTerm",
+        "rmse": 68.273941,
+        "mae": 52.886497
+      }
+    ],
+    "weather": [
+      {
+        "key": "clear",
+        "rmse": 73.150558,
+        "mae": 62.06432
+      },
+      {
+        "key": "mixed",
+        "rmse": 61.648865,
+        "mae": 52.575352
+      },
+      {
+        "key": "cloudy",
+        "rmse": 43.325069,
+        "mae": 37.598095
+      }
+    ],
+    "magnitude": [
+      {
+        "key": "low",
+        "rmse": 43.612736,
+        "mae": 37.887585
+      },
+      {
+        "key": "medium",
+        "rmse": 63.071831,
+        "mae": 53.853699
+      },
+      {
+        "key": "high",
+        "rmse": 73.114204,
+        "mae": 61.812004
+      }
+    ]
+  },
+  "significance": [
+    {
+      "key": "multiVsIndividual",
+      "meanDifference": -0.268425,
+      "pValue": 0.041789,
+      "significant": true
+    },
+    {
+      "key": "attentionVsMulti",
+      "meanDifference": 3.103597,
+      "pValue": 0.000001,
+      "significant": true
+    },
+    {
+      "key": "multiVsMultitask",
+      "meanDifference": 0.039499,
+      "pValue": 0.685519,
+      "significant": false
+    }
+  ]
+}
