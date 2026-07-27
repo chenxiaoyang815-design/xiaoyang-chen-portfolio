@@ -28,6 +28,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { contactDetails, content } from "./content";
+import { FuelEvidenceLab } from "./FuelEvidenceLab";
 
 const processIcons = [Database, ShieldCheck, Network, ChartLineUp, TestTube];
 const projectIcons = [Flask, Network, ChartLineUp, Database];
@@ -360,7 +361,7 @@ function Spotlight({ copy, language }) {
   );
 }
 
-function Work({ copy }) {
+function Work({ copy, onOpenFuelLab }) {
   return (
     <section className="work section-shell" id="work">
       <SectionHeader
@@ -396,6 +397,18 @@ function Work({ copy }) {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
+                {project.id === "fuel-evidence-lab" ? (
+                  <div className="project__actions">
+                    <button
+                      className="project__lab-button"
+                      type="button"
+                      onClick={onOpenFuelLab}
+                    >
+                      {project.labCta}
+                      <ArrowRight size={18} aria-hidden="true" />
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </article>
           );
@@ -660,6 +673,7 @@ export function App() {
     return navigator.language?.toLowerCase().startsWith("zh") ? "zh" : "en";
   });
   const [menuOpen, setMenuOpen] = useState(false);
+  const [fuelLabOpen, setFuelLabOpen] = useState(false);
   const copy = content[language];
 
   useEffect(() => {
@@ -697,6 +711,20 @@ export function App() {
     return () => window.removeEventListener("resize", closeMenu);
   }, []);
 
+  useEffect(() => {
+    if (!fuelLabOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setFuelLabOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [fuelLabOpen]);
+
   return (
     <div className={`portfolio portfolio--${language}`}>
       <Header
@@ -710,12 +738,19 @@ export function App() {
         <Hero copy={copy} language={language} />
         <Spotlight copy={copy} language={language} />
         <Metrics copy={copy} />
-        <Work copy={copy} />
+        <Work copy={copy} onOpenFuelLab={() => setFuelLabOpen(true)} />
         <Experience copy={copy} />
         <Capabilities copy={copy} />
         <Profile copy={copy} />
       </main>
       <Contact copy={copy} language={language} />
+      {fuelLabOpen ? (
+        <FuelEvidenceLab
+          language={language}
+          onLanguageChange={() => setLanguage(language === "en" ? "zh" : "en")}
+          onClose={() => setFuelLabOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }

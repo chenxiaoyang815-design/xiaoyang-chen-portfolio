@@ -46,9 +46,9 @@ export const content = {
         detail: "across NSW regional datasets",
       },
       {
-        value: "50% → 66%",
-        label: "matching accuracy",
-        detail: "with a postcode–suburb algorithm",
+        value: "97.36%",
+        label: "exact geo match rate",
+        detail: "before a transparent postcode fallback",
       },
       {
         value: "99/100",
@@ -225,18 +225,20 @@ export const content = {
           tech: ["Hadoop", "MRJob", "MapReduce", "Python"],
         },
         {
-          type: "DATA QUALITY · VISUALISATION",
+          id: "fuel-evidence-lab",
+          type: "DATA ENGINEERING · ANALYTICS",
           title: "NSW Fuel Intelligence",
           date: "Mar 2025",
           summary:
-            "An analysis of more than 59,000 NSW fuel-price records that exposed regional pricing patterns and improved dataset reliability.",
+            "A reproducible analysis of 59,256 January 2025 FuelCheck records, built to show how reliable engineering choices become decision-ready price evidence.",
           points: [
-            "Built a postcode–suburb matching algorithm with Pandas and NumPy.",
-            "Improved matching accuracy from about 50% to 66%.",
-            "Designed PriceChangeAverage to identify anomalies.",
-            "Produced analysis and visual evidence of unusual Western Sydney trends.",
+            "Repaired 28,151 structurally inconsistent rows through schema-aware ingestion without a hard-coded breakpoint.",
+            "Achieved 97.36% exact postcode–suburb matching and 100% coverage with a clearly labelled deterministic fallback.",
+            "Used station-day → postcode-day → postcode-month aggregation to avoid overweighting frequent price updates.",
+            "Compared 1,284 matched postcode–fuel–day strata and communicated the result as descriptive—not causal—evidence.",
           ],
-          tech: ["Pandas", "NumPy", "Data quality", "Visualisation"],
+          tech: ["Pandas", "Data pipelines", "Data quality", "Statistical comparison"],
+          labCta: "Explore Data Lab",
         },
         {
           type: "DATABASE ENGINEERING",
@@ -487,9 +489,9 @@ export const content = {
         detail: "覆盖新州区域数据集",
       },
       {
-        value: "50% → 66%",
-        label: "匹配准确率提升",
-        detail: "通过“邮编–郊区”算法实现",
+        value: "97.36%",
+        label: "地理精确匹配率",
+        detail: "随后使用透明的邮编回退规则",
       },
       {
         value: "99/100",
@@ -665,18 +667,20 @@ export const content = {
           tech: ["Hadoop", "MRJob", "MapReduce", "Python"],
         },
         {
-          type: "数据质量 · 可视化",
+          id: "fuel-evidence-lab",
+          type: "数据工程 · 分析",
           title: "新州燃油数据洞察",
           date: "2025年3月",
           summary:
-            "分析 59,000+ 条 NSW 燃油价格数据，识别区域价格模式并提升数据可靠性。",
+            "对 2025 年 1 月 59,256 条 FuelCheck 记录进行可复现分析，展示可靠的数据工程选择如何转化为可用于决策的价格证据。",
           points: [
-            "使用 Pandas/NumPy 构建“邮编–郊区”匹配算法。",
-            "将数据匹配准确率由约 50% 提升至 66%。",
-            "设计 PriceChangeAverage 指标定位异常点。",
-            "以报告和图表揭示西悉尼非常规价格趋势。",
+            "通过字段结构识别自动修复 28,151 行不一致数据，不依赖硬编码的分界行。",
+            "“邮编–城区”精确匹配率达到 97.36%，通过明确标注的确定性回退实现 100% 覆盖。",
+            "采用“站点日均 → 邮编日均 → 邮编月均”聚合，避免频繁调价记录获得额外权重。",
+            "对照 1,284 个同邮编、同燃油、同日期组合，并将结果明确解释为描述性而非因果证据。",
           ],
-          tech: ["Pandas", "NumPy", "数据质量", "可视化"],
+          tech: ["Pandas", "数据流水线", "数据质量", "统计对照"],
+          labCta: "查看数据实验室",
         },
         {
           type: "数据库工程",
