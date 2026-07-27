@@ -3728,3 +3728,1598 @@ ol {
     transform: none;
   }
 }
+
+.solar-lab {
+  --solar-yellow: #ffd166;
+  --solar-orange: #ff8a4c;
+  --solar-coral: #ff5e78;
+  --solar-cyan: #43d9d1;
+  --solar-violet: #9a8cff;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  overflow: hidden;
+  color: #e8f1f7;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 138, 76, 0.18), transparent 26%),
+    radial-gradient(circle at 12% 42%, rgba(67, 217, 209, 0.1), transparent 31%),
+    radial-gradient(circle at 65% 72%, rgba(154, 140, 255, 0.09), transparent 30%),
+    #040a13;
+}
+
+.solar-lab::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(92, 130, 160, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 130, 160, 0.065) 1px, transparent 1px);
+  background-size: 46px 46px;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.solar-lab button {
+  outline-offset: 4px;
+}
+
+.solar-lab__topbar {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  min-height: 66px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(18px, 4vw, 60px);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.42);
+  background: rgba(4, 10, 19, 0.88);
+  backdrop-filter: blur(18px);
+}
+
+.solar-lab__topbar > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #91a8b7;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.solar-lab__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--solar-yellow);
+  box-shadow: 0 0 16px rgba(255, 209, 102, 0.8);
+}
+
+.solar-lab__topbar-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid rgba(94, 128, 158, 0.5);
+  color: #c0d0da;
+  background: rgba(10, 29, 45, 0.72);
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.solar-lab__topbar-actions button:hover {
+  border-color: var(--solar-cyan);
+  color: #fff;
+}
+
+.solar-lab__topbar-actions .solar-lab__close {
+  border-color: rgba(255, 138, 76, 0.58);
+  color: var(--solar-yellow);
+}
+
+.solar-lab__scroll {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-top: 66px;
+}
+
+.solar-lab__hero,
+.solar-lab__kpis,
+.solar-lab__section,
+.solar-lab__footer {
+  width: min(calc(100% - 64px), 1320px);
+  margin-inline: auto;
+}
+
+.solar-lab__hero {
+  display: grid;
+  min-height: 640px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(350px, 0.8fr);
+  gap: clamp(56px, 9vw, 130px);
+  align-items: center;
+  padding-block: clamp(86px, 10vw, 146px);
+}
+
+.solar-lab__hero-copy {
+  position: relative;
+}
+
+.solar-lab__eyebrow,
+.solar-lab__section-heading > p {
+  margin-bottom: 20px;
+  color: var(--solar-yellow);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.solar-lab__hero h1 {
+  max-width: 840px;
+  margin-bottom: 30px;
+  color: #f6fbff;
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.068em;
+  line-height: 0.94;
+}
+
+.solar-lab__hero h1 > span {
+  display: block;
+}
+
+.portfolio--zh .solar-lab__hero h1 {
+  font-size: clamp(3rem, 5.25vw, 5.45rem);
+  line-height: 1.05;
+}
+
+.solar-lab__intro {
+  max-width: 770px;
+  margin-bottom: 34px;
+  color: #a7bbc7;
+  font-size: clamp(1.04rem, 1.7vw, 1.34rem);
+  line-height: 1.72;
+}
+
+.solar-lab__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.solar-lab__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 13px;
+  border: 1px solid rgba(94, 128, 158, 0.46);
+  color: #90a8b7;
+  background: rgba(8, 27, 43, 0.62);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+}
+
+.solar-lab__meta svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__hero-model {
+  position: relative;
+  display: grid;
+  width: min(32vw, 420px);
+  aspect-ratio: 1;
+  place-items: center;
+  justify-self: center;
+}
+
+.solar-lab__sun {
+  position: relative;
+  display: grid;
+  width: 70%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 209, 102, 0.55);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 209, 102, 0.25), rgba(255, 138, 76, 0.07) 48%, transparent 69%),
+    rgba(8, 24, 38, 0.52);
+  box-shadow:
+    0 0 0 34px rgba(255, 138, 76, 0.025),
+    0 0 100px rgba(255, 138, 76, 0.18);
+}
+
+.solar-lab__sun::before,
+.solar-lab__sun::after {
+  position: absolute;
+  border: 1px solid rgba(67, 217, 209, 0.4);
+  border-radius: 50%;
+  content: "";
+}
+
+.solar-lab__sun::before {
+  width: 132%;
+  height: 132%;
+}
+
+.solar-lab__sun::after {
+  width: 64%;
+  height: 64%;
+  border-color: rgba(154, 140, 255, 0.48);
+}
+
+.solar-lab__sun > i {
+  position: absolute;
+  top: -18%;
+  right: 12%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--solar-cyan);
+  box-shadow: 0 0 18px rgba(67, 217, 209, 0.85);
+}
+
+.solar-lab__sun span {
+  z-index: 1;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(3rem, 5.5vw, 5.7rem);
+  font-weight: 500;
+  letter-spacing: -0.08em;
+}
+
+.solar-lab__sun small {
+  position: absolute;
+  right: 1%;
+  bottom: 16%;
+  z-index: 1;
+  padding: 7px 9px;
+  color: #08121c;
+  background: var(--solar-yellow);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.solar-lab__signal {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  left: 0;
+  display: flex;
+  height: 82px;
+  align-items: end;
+  justify-content: center;
+  gap: 7px;
+  padding-inline: 18%;
+}
+
+.solar-lab__signal i {
+  width: 4px;
+  min-height: 8px;
+  background: linear-gradient(to top, var(--solar-violet), var(--solar-cyan));
+  box-shadow: 0 0 11px rgba(67, 217, 209, 0.28);
+}
+
+.solar-lab__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(94, 128, 158, 0.48);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.48);
+}
+
+.solar-lab__kpis article {
+  min-height: 242px;
+  padding: 28px;
+  border-right: 1px solid rgba(94, 128, 158, 0.34);
+  background: rgba(6, 22, 37, 0.5);
+}
+
+.solar-lab__kpis article:last-child {
+  border-right: 0;
+}
+
+.solar-lab__kpis article > span {
+  display: block;
+  margin-bottom: 42px;
+  color: #587186;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+}
+
+.solar-lab__kpis strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--solar-yellow);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.solar-lab__kpis article:nth-child(2) strong {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__kpis article:nth-child(3) strong {
+  color: var(--solar-violet);
+}
+
+.solar-lab__kpis article:nth-child(4) strong {
+  color: var(--solar-orange);
+}
+
+.solar-lab__kpis h2 {
+  margin-bottom: 14px;
+  color: #f4f9fc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.solar-lab__kpis p {
+  margin: 0;
+  color: #688194;
+  font-size: 0.74rem;
+  line-height: 1.56;
+}
+
+.solar-lab__section {
+  padding-block: clamp(88px, 10vw, 148px);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.37);
+}
+
+.solar-lab__section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(380px, 1.3fr);
+  column-gap: clamp(50px, 10vw, 150px);
+  margin-bottom: clamp(52px, 7vw, 88px);
+}
+
+.solar-lab__section-heading > p {
+  grid-row: 1 / span 2;
+  padding-top: 10px;
+}
+
+.solar-lab__section-heading h2 {
+  margin-bottom: 22px;
+  color: #f7fbfe;
+  font-size: clamp(2.3rem, 4.5vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: -0.056em;
+  line-height: 1.02;
+}
+
+.solar-lab__section-heading > span {
+  max-width: 790px;
+  color: #94aab8;
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.solar-lab__pipeline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid rgba(94, 128, 158, 0.45);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.45);
+}
+
+.solar-lab__pipeline article {
+  min-height: 300px;
+  padding: 25px 20px 30px;
+  border-right: 1px solid rgba(94, 128, 158, 0.34);
+  background: linear-gradient(180deg, rgba(9, 31, 49, 0.6), rgba(4, 16, 28, 0.36));
+}
+
+.solar-lab__pipeline article:last-child {
+  border-right: 0;
+}
+
+.solar-lab__pipeline article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 62px;
+  color: var(--solar-cyan);
+}
+
+.solar-lab__pipeline article:nth-child(2n) > div {
+  color: var(--solar-yellow);
+}
+
+.solar-lab__pipeline article > div span {
+  color: #647e91;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.63rem;
+}
+
+.solar-lab__pipeline h3 {
+  margin-bottom: 13px;
+  color: #f3f8fb;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.solar-lab__pipeline p {
+  margin: 0;
+  color: #8299a8;
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+.solar-lab__foundation {
+  background:
+    radial-gradient(circle at 12% 35%, rgba(67, 217, 209, 0.06), transparent 30%),
+    transparent;
+}
+
+.solar-lab__foundation .solar-lab__section-heading > p {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__quality-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.solar-lab__quality-card {
+  min-height: 355px;
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(94, 128, 158, 0.45);
+  background: rgba(7, 24, 40, 0.68);
+}
+
+.solar-lab__quality-card > svg {
+  margin-bottom: 42px;
+  color: var(--solar-orange);
+}
+
+.solar-lab__quality-card--retained > svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__quality-card > strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(3.1rem, 6vw, 5.6rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.94;
+}
+
+.solar-lab__quality-card h3 {
+  margin: 8px 0 28px;
+  color: #b6c7d1;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.solar-lab__quality-rate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62px;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.solar-lab__quality-rate::before {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  height: 10px;
+  background: #152b3c;
+  content: "";
+}
+
+.solar-lab__quality-rate span {
+  z-index: 1;
+  grid-row: 1;
+  grid-column: 1;
+  min-width: 8px;
+  height: 10px;
+  background: linear-gradient(90deg, var(--solar-orange), var(--solar-coral));
+}
+
+.solar-lab__quality-card--retained .solar-lab__quality-rate span {
+  background: linear-gradient(90deg, #20afd0, var(--solar-cyan));
+}
+
+.solar-lab__quality-rate b {
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.solar-lab__quality-card > p {
+  margin: 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(94, 128, 158, 0.33);
+  color: #859dab;
+  font-size: 0.78rem;
+  line-height: 1.66;
+}
+
+.solar-lab__split-panel {
+  padding: clamp(28px, 4vw, 46px);
+  border: 1px solid rgba(94, 128, 158, 0.45);
+  background: rgba(6, 21, 36, 0.72);
+}
+
+.solar-lab__split-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 36px;
+}
+
+.solar-lab__split-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.solar-lab__split-heading svg {
+  color: var(--solar-violet);
+}
+
+.solar-lab__split-heading h3 {
+  color: #f3f8fb;
+  font-size: 1.06rem;
+  font-weight: 500;
+}
+
+.solar-lab__split-heading > span {
+  color: #72899a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+}
+
+.solar-lab__split-track {
+  display: flex;
+  min-height: 132px;
+  overflow: hidden;
+  border: 1px solid rgba(94, 128, 158, 0.42);
+}
+
+.solar-lab__split {
+  display: flex;
+  min-width: 82px;
+  flex-direction: column;
+  justify-content: end;
+  gap: 4px;
+  padding: 17px;
+  border-right: 1px solid rgba(4, 10, 19, 0.68);
+  background: linear-gradient(160deg, rgba(67, 217, 209, 0.28), rgba(67, 217, 209, 0.07));
+}
+
+.solar-lab__split--validation {
+  background: linear-gradient(160deg, rgba(154, 140, 255, 0.38), rgba(154, 140, 255, 0.1));
+}
+
+.solar-lab__split--test {
+  background: linear-gradient(160deg, rgba(255, 209, 102, 0.38), rgba(255, 209, 102, 0.1));
+}
+
+.solar-lab__split--evaluation {
+  background: linear-gradient(160deg, rgba(255, 94, 120, 0.34), rgba(255, 94, 120, 0.09));
+}
+
+.solar-lab__split span {
+  color: #fff;
+  font-size: 0.73rem;
+  font-weight: 500;
+}
+
+.solar-lab__split b,
+.solar-lab__split small {
+  color: #a9bcc8;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.61rem;
+  font-weight: 400;
+}
+
+.solar-lab__split-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.solar-lab__split-notes span {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  color: #8098a8;
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.solar-lab__split-notes svg {
+  flex: 0 0 auto;
+  color: var(--solar-cyan);
+}
+
+.solar-lab__models {
+  background:
+    radial-gradient(circle at 90% 34%, rgba(154, 140, 255, 0.08), transparent 30%),
+    transparent;
+}
+
+.solar-lab__models .solar-lab__section-heading > p {
+  color: var(--solar-violet);
+}
+
+.solar-lab__metric-tabs,
+.solar-lab__diagnostic-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.solar-lab__metric-tabs button,
+.solar-lab__diagnostic-tabs button {
+  min-width: 112px;
+  padding: 11px 15px;
+  border: 1px solid rgba(94, 128, 158, 0.5);
+  color: #829aaa;
+  background: rgba(7, 24, 40, 0.75);
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+}
+
+.solar-lab__metric-tabs button:hover,
+.solar-lab__diagnostic-tabs button:hover {
+  border-color: var(--solar-yellow);
+  color: #fff;
+}
+
+.solar-lab__metric-tabs button.is-active,
+.solar-lab__diagnostic-tabs button.is-active {
+  border-color: var(--solar-yellow);
+  color: #07111b;
+  background: var(--solar-yellow);
+}
+
+.solar-lab__model-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.32fr) minmax(330px, 0.68fr);
+  gap: 22px;
+}
+
+.solar-lab__model-ranking {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(94, 128, 158, 0.44);
+  background: rgba(94, 128, 158, 0.28);
+}
+
+.solar-lab__model-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 70px;
+  gap: 18px;
+  align-items: center;
+  min-height: 84px;
+  padding: 16px 20px;
+  background: rgba(5, 20, 34, 0.92);
+}
+
+.solar-lab__model-row > span {
+  color: #5f788b;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+}
+
+.solar-lab__model-row strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #c4d2da;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.solar-lab__model-track {
+  height: 7px;
+  background: #152b3d;
+}
+
+.solar-lab__model-track i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--solar-violet), var(--solar-cyan));
+}
+
+.solar-lab__model-row:first-child .solar-lab__model-track i {
+  background: linear-gradient(90deg, var(--solar-orange), var(--solar-yellow));
+}
+
+.solar-lab__model-row > b {
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.86rem;
+  text-align: right;
+}
+
+.solar-lab__model-highlights {
+  display: grid;
+  gap: 22px;
+}
+
+.solar-lab__model-highlights article {
+  display: grid;
+  min-height: 258px;
+  align-content: start;
+  padding: 31px;
+  border: 1px solid rgba(94, 128, 158, 0.44);
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 209, 102, 0.1), transparent 42%),
+    rgba(7, 24, 40, 0.7);
+}
+
+.solar-lab__model-highlights article:nth-child(2) {
+  background:
+    radial-gradient(circle at 100% 0, rgba(67, 217, 209, 0.1), transparent 42%),
+    rgba(7, 24, 40, 0.7);
+}
+
+.solar-lab__model-highlights svg {
+  margin-bottom: 24px;
+  color: var(--solar-yellow);
+}
+
+.solar-lab__model-highlights article:nth-child(2) svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__model-highlights span {
+  color: #7c94a4;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+}
+
+.solar-lab__model-highlights strong {
+  margin: 6px 0 14px;
+  color: #fff;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 1;
+}
+
+.solar-lab__model-highlights p {
+  margin: 0;
+  color: #879ead;
+  font-size: 0.76rem;
+  line-height: 1.62;
+}
+
+.solar-lab__decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.solar-lab__decision-grid article,
+.solar-lab__boundary-grid article {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 17px;
+  padding: 29px;
+  border: 1px solid rgba(94, 128, 158, 0.42);
+  background: rgba(7, 24, 40, 0.6);
+}
+
+.solar-lab__decision-grid svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__decision-grid article:nth-child(2) svg {
+  color: var(--solar-orange);
+}
+
+.solar-lab__decision-grid h3,
+.solar-lab__boundary-grid h3 {
+  margin-bottom: 8px;
+  color: #f4f9fc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.solar-lab__decision-grid p,
+.solar-lab__boundary-grid p {
+  margin: 0;
+  color: #8199a9;
+  font-size: 0.76rem;
+  line-height: 1.66;
+}
+
+.solar-lab__horizon .solar-lab__section-heading > p {
+  color: var(--solar-orange);
+}
+
+.solar-lab__horizon-chart {
+  display: grid;
+  min-height: 480px;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  padding: 54px 42px 30px;
+  border: 1px solid rgba(94, 128, 158, 0.44);
+  background:
+    linear-gradient(rgba(94, 128, 158, 0.08) 1px, transparent 1px),
+    rgba(5, 20, 34, 0.72);
+  background-size: 100% 25%;
+}
+
+.solar-lab__horizon-column {
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+}
+
+.solar-lab__horizon-values {
+  display: flex;
+  width: min(72px, 72%);
+  height: 350px;
+  align-items: end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.solar-lab__horizon-values span,
+.solar-lab__horizon-values i {
+  display: block;
+  width: 18px;
+  min-height: 6px;
+  background: linear-gradient(to top, var(--solar-orange), var(--solar-yellow));
+}
+
+.solar-lab__horizon-values i {
+  background: linear-gradient(to top, #25aebf, var(--solar-cyan));
+}
+
+.solar-lab__horizon-column strong {
+  color: #bfced6;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+}
+
+.solar-lab__horizon-column small {
+  color: #6c8394;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.61rem;
+}
+
+.solar-lab__chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  align-items: center;
+  margin-top: 22px;
+  color: #7890a0;
+  font-size: 0.7rem;
+}
+
+.solar-lab__chart-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.solar-lab__chart-legend i {
+  width: 9px;
+  height: 9px;
+  background: var(--solar-orange);
+}
+
+.solar-lab__chart-legend > span:nth-child(2) i {
+  background: var(--solar-cyan);
+}
+
+.solar-lab__chart-legend p {
+  flex: 1 1 440px;
+  margin: 0;
+  color: #a4b6c0;
+  text-align: right;
+}
+
+.solar-lab__ablation {
+  background:
+    radial-gradient(circle at 10% 40%, rgba(255, 94, 120, 0.065), transparent 28%),
+    transparent;
+}
+
+.solar-lab__ablation .solar-lab__section-heading > p {
+  color: var(--solar-coral);
+}
+
+.solar-lab__ablation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(94, 128, 158, 0.44);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.44);
+}
+
+.solar-lab__ablation-grid article {
+  min-height: 285px;
+  padding: 30px 26px;
+  border-right: 1px solid rgba(94, 128, 158, 0.35);
+  background: rgba(7, 24, 40, 0.62);
+}
+
+.solar-lab__ablation-grid article:last-child {
+  border-right: 0;
+}
+
+.solar-lab__ablation-grid article > span {
+  display: block;
+  min-height: 48px;
+  color: #91a7b5;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.solar-lab__ablation-grid strong {
+  display: block;
+  margin: 27px 0;
+  color: var(--solar-coral);
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+
+.solar-lab__ablation-grid .is-better strong {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__ablation-grid strong small {
+  color: #7890a0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0;
+}
+
+.solar-lab__ablation-axis {
+  position: relative;
+  display: flex;
+  height: 8px;
+  justify-content: center;
+  background: #142a3b;
+}
+
+.solar-lab__ablation-axis::after {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 50%;
+  width: 1px;
+  background: #657e8f;
+  content: "";
+}
+
+.solar-lab__ablation-axis i {
+  position: absolute;
+  right: 50%;
+  height: 100%;
+  background: var(--solar-coral);
+}
+
+.solar-lab__ablation-grid .is-better .solar-lab__ablation-axis i {
+  right: auto;
+  left: 50%;
+  background: var(--solar-cyan);
+}
+
+.solar-lab__ablation-grid p {
+  margin: 15px 0 0;
+  color: #71899a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+}
+
+.solar-lab__ablation-conclusion {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 18px;
+  max-width: 980px;
+  margin-top: 28px;
+  padding: 30px;
+  border: 1px solid rgba(255, 209, 102, 0.32);
+  background: linear-gradient(90deg, rgba(255, 209, 102, 0.07), transparent);
+}
+
+.solar-lab__ablation-conclusion svg {
+  color: var(--solar-yellow);
+}
+
+.solar-lab__ablation-conclusion h3 {
+  margin-bottom: 9px;
+  color: #f4f9fc;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.solar-lab__ablation-conclusion p {
+  margin: 0;
+  color: #8ca2b0;
+  font-size: 0.78rem;
+  line-height: 1.67;
+}
+
+.solar-lab__diagnostics .solar-lab__section-heading > p {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__diagnostic-tabs button.is-active {
+  border-color: var(--solar-cyan);
+  background: var(--solar-cyan);
+}
+
+.solar-lab__diagnostic-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
+  gap: 22px;
+}
+
+.solar-lab__diagnostic-bars {
+  display: grid;
+  gap: 24px;
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(94, 128, 158, 0.44);
+  background: rgba(6, 22, 37, 0.68);
+}
+
+.solar-lab__diagnostic-bars > div {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.58fr) minmax(160px, 1fr) 84px;
+  gap: 17px;
+  align-items: center;
+}
+
+.solar-lab__diagnostic-bars > div > span {
+  color: #a9bbc6;
+  font-size: 0.76rem;
+}
+
+.solar-lab__diagnostic-bars > div > div {
+  position: relative;
+  height: 26px;
+  background: #142a3c;
+}
+
+.solar-lab__diagnostic-bars i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--solar-violet), var(--solar-coral));
+}
+
+.solar-lab__diagnostic-bars b {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  transform: translateY(-50%);
+}
+
+.solar-lab__diagnostic-bars small {
+  color: #71899a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  text-align: right;
+}
+
+.solar-lab__diagnostic-takeaway {
+  display: grid;
+  min-height: 350px;
+  align-content: start;
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(94, 128, 158, 0.44);
+  background:
+    radial-gradient(circle at 100% 0, rgba(67, 217, 209, 0.13), transparent 48%),
+    rgba(6, 22, 37, 0.7);
+}
+
+.solar-lab__diagnostic-takeaway svg {
+  margin-bottom: 70px;
+  color: var(--solar-cyan);
+}
+
+.solar-lab__diagnostic-takeaway span {
+  margin-bottom: 15px;
+  color: #688293;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+}
+
+.solar-lab__diagnostic-takeaway p {
+  margin: 0;
+  color: #c1d0d8;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.solar-lab__industry {
+  background:
+    radial-gradient(circle at 88% 32%, rgba(255, 138, 76, 0.07), transparent 30%),
+    transparent;
+}
+
+.solar-lab__industry .solar-lab__section-heading > p {
+  color: var(--solar-yellow);
+}
+
+.solar-lab__industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(94, 128, 158, 0.44);
+  border-bottom: 1px solid rgba(94, 128, 158, 0.44);
+}
+
+.solar-lab__industry-grid article {
+  position: relative;
+  min-height: 330px;
+  padding: 38px;
+  border-right: 1px solid rgba(94, 128, 158, 0.35);
+  background: rgba(7, 24, 40, 0.58);
+}
+
+.solar-lab__industry-grid article:last-child {
+  border-right: 0;
+}
+
+.solar-lab__industry-grid svg {
+  margin-bottom: 72px;
+  color: var(--solar-yellow);
+}
+
+.solar-lab__industry-grid article:nth-child(2) svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__industry-grid article:nth-child(3) svg {
+  color: var(--solar-violet);
+}
+
+.solar-lab__industry-grid article > span {
+  position: absolute;
+  top: 38px;
+  right: 38px;
+  color: #5e778a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+}
+
+.solar-lab__industry-grid h3 {
+  margin-bottom: 15px;
+  color: #f3f8fb;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.solar-lab__industry-grid p {
+  margin: 0;
+  color: #839aaa;
+  font-size: 0.8rem;
+  line-height: 1.68;
+}
+
+.solar-lab__capability-panel {
+  display: grid;
+  grid-template-columns: minmax(270px, 0.7fr) minmax(0, 1.3fr);
+  gap: 50px;
+  align-items: center;
+  margin-top: 22px;
+  padding: clamp(32px, 5vw, 56px);
+  border: 1px solid rgba(94, 128, 158, 0.42);
+  background:
+    linear-gradient(105deg, rgba(154, 140, 255, 0.08), transparent 48%),
+    rgba(7, 24, 40, 0.58);
+}
+
+.solar-lab__capability-panel > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.solar-lab__capability-panel svg {
+  color: var(--solar-violet);
+}
+
+.solar-lab__capability-panel h3 {
+  color: #f4f9fc;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.solar-lab__capability-panel ul {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.solar-lab__capability-panel li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 10px;
+  color: #91a7b5;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.solar-lab__capability-panel li svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__boundary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.solar-lab__boundary-grid svg {
+  color: var(--solar-cyan);
+}
+
+.solar-lab__boundary-grid article:nth-child(2) svg {
+  color: var(--solar-yellow);
+}
+
+.solar-lab__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding-block: 34px 52px;
+  color: #627b8d;
+  font-size: 0.69rem;
+}
+
+.solar-lab__footer p {
+  margin: 0;
+}
+
+.solar-lab__footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #86a0af;
+}
+
+.solar-lab__footer svg {
+  color: var(--solar-cyan);
+}
+
+@media (max-width: 1080px) {
+  .solar-lab__hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  }
+
+  .solar-lab__pipeline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .solar-lab__pipeline article:nth-child(3) {
+    border-right: 0;
+  }
+
+  .solar-lab__pipeline article:nth-child(-n + 3) {
+    border-bottom: 1px solid rgba(94, 128, 158, 0.34);
+  }
+
+  .solar-lab__model-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__model-highlights {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .solar-lab__model-highlights article {
+    min-height: 0;
+  }
+
+  .solar-lab__diagnostic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__diagnostic-takeaway {
+    min-height: 0;
+  }
+
+  .solar-lab__diagnostic-takeaway svg {
+    margin-bottom: 42px;
+  }
+}
+
+@media (max-width: 860px) {
+  .solar-lab__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__hero-model {
+    display: none;
+  }
+
+  .solar-lab__section-heading {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .solar-lab__section-heading > p {
+    grid-row: auto;
+    padding-top: 0;
+  }
+
+  .solar-lab__kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solar-lab__kpis article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .solar-lab__kpis article:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(94, 128, 158, 0.34);
+  }
+
+  .solar-lab__quality-grid,
+  .solar-lab__decision-grid,
+  .solar-lab__boundary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__split-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__horizon-chart {
+    min-height: 410px;
+    padding-inline: 18px;
+  }
+
+  .solar-lab__horizon-values {
+    height: 290px;
+  }
+
+  .solar-lab__ablation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solar-lab__ablation-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .solar-lab__ablation-grid article:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(94, 128, 158, 0.35);
+  }
+
+  .solar-lab__industry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__industry-grid article {
+    min-height: 250px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(94, 128, 158, 0.35);
+  }
+
+  .solar-lab__industry-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .solar-lab__capability-panel {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .solar-lab__topbar {
+    min-height: 60px;
+    padding-inline: 14px;
+  }
+
+  .solar-lab__topbar > div:first-child {
+    display: none;
+  }
+
+  .solar-lab__topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .solar-lab__scroll {
+    padding-top: 60px;
+  }
+
+  .solar-lab__hero,
+  .solar-lab__kpis,
+  .solar-lab__section,
+  .solar-lab__footer {
+    width: min(calc(100% - 28px), 1320px);
+  }
+
+  .solar-lab__hero {
+    min-height: 0;
+    padding-block: 64px 72px;
+  }
+
+  .solar-lab__hero h1,
+  .portfolio--zh .solar-lab__hero h1 {
+    font-size: clamp(2.7rem, 13vw, 4rem);
+  }
+
+  .solar-lab__intro {
+    font-size: 0.98rem;
+  }
+
+  .solar-lab__meta {
+    display: grid;
+  }
+
+  .solar-lab__kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__kpis article {
+    min-height: 185px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(94, 128, 158, 0.34);
+  }
+
+  .solar-lab__kpis article > span {
+    margin-bottom: 24px;
+  }
+
+  .solar-lab__section {
+    padding-block: 76px;
+  }
+
+  .solar-lab__section-heading {
+    margin-bottom: 42px;
+  }
+
+  .solar-lab__section-heading h2 {
+    font-size: clamp(2.1rem, 10vw, 3.1rem);
+  }
+
+  .solar-lab__pipeline {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__pipeline article,
+  .solar-lab__pipeline article:nth-child(3) {
+    min-height: 210px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(94, 128, 158, 0.34);
+  }
+
+  .solar-lab__pipeline article > div {
+    margin-bottom: 38px;
+  }
+
+  .solar-lab__quality-card {
+    min-height: 0;
+    padding: 27px 22px;
+  }
+
+  .solar-lab__split-heading {
+    display: grid;
+  }
+
+  .solar-lab__split-track {
+    display: grid;
+  }
+
+  .solar-lab__split {
+    width: 100% !important;
+    min-height: 92px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(4, 10, 19, 0.68);
+  }
+
+  .solar-lab__model-highlights,
+  .solar-lab__ablation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-lab__model-row {
+    grid-template-columns: 28px minmax(0, 1fr) 62px;
+    gap: 10px;
+    padding-inline: 14px;
+  }
+
+  .solar-lab__model-highlights article {
+    padding: 26px 22px;
+  }
+
+  .solar-lab__decision-grid article,
+  .solar-lab__boundary-grid article {
+    padding: 24px 20px;
+  }
+
+  .solar-lab__horizon-chart {
+    min-height: 330px;
+    padding: 30px 8px 20px;
+  }
+
+  .solar-lab__horizon-values {
+    width: 92%;
+    height: 230px;
+    gap: 3px;
+  }
+
+  .solar-lab__horizon-values span,
+  .solar-lab__horizon-values i {
+    width: 10px;
+  }
+
+  .solar-lab__chart-legend p {
+    text-align: left;
+  }
+
+  .solar-lab__ablation-grid article,
+  .solar-lab__ablation-grid article:nth-child(2) {
+    min-height: 245px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(94, 128, 158, 0.35);
+  }
+
+  .solar-lab__diagnostic-bars {
+    padding: 28px 20px;
+  }
+
+  .solar-lab__diagnostic-bars > div {
+    grid-template-columns: 1fr 68px;
+  }
+
+  .solar-lab__diagnostic-bars > div > div {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .solar-lab__diagnostic-bars small {
+    text-align: right;
+  }
+
+  .solar-lab__diagnostic-takeaway {
+    padding: 28px 22px;
+  }
+
+  .solar-lab__industry-grid article {
+    padding: 30px 24px;
+  }
+
+  .solar-lab__capability-panel {
+    padding: 28px 22px;
+  }
+
+  .solar-lab__footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 38px;
+  }
+}
