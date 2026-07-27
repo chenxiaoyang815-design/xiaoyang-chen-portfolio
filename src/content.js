@@ -213,18 +213,47 @@ export const content = {
           labCta: "Explore forecast lab",
         },
         {
-          type: "BIG DATA · MAPREDUCE",
-          title: "Globally Ordered PSR Analytics",
+          id: "mapreduce-psr",
+          type: "DISTRIBUTED DATA · MAPREDUCE",
+          title: "Regional Profit Opportunity Ranking",
           date: "Sep 2025",
           summary:
-            "A two-step MRJob/Hadoop pipeline for regional and yearly PSR aggregation with deterministic global ordering.",
+            "Turned sales transaction logs into a decision-ready shortlist: for every region and year, identify the product categories earning more profit per sales dollar than the local benchmark.",
           points: [
-            "Aggregated TotalPSR and CatPSR with mapper, combiner and reducer stages.",
-            "Filtered top-K categories where CatPSR exceeded TotalPSR.",
-            "Guaranteed region ↑, year ↓, CatPSR ↓ and category-name ↑ ordering.",
-            "Added robust CSV parsing, year extraction, numeric cleaning and zero-division protection.",
+            "Grouped transactions by region, year and category across Hadoop workers, with reliable date, CSV and numeric parsing.",
+            "Used local pre-aggregation before network transfer, reducing repeated data passed through the distributed job.",
+            "Returned only a configurable Top-K shortlist above each region-year baseline, with reproducible tie handling.",
+            "Made the scaling trade-off explicit: one final reducer guarantees the required global order; production output would be partitioned to avoid a single-node bottleneck.",
           ],
           tech: ["Hadoop", "MRJob", "MapReduce", "Python"],
+          evidence: {
+            ariaLabel:
+              "How the MapReduce project turns sales transactions into a business decision",
+            steps: [
+              {
+                label: "INPUT",
+                value: "Sales transaction logs",
+                meta: "date · region · category · sales · profit",
+              },
+              {
+                label: "COMPARE",
+                value: "Profit per $1 sales",
+                meta: "category vs region-year benchmark",
+              },
+              {
+                label: "DECISION",
+                value: "Above-benchmark Top-K",
+                meta: "ranked shortlist for each market and year",
+              },
+            ],
+            sampleLabel: "SAMPLE RESULT · SUPPLIED TEACHING DATA",
+            sampleContext: "South · 2014 · Storage",
+            sampleMetric: "$0.87 profit / $1 sales",
+            sampleNote:
+              "PSR 0.8667 — surfaced because the category outperformed its region-year benchmark.",
+            distributedNote:
+              "Why MapReduce mattered: aggregation can run across multiple workers; only the final ordering step is centralised to satisfy the required output contract.",
+          },
         },
         {
           id: "fuel-evidence-lab",
@@ -243,18 +272,49 @@ export const content = {
           labCta: "Explore Data Lab",
         },
         {
+          id: "postgresql-evidence",
           type: "DATABASE ENGINEERING",
-          title: "PostgreSQL Reporting System",
+          title: "University Data Query & Prerequisite Engine",
           date: "Sep 2024",
           summary:
-            "A high-performing reporting system for large academic datasets, awarded 99/100.",
+            "Built a reusable PostgreSQL access layer over the 50 MB MyMyUNSW database, turning a dense relational schema into reliable answers about performance, teaching coverage and course dependencies—awarded 99/100.",
           points: [
-            "Designed relational tables and reporting workflows.",
-            "Used indexes and execution plans to improve query performance.",
-            "Implemented complex SQL queries and PL/pgSQL functions.",
-            "Automated repeatable access to analytical insights.",
+            "Translated a multi-table university data model into eight reusable SQL views and two parameterised PL/pgSQL functions.",
+            "Handled NULL marks, repeated course attempts, credit-weighted WAM and staff with multiple organisational roles without hard-coded records.",
+            "Used a recursive CTE to answer whether one subject is a direct or multi-step prerequisite of another.",
+            "Packaged the solution for a clean one-pass database load and checked it against the supplied 20-case autotest suite.",
           ],
-          tech: ["PostgreSQL", "SQL", "PL/pgSQL", "Query planning"],
+          tech: ["PostgreSQL", "SQL", "PL/pgSQL", "Recursive CTE"],
+          evidence: {
+            ariaLabel:
+              "Verified scope and decision outputs of the PostgreSQL database project",
+            stats: [
+              { value: "99/100", label: "assessment result" },
+              { value: "50 MB", label: "provided database dump" },
+              { value: "8 + 2", label: "views + PL/pgSQL functions" },
+              { value: "20", label: "supplied autotests" },
+            ],
+            answerLabel: "WHAT THE SYSTEM CAN ANSWER",
+            answers: [
+              {
+                label: "PERFORMANCE",
+                value:
+                  "Which students consistently exceed a threshold, including credit-weighted WAM?",
+              },
+              {
+                label: "TEACHING COVERAGE",
+                value:
+                  "Which courses were offered, who taught them and whether every lecturer belonged to CSE?",
+              },
+              {
+                label: "COURSE DEPENDENCIES",
+                value:
+                  "Is one subject a direct—or multi-step—prerequisite of another?",
+              },
+            ],
+            note:
+              "Engineering constraint: every operation was designed to run on a fresh database instance without hard-coded records and within the course's 120-second execution requirement.",
+          },
         },
       ],
     },
@@ -657,18 +717,46 @@ export const content = {
           labCta: "查看预测实验室",
         },
         {
-          type: "大数据 · MAPREDUCE",
-          title: "全局有序 PSR 分析",
+          id: "mapreduce-psr",
+          type: "分布式数据 · MAPREDUCE",
+          title: "区域利润机会排序",
           date: "2025年9月",
           summary:
-            "使用 MRJob/Hadoop 构建两步分布式作业，实现区域×年份 PSR 聚合和确定性全局排序。",
+            "把销售交易流水转为可直接用于判断的清单：针对每个区域和年份，找出“每 1 元销售创造的利润”高于当地整体基准的品类。",
           points: [
-            "通过 mapper、combiner 与 reducer 聚合 TotalPSR 和 CatPSR。",
-            "筛选 CatPSR > TotalPSR 的 Top-K 品类。",
-            "保证区域↑、年份↓、CatPSR↓、品类名↑的全局顺序。",
-            "内置 CSV 解析、年份提取、数值清洗与除零保护。",
+            "在 Hadoop 工作节点上按区域、年份和品类拆分交易数据，并可靠处理日期、CSV 与金额字段。",
+            "数据跨节点传输前先在本地预汇总，减少分布式任务需要搬运的重复信息。",
+            "只返回高于“区域–年度”整体基准的可配置 Top-K 清单，并稳定处理结果并列。",
+            "明确工程取舍：单个最终 Reducer 用于满足全局有序输出；真实生产环境会改为分区结果，避免单点瓶颈。",
           ],
           tech: ["Hadoop", "MRJob", "MapReduce", "Python"],
+          evidence: {
+            ariaLabel: "MapReduce 项目如何把销售流水转化为业务判断",
+            steps: [
+              {
+                label: "输入",
+                value: "销售交易流水",
+                meta: "日期 · 区域 · 品类 · 销售额 · 利润",
+              },
+              {
+                label: "对照",
+                value: "每 1 元销售的利润",
+                meta: "品类表现 vs 区域年度整体基准",
+              },
+              {
+                label: "决策",
+                value: "高于基准的 Top-K",
+                meta: "为每个区域和年份生成优先清单",
+              },
+            ],
+            sampleLabel: "示例结果 · 课程提供的教学数据",
+            sampleContext: "South · 2014 · Storage",
+            sampleMetric: "每 $1 销售额产生 $0.87 利润",
+            sampleNote:
+              "PSR 0.8667——因为该品类高于所属区域与年份的整体基准而被筛选出来。",
+            distributedNote:
+              "MapReduce 的价值：聚合可以分散到多个工作节点并行完成；只有最终排序为满足规定输出而集中处理。",
+          },
         },
         {
           id: "fuel-evidence-lab",
@@ -687,17 +775,45 @@ export const content = {
           labCta: "查看数据实验室",
         },
         {
+          id: "postgresql-evidence",
           type: "数据库工程",
-          title: "PostgreSQL 报表系统",
+          title: "高校数据查询与课程依赖引擎",
           date: "2024年9月",
-          summary: "面向大型学术数据集的高效报表系统，项目获得 99/100。",
+          summary:
+            "在 50 MB 的 MyMyUNSW 数据库上构建可复用 PostgreSQL 访问层，把复杂关系模型转化为有关学生表现、教学覆盖和课程依赖的可靠答案，项目获得 99/100。",
           points: [
-            "完成关系表结构与报表流程设计。",
-            "利用索引与执行计划提升查询性能。",
-            "实现复杂 SQL 查询与 PL/pgSQL 函数。",
-            "自动化分析洞察的可重复访问流程。",
+            "将多表高校数据模型封装为 8 个可复用 SQL 视图和 2 个参数化 PL/pgSQL 函数。",
+            "正确处理空成绩、重复修读、学分加权 WAM，以及教师同时隶属多个组织等真实数据条件。",
+            "通过递归 CTE 判断一门课程是否是另一门课程的直接或多层间接先修课程。",
+            "将方案封装为可在全新数据库中一次加载的 SQL 文件，并使用课程提供的 20 项自动测试核验。",
           ],
-          tech: ["PostgreSQL", "SQL", "PL/pgSQL", "查询优化"],
+          tech: ["PostgreSQL", "SQL", "PL/pgSQL", "递归 CTE"],
+          evidence: {
+            ariaLabel: "PostgreSQL 数据库项目的可验证范围与决策输出",
+            stats: [
+              { value: "99/100", label: "项目成绩" },
+              { value: "50 MB", label: "课程数据库文件" },
+              { value: "8 + 2", label: "视图 + PL/pgSQL 函数" },
+              { value: "20", label: "课程自动测试" },
+            ],
+            answerLabel: "系统能够回答什么",
+            answers: [
+              {
+                label: "学生表现",
+                value: "哪些学生持续高于成绩门槛，并满足学分加权 WAM 条件？",
+              },
+              {
+                label: "教学覆盖",
+                value: "哪些课程实际开设、由谁授课，以及所有讲师是否均属于 CSE？",
+              },
+              {
+                label: "课程依赖",
+                value: "一门课程是否是另一门课程的直接或多层间接先修课程？",
+              },
+            ],
+            note:
+              "工程约束：所有操作都面向全新数据库实例设计，不硬编码具体记录，并以课程规定的 120 秒执行上限为性能边界。",
+          },
         },
       ],
     },

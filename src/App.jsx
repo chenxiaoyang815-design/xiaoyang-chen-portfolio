@@ -388,6 +388,71 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
                   <time>{project.date}</time>
                 </header>
                 <p className="project__summary">{project.summary}</p>
+                {project.id === "mapreduce-psr" && project.evidence ? (
+                  <div
+                    className="mapreduce-evidence"
+                    aria-label={project.evidence.ariaLabel}
+                  >
+                    <div className="mapreduce-evidence__flow">
+                      {project.evidence.steps.map((step, stepIndex) => (
+                        <div className="mapreduce-evidence__step-wrap" key={step.label}>
+                          <div className="mapreduce-evidence__step">
+                            <span>{step.label}</span>
+                            <strong>{step.value}</strong>
+                            <small>{step.meta}</small>
+                          </div>
+                          {stepIndex < project.evidence.steps.length - 1 ? (
+                            <ArrowRight
+                              className="mapreduce-evidence__arrow"
+                              size={20}
+                              aria-hidden="true"
+                            />
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mapreduce-evidence__result">
+                      <div>
+                        <span>{project.evidence.sampleLabel}</span>
+                        <strong>{project.evidence.sampleContext}</strong>
+                      </div>
+                      <div className="mapreduce-evidence__metric">
+                        <strong>{project.evidence.sampleMetric}</strong>
+                        <small>{project.evidence.sampleNote}</small>
+                      </div>
+                    </div>
+                    <p className="mapreduce-evidence__note">
+                      {project.evidence.distributedNote}
+                    </p>
+                  </div>
+                ) : null}
+                {project.id === "postgresql-evidence" && project.evidence ? (
+                  <div
+                    className="database-evidence"
+                    aria-label={project.evidence.ariaLabel}
+                  >
+                    <div className="database-evidence__stats">
+                      {project.evidence.stats.map((stat) => (
+                        <div key={stat.label}>
+                          <strong>{stat.value}</strong>
+                          <span>{stat.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="database-evidence__answers">
+                      <p>{project.evidence.answerLabel}</p>
+                      <div>
+                        {project.evidence.answers.map((answer) => (
+                          <article key={answer.label}>
+                            <span>{answer.label}</span>
+                            <strong>{answer.value}</strong>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="database-evidence__note">{project.evidence.note}</p>
+                  </div>
+                ) : null}
                 <ul>
                   {project.points.map((point) => (
                     <li key={point}>{point}</li>
