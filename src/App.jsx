@@ -1,11 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDown,
+  ArrowClockwise,
+  ArrowLeft,
   ArrowRight,
   BookOpenText,
   Briefcase,
   Brain,
   ChartLineUp,
+  ChatCenteredText,
   Check,
   Code,
   Compass,
@@ -15,27 +18,34 @@ import {
   EnvelopeSimple,
   FileText,
   Flask,
+  FunnelSimple,
   GraduationCap,
   GithubLogo,
   LinkedinLogo,
+  LinkSimple,
   List,
   MapPin,
   Medal,
   Network,
   Phone,
+  Play,
+  RocketLaunch,
   ShieldCheck,
   Sparkle,
   Target,
   TestTube,
   TreeStructure,
   UsersThree,
+  WarningDiamond,
   X,
 } from "@phosphor-icons/react";
 import { contactDetails, content } from "./content";
 import { FuelEvidenceLab } from "./FuelEvidenceLab";
 import { SolarEvidenceLab } from "./SolarEvidenceLab";
 
-const processIcons = [Database, ShieldCheck, Network, ChartLineUp, TestTube];
+const processIcons = [Target, TreeStructure, Database, ChatCenteredText, RocketLaunch];
+const caseIcons = [WarningDiamond, ChatCenteredText, RocketLaunch];
+const pipelineIcons = [Database, FunnelSimple, ChartLineUp, LinkSimple];
 const projectIcons = [Flask, Network, ChartLineUp, Database];
 const capabilityIcons = [Code, Database, Sparkle, ChartLineUp, TreeStructure, TestTube];
 const signalIcons = [Database, UsersThree, ChartLineUp];
@@ -221,23 +231,212 @@ function Metrics({ copy }) {
   );
 }
 
-function Spotlight({ copy, language }) {
-  const [windowDays, setWindowDays] = useState(30);
-  const shownRows = useMemo(
-    () => copy.spotlight.demo.rows.filter((row) => row.days <= windowDays),
-    [copy, windowDays],
-  );
+function SpotlightSummary({ copy, language, onOpenCaseStudy }) {
+  const shownRows = copy.spotlight.demo.rows;
+  const [activeReleaseIndex, setActiveReleaseIndex] = useState(0);
+  const [demoRun, setDemoRun] = useState(0);
+  const activeRelease = shownRows[activeReleaseIndex] ?? shownRows[0];
+  const featuredCapabilities = [
+    { ...copy.spotlight.process[2], Icon: Database },
+    { ...copy.spotlight.process[3], Icon: ChatCenteredText },
+    { ...copy.spotlight.process[4], Icon: RocketLaunch },
+  ];
+
+  useEffect(() => {
+    setActiveReleaseIndex(0);
+    setDemoRun((run) => run + 1);
+  }, [language]);
+
+  const runReleaseDemo = (index = activeReleaseIndex) => {
+    setActiveReleaseIndex(index);
+    setDemoRun((run) => run + 1);
+  };
 
   return (
     <section
-      className="spotlight section-shell"
+      className="spotlight spotlight--summary section-shell"
       id="spotlight"
       aria-labelledby="spotlight-title"
     >
-      <div className="spotlight__intro" data-reveal>
+      <div className="spotlight__intro spotlight__intro--summary" data-reveal>
         <p className="eyebrow">{copy.spotlight.label}</p>
         <div>
           <h2 id="spotlight-title">{copy.spotlight.title}</h2>
+          <p>{copy.spotlight.intro}</p>
+        </div>
+        <div className="tag-list" aria-label="Project technologies">
+          {copy.spotlight.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+        <div className="spotlight-summary__governance">
+          <ShieldCheck size={23} weight="duotone" aria-hidden="true" />
+          <div>
+            <strong>{copy.spotlight.governance.title}</strong>
+            <span>{copy.spotlight.summary.privacyShort}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="spotlight-summary__core" data-reveal>
+        <section className="spotlight-summary__capability" aria-labelledby="spotlight-capability-title">
+          <h3 id="spotlight-capability-title">{copy.spotlight.summary.capabilityTitle}</h3>
+          <div>
+            {featuredCapabilities.map(({ Icon, title, text }, index) => (
+              <article key={title}>
+                <span>0{index + 1}</span>
+                <Icon size={23} weight="duotone" aria-hidden="true" />
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="spotlight-summary__proof" aria-labelledby="spotlight-proof-title">
+          <h3 id="spotlight-proof-title">{copy.spotlight.summary.proofTitle}</h3>
+          <div>
+            {copy.spotlight.outcomes.items.map((item, index) => (
+              <article key={item.label}>
+                <span>0{index + 1}</span>
+                <strong>{item.value}</strong>
+                <p>{item.label}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <section className="spotlight-summary__demo" id="spotlight-demo" data-reveal>
+        <header>
+          <div>
+            <p className="eyebrow">{copy.spotlight.demo.windowOption}</p>
+            <h3>{copy.spotlight.summary.demoTitle}</h3>
+            <p>{copy.spotlight.summary.demoIntro}</p>
+          </div>
+          <button type="button" onClick={() => runReleaseDemo()}>
+            <Play size={17} weight="fill" aria-hidden="true" />
+            {copy.spotlight.summary.demoCta}
+          </button>
+        </header>
+
+        <div className="spotlight-summary__demo-body">
+          <div className="compact-release-tabs" role="tablist" aria-label={copy.spotlight.demo.visual.chooserLabel}>
+            {shownRows.map((row, index) => (
+              <button
+                className={index === activeReleaseIndex ? "is-active" : ""}
+                type="button"
+                role="tab"
+                aria-selected={index === activeReleaseIndex}
+                key={row.name}
+                onClick={() => runReleaseDemo(index)}
+              >
+                <span>{row.name}</span>
+                <small>{row.due}</small>
+                <strong>{row.progress}%</strong>
+              </button>
+            ))}
+          </div>
+
+          <div
+            className={`compact-release-stage compact-release-stage--${activeRelease.tone}`}
+            key={`${activeRelease.name}-${demoRun}`}
+            role="tabpanel"
+            style={{
+              "--release-progress": `${activeRelease.progress}%`,
+              "--release-day": `${Math.min(100, (activeRelease.days / 30) * 100)}%`,
+            }}
+          >
+            <div className="compact-release-stage__timeline">
+              <span className="compact-release-stage__fill" />
+              <span className="compact-release-stage__marker">
+                {copy.spotlight.demo.visual.dayPrefix} {activeRelease.days} {copy.spotlight.demo.visual.daySuffix}
+              </span>
+            </div>
+            <div className="compact-release-stage__scale" aria-hidden="true">
+              <span>0</span>
+              <span>10</span>
+              <span>20</span>
+              <span>30</span>
+            </div>
+            <div className="compact-release-stage__result">
+              <div>
+                <span>{copy.spotlight.demo.visual.progressLabel}</span>
+                <strong>{activeRelease.progress}%</strong>
+              </div>
+              <div>
+                <span>{copy.spotlight.demo.visual.itemsLabel}</span>
+                <strong>{activeRelease.done} / {activeRelease.total}</strong>
+              </div>
+              <div>
+                <span>{copy.spotlight.demo.columns.analysis}</span>
+                <strong>{activeRelease.analysis}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="spotlight-summary__actions" data-reveal>
+        <button className="button button--primary" type="button" onClick={onOpenCaseStudy}>
+          {copy.spotlight.summary.caseCta}
+          <ArrowRight size={18} weight="bold" aria-hidden="true" />
+        </button>
+        <p>{copy.spotlight.caseStudy.intro}</p>
+      </div>
+    </section>
+  );
+}
+
+function SpotlightCaseStudy({ copy, language, onLanguageChange, onClose }) {
+  const shownRows = copy.spotlight.demo.rows;
+  const [activeReleaseIndex, setActiveReleaseIndex] = useState(0);
+  const [demoRun, setDemoRun] = useState(0);
+  const activeRelease = shownRows[activeReleaseIndex] ?? shownRows[0];
+
+  useEffect(() => {
+    setActiveReleaseIndex(0);
+    setDemoRun((run) => run + 1);
+  }, [language]);
+
+  const runReleaseDemo = (index) => {
+    setActiveReleaseIndex(index);
+    setDemoRun((run) => run + 1);
+  };
+
+  return (
+    <div className="case-study-view">
+      <header className="case-study-header">
+        <button type="button" onClick={onClose}>
+          <ArrowLeft size={19} weight="bold" aria-hidden="true" />
+          {copy.spotlight.caseStudy.back}
+        </button>
+        <a className="brand" href="#case-jira-road-map" aria-label={copy.spotlight.caseStudy.title}>
+          <span className="brand__mark">[XC]</span>
+          <span className="case-study-header__title">{copy.spotlight.caseStudy.eyebrow}</span>
+        </a>
+        <LanguageToggle
+          language={language}
+          onChange={onLanguageChange}
+          copy={copy}
+          compact
+        />
+      </header>
+      <main className="case-study-main">
+        <section
+          className="spotlight spotlight--case section-shell"
+          id="case-jira-road-map"
+          aria-labelledby="case-study-title"
+        >
+          <header className="case-study-hero" data-reveal>
+            <p className="eyebrow">{copy.spotlight.caseStudy.eyebrow}</p>
+            <h1 id="case-study-title">{copy.spotlight.caseStudy.title}</h1>
+            <p>{copy.spotlight.caseStudy.intro}</p>
+          </header>
+      <div className="spotlight__intro" data-reveal>
+        <p className="eyebrow">{copy.spotlight.label}</p>
+        <div>
+          <h2>{copy.spotlight.title}</h2>
           <p>{copy.spotlight.intro}</p>
         </div>
         <div className="tag-list" aria-label="Project technologies">
@@ -274,6 +473,48 @@ function Spotlight({ copy, language }) {
         </ol>
       </div>
 
+      <section className="client-case" aria-labelledby="client-case-title" data-reveal>
+        <header className="client-case__header">
+          <p className="eyebrow">{copy.spotlight.clientCase.eyebrow}</p>
+          <h3 id="client-case-title">{copy.spotlight.clientCase.title}</h3>
+        </header>
+        <div className="client-case__stages">
+          {copy.spotlight.clientCase.stages.map((stage, index) => {
+            const Icon = caseIcons[index];
+            return (
+              <article key={stage.label}>
+                <span className="client-case__icon">
+                  <Icon size={24} weight="duotone" aria-hidden="true" />
+                </span>
+                <span className="client-case__label">{stage.label}</span>
+                <h4>{stage.title}</h4>
+                <p>{stage.text}</p>
+              </article>
+            );
+          })}
+        </div>
+        <p className="client-case__note">
+          <ShieldCheck size={17} weight="duotone" aria-hidden="true" />
+          <span>{copy.spotlight.clientCase.note}</span>
+        </p>
+      </section>
+
+      <section className="delivery-outcomes" aria-labelledby="delivery-outcomes-title" data-reveal>
+        <header>
+          <p className="eyebrow">{copy.spotlight.outcomes.eyebrow}</p>
+          <h3 id="delivery-outcomes-title">{copy.spotlight.outcomes.title}</h3>
+        </header>
+        <div className="delivery-outcomes__grid">
+          {copy.spotlight.outcomes.items.map((item, index) => (
+            <article key={item.label}>
+              <span>0{index + 1}</span>
+              <strong>{item.value}</strong>
+              <p>{item.label}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <div className="spotlight__evidence" data-reveal>
         <div className="evidence-panel">
           <h3>{copy.spotlight.evidenceTitle}</h3>
@@ -294,17 +535,7 @@ function Spotlight({ copy, language }) {
               <h3>{copy.spotlight.demo.title}</h3>
             </div>
             <div className="window-selector" aria-label={copy.spotlight.demo.windowLabel}>
-              {[30, 60, 90].map((days) => (
-                <button
-                  type="button"
-                  key={days}
-                  className={windowDays === days ? "is-active" : ""}
-                  onClick={() => setWindowDays(days)}
-                  aria-pressed={windowDays === days}
-                >
-                  {copy.spotlight.demo.windowOptions[days]}
-                </button>
-              ))}
+              <span>{copy.spotlight.demo.windowOption}</span>
             </div>
           </div>
           <p className="release-demo__caption">{copy.spotlight.demo.caption}</p>
@@ -321,62 +552,118 @@ function Spotlight({ copy, language }) {
               );
             })}
           </div>
-          <div className="release-table-wrap">
-            <table className="release-table">
-              <thead>
-                <tr>
-                  <th>{copy.spotlight.demo.columns.release}</th>
-                  <th>{copy.spotlight.demo.columns.due}</th>
-                  <th>{copy.spotlight.demo.columns.progress}</th>
-                  <th>{copy.spotlight.demo.columns.items}</th>
-                  <th>{copy.spotlight.demo.columns.owner}</th>
-                  <th>{copy.spotlight.demo.columns.analysis}</th>
-                  <th>{copy.spotlight.demo.columns.action}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {shownRows.map((row) => (
-                  <tr key={row.name}>
-                    <td data-label={copy.spotlight.demo.columns.release}>{row.name}</td>
-                    <td data-label={copy.spotlight.demo.columns.due}>{row.due}</td>
-                    <td data-label={copy.spotlight.demo.columns.progress}>
-                      <div className="progress-cell">
-                        <progress value={row.progress} max="100">
-                          {row.progress}%
-                        </progress>
-                        <span>{row.progress}%</span>
-                      </div>
-                    </td>
-                    <td data-label={copy.spotlight.demo.columns.items}>{row.items}</td>
-                    <td data-label={copy.spotlight.demo.columns.owner}>{row.owner}</td>
-                    <td data-label={copy.spotlight.demo.columns.analysis}>
-                      <span className={`analysis-chip analysis-chip--${row.tone}`}>
-                        {row.analysis}
-                      </span>
-                    </td>
-                    <td data-label={copy.spotlight.demo.columns.action}>
-                      <button
-                        className="release-link"
-                        type="button"
-                        onClick={(event) => {
-                          event.currentTarget.textContent =
-                            language === "zh" ? "演示链接" : "Demo link";
-                        }}
-                      >
-                        {copy.spotlight.demo.action}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {shownRows.length === 0 ? (
-              <p className="release-table__empty">{copy.spotlight.demo.empty}</p>
-            ) : null}
+          <div className="release-demo__tabs" role="tablist" aria-label={copy.spotlight.demo.visual.chooserLabel}>
+            {shownRows.map((row, index) => (
+              <button
+                className={index === activeReleaseIndex ? "is-active" : ""}
+                type="button"
+                role="tab"
+                aria-selected={index === activeReleaseIndex}
+                key={row.name}
+                onClick={() => runReleaseDemo(index)}
+              >
+                <span>{row.name}</span>
+                <small>{row.due}</small>
+                <strong>{copy.spotlight.demo.action}</strong>
+              </button>
+            ))}
           </div>
+
+          {activeRelease ? (
+            <div
+              className={`release-visualizer release-visualizer--${activeRelease.tone}`}
+              key={`${activeRelease.name}-${demoRun}`}
+              role="tabpanel"
+              style={{
+                "--release-progress": `${activeRelease.progress}%`,
+                "--release-day": `${Math.min(100, (activeRelease.days / 30) * 100)}%`,
+              }}
+            >
+              <div className="release-visualizer__topline">
+                <div>
+                  <span>{copy.spotlight.demo.visual.pipelineLabel}</span>
+                  <h4>{activeRelease.name}</h4>
+                </div>
+                <button type="button" onClick={() => runReleaseDemo(activeReleaseIndex)}>
+                  <ArrowClockwise size={17} aria-hidden="true" />
+                  {copy.spotlight.demo.visual.replay}
+                </button>
+              </div>
+
+              <div className="release-visualizer__window" aria-label={copy.spotlight.demo.windowOption}>
+                <div className="release-visualizer__track">
+                  <span className="release-visualizer__fill" />
+                  <span className="release-visualizer__marker">
+                    {copy.spotlight.demo.visual.dayPrefix} {activeRelease.days} {copy.spotlight.demo.visual.daySuffix}
+                  </span>
+                </div>
+                <div className="release-visualizer__scale" aria-hidden="true">
+                  <span>0</span>
+                  <span>10</span>
+                  <span>20</span>
+                  <span>30</span>
+                </div>
+              </div>
+
+              <div className="release-visualizer__summary">
+                <div className="release-visualizer__progress">
+                  <span>{copy.spotlight.demo.visual.progressLabel}</span>
+                  <strong>{activeRelease.progress}%</strong>
+                  <div className="release-visualizer__progress-track" aria-hidden="true">
+                    <span />
+                  </div>
+                </div>
+                <dl>
+                  <div>
+                    <dt>{copy.spotlight.demo.visual.itemsLabel}</dt>
+                    <dd>{activeRelease.done} / {activeRelease.total}</dd>
+                  </div>
+                  <div>
+                    <dt>{copy.spotlight.demo.visual.dueLabel}</dt>
+                    <dd>{activeRelease.due}</dd>
+                  </div>
+                  <div>
+                    <dt>{copy.spotlight.demo.columns.analysis}</dt>
+                    <dd>
+                      <span className={`analysis-chip analysis-chip--${activeRelease.tone}`}>
+                        {activeRelease.analysis}
+                      </span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+              <p className="release-visualizer__story">{activeRelease.story}</p>
+
+              <ol className="release-visualizer__pipeline">
+                {copy.spotlight.demo.visual.pipeline.map((step, index) => {
+                  const Icon = pipelineIcons[index];
+                  return (
+                    <li key={step} style={{ "--pipeline-delay": `${index * 160}ms` }}>
+                      <Icon size={20} aria-hidden="true" />
+                      <span>0{index + 1}</span>
+                      <strong>{step}</strong>
+                    </li>
+                  );
+                })}
+              </ol>
+
+              <div className="release-visualizer__footer">
+                <span>
+                  <LinkSimple size={17} aria-hidden="true" />
+                  {copy.spotlight.demo.visual.linkProof}
+                </span>
+                <small>{copy.spotlight.demo.visual.privacy}</small>
+              </div>
+            </div>
+          ) : (
+            <p className="release-table__empty">{copy.spotlight.demo.empty}</p>
+          )}
         </div>
       </div>
-    </section>
+        </section>
+      </main>
+    </div>
   );
 }
 
@@ -861,11 +1148,16 @@ export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [fuelLabOpen, setFuelLabOpen] = useState(false);
   const [solarLabOpen, setSolarLabOpen] = useState(false);
+  const [caseStudyOpen, setCaseStudyOpen] = useState(
+    () => window.location.hash === "#case-jira-road-map",
+  );
   const copy = content[language];
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
-    document.title = copy.meta.title;
+    document.title = caseStudyOpen
+      ? `${copy.spotlight.title} — ${copy.hero.name}`
+      : copy.meta.title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute("content", copy.meta.description);
     try {
@@ -873,7 +1165,23 @@ export function App() {
     } catch {
       // The page remains fully functional when persistence is unavailable.
     }
-  }, [copy, language]);
+  }, [caseStudyOpen, copy, language]);
+
+  useEffect(() => {
+    const syncCaseStudy = () => {
+      setCaseStudyOpen(window.location.hash === "#case-jira-road-map");
+    };
+    window.addEventListener("hashchange", syncCaseStudy);
+    window.addEventListener("popstate", syncCaseStudy);
+    return () => {
+      window.removeEventListener("hashchange", syncCaseStudy);
+      window.removeEventListener("popstate", syncCaseStudy);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (caseStudyOpen) window.scrollTo({ top: 0, behavior: "auto" });
+  }, [caseStudyOpen]);
 
   useEffect(() => {
     const items = document.querySelectorAll("[data-reveal]");
@@ -890,7 +1198,7 @@ export function App() {
     );
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [language]);
+  }, [caseStudyOpen, language]);
 
   useEffect(() => {
     const closeMenu = () => setMenuOpen(false);
@@ -915,6 +1223,36 @@ export function App() {
     };
   }, [fuelLabOpen, solarLabOpen]);
 
+  const openCaseStudy = () => {
+    window.history.pushState({ jiraCaseStudy: true }, "", "#case-jira-road-map");
+    setCaseStudyOpen(true);
+  };
+
+  const closeCaseStudy = () => {
+    if (window.history.state?.jiraCaseStudy) {
+      window.history.back();
+      return;
+    }
+    window.history.replaceState(null, "", "#spotlight");
+    setCaseStudyOpen(false);
+    window.requestAnimationFrame(() => {
+      document.getElementById("spotlight")?.scrollIntoView({ block: "start" });
+    });
+  };
+
+  if (caseStudyOpen) {
+    return (
+      <div className={`portfolio portfolio--${language}`}>
+        <SpotlightCaseStudy
+          copy={copy}
+          language={language}
+          onLanguageChange={setLanguage}
+          onClose={closeCaseStudy}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={`portfolio portfolio--${language}`}>
       <Header
@@ -933,7 +1271,11 @@ export function App() {
           onOpenFuelLab={() => setFuelLabOpen(true)}
           onOpenSolarLab={() => setSolarLabOpen(true)}
         />
-        <Spotlight copy={copy} language={language} />
+        <SpotlightSummary
+          copy={copy}
+          language={language}
+          onOpenCaseStudy={openCaseStudy}
+        />
         <Capabilities copy={copy} />
         <About copy={copy} />
         <Profile copy={copy} />

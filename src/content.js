@@ -65,10 +65,10 @@ export const content = {
       },
     ],
     spotlight: {
-      label: "REAL CLIENT PROJECT · IP-GOVERNED · IN PROGRESS",
-      title: "Atlassian Home Dashboard — Jira Road Map",
+      label: "REAL CLIENT PROJECT · IP-GOVERNED · PRODUCTION DELIVERED",
+      title: "Atlassian Home Dashboard — Road Map Widget",
       intro:
-        "Core capability: connect through Forge to authorised, real Jira product datasets; surface backend user, project and release information; and turn raw records into calculated operational indicators. The university project is governed by a signed intellectual-property agreement granting Atlassian usage rights.",
+        "I helped take a Jira Road Map widget from requirement discovery and access setup through real-data validation and production delivery. The Forge app reads authorised Jira release and work-item data, calculates progress, and returns users to the relevant native Jira destinations.",
       tags: [
         "COMP9900",
         "Atlassian Forge",
@@ -83,36 +83,86 @@ export const content = {
         text:
           "The team signed a university intellectual-property agreement covering the work, with usage rights granted to Atlassian. The portfolio shows only a synthetic reconstruction—no live Jira user records or confidential client data are exposed.",
       },
-      processTitle: "From governed data access to decision-ready evidence",
+      summary: {
+        capabilityTitle: "My contribution at a glance",
+        proofTitle: "Verified delivery evidence",
+        demoTitle: "30-day release preview",
+        demoIntro:
+          "Select Alpha or Beta to see how a release enters the fixed MVP window and becomes an actionable progress signal.",
+        caseCta: "Explore the case study",
+        demoCta: "Play 30-day demo",
+        privacyShort: "IP-governed · synthetic portfolio reconstruction",
+      },
+      caseStudy: {
+        back: "Back to portfolio",
+        eyebrow: "FULL PROJECT CASE STUDY",
+        title: "From client requirement to production delivery",
+        intro:
+          "A deeper view of my contribution, the data flow, client-facing problem solving, verification evidence and the privacy boundaries behind the Road Map Widget.",
+      },
+      processTitle: "My contribution across the full delivery cycle",
       process: [
         {
-          title: "Understand",
-          text: "Mapped Jira Home, Road Map behaviour and the user, project, release and work-item records needed by the dashboard.",
+          title: "Clarify",
+          text: "Translated the client brief and the existing Jira gadget into a precise 30-day product scope and data requirements.",
         },
         {
-          title: "Govern",
-          text: "Defined authorised data boundaries, confidentiality expectations and Atlassian usage rights under the signed IP agreement.",
+          title: "Align",
+          text: "Coordinated EAP, Premium-site, permission and data-access questions with the Atlassian industry mentors.",
         },
         {
-          title: "Connect",
-          text: "Designed Forge API queries to read and normalise real Jira user, project, release and issue data for the Home dashboard.",
+          title: "Integrate",
+          text: "Supported the Forge-to-Jira data contract, real release test data and cross-team integration of the widget flow.",
         },
         {
-          title: "Calculate",
-          text: "Derived completion, workload and release-visibility indicators, then surfaced the results with native Jira destinations.",
+          title: "Resolve",
+          text: "Reproduced installation and access blockers, shared focused evidence and proposed practical resolution paths to the client.",
         },
         {
-          title: "Validate",
-          text: "Planned permission, unit, end-to-end and scale tests using synthetic enterprise data before authorised-environment verification.",
+          title: "Deliver",
+          text: "Brought together real-data verification, demo readiness, documentation and production handover for the final delivery.",
         },
       ],
-      evidenceTitle: "What the engagement demonstrates",
+      clientCase: {
+        eyebrow: "CLIENT-FACING PROBLEM SOLVING · DETAILS REDACTED",
+        title: "Turning an environment blocker into a delivery path",
+        stages: [
+          {
+            label: "Problem",
+            title: "Deployment passed; installation did not",
+            text: "The Forge build was healthy, but the Jira site lacked the admin and programme access needed to install and verify the app.",
+          },
+          {
+            label: "My action",
+            title: "Reproduce, evidence, propose",
+            text: "I compared environments, captured the exact failure, sent concise logs and screenshots, and offered two concrete ways forward.",
+          },
+          {
+            label: "Outcome",
+            title: "Access clarified, delivery unblocked",
+            text: "The client helped align the environment and accepted the working Jira path, enabling real-data validation and production delivery.",
+          },
+        ],
+        note:
+          "This portfolio summarises the exchange without publishing client names, site URLs, account details or private messages.",
+      },
+      outcomes: {
+        eyebrow: "TEAM DELIVERY EVIDENCE",
+        title: "A production result backed by visible checks",
+        items: [
+          { value: "32/32", label: "functional & system checks passed" },
+          { value: "26", label: "unit assertions passed" },
+          { value: "200", label: "generated releases in scale testing" },
+          { value: "Forge", label: "production deployment" },
+        ],
+      },
+      evidenceTitle: "What I personally brought to the engagement",
       evidence: [
-        "Real Jira dataset integration through Atlassian Forge",
-        "Backend user information translated into safe dashboard views",
-        "Calculated release and workload results, not raw data alone",
-        "Requirements discovery with a real industry client",
-        "IP, access control and testing treated as engineering requirements",
+        "Kept client conversations specific: exact blocker, evidence, impact and requested decision",
+        "Built and maintained realistic Jira version and issue data for integration and demonstration",
+        "Connected product requirements, access constraints and the shared response contract across the team",
+        "Discussed project progress face to face with the Atlassian client as well as through regular online communication",
+        "Protected customer information while making delivery evidence clear and reviewable",
       ],
       demo: {
         eyebrow: "CONNECTED DATA MODEL · SYNTHETIC PORTFOLIO VIEW",
@@ -137,11 +187,7 @@ export const content = {
           },
         ],
         windowLabel: "Release window",
-        windowOptions: {
-          30: "Next 30 days",
-          60: "Next 60 days",
-          90: "Next 90 days",
-        },
+        windowOption: "Next 30 days · fixed MVP scope",
         columns: {
           release: "Release",
           due: "Due",
@@ -151,8 +197,26 @@ export const content = {
           analysis: "Calculated signal",
           action: "Destination",
         },
-        action: "View release",
+        action: "Play visual demo",
         empty: "No demonstration releases in this window.",
+        visual: {
+          chooserLabel: "Choose a release demonstration",
+          dayPrefix: "Day",
+          daySuffix: "of 30",
+          dueLabel: "Target date",
+          progressLabel: "Calculated completion",
+          itemsLabel: "Completed work items",
+          replay: "Replay data flow",
+          pipelineLabel: "What the widget does",
+          pipeline: [
+            "Read Jira releases",
+            "Apply 30-day rule",
+            "Calculate progress",
+            "Return native links",
+          ],
+          linkProof: "Project and release destinations verified in Jira",
+          privacy: "Synthetic portfolio reconstruction · no customer records displayed",
+        },
         rows: [
           {
             name: "Release Alpha",
@@ -163,6 +227,10 @@ export const content = {
             analysis: "On track",
             tone: "positive",
             days: 18,
+            done: 124,
+            total: 172,
+            story:
+              "Alpha shows how a near-term platform release is filtered into view and translated into an immediately readable progress signal.",
           },
           {
             name: "Release Beta",
@@ -173,26 +241,10 @@ export const content = {
             analysis: "Watch",
             tone: "watch",
             days: 28,
-          },
-          {
-            name: "Release Gamma",
-            due: "15 Sep 2026",
-            progress: 34,
-            items: "63 / 185",
-            owner: "Demo User 03 · Apps",
-            analysis: "At risk",
-            tone: "risk",
-            days: 48,
-          },
-          {
-            name: "Release Delta",
-            due: "29 Sep 2026",
-            progress: 21,
-            items: "34 / 162",
-            owner: "Demo User 04 · Core",
-            analysis: "At risk",
-            tone: "risk",
-            days: 78,
+            done: 88,
+            total: 152,
+            story:
+              "Beta sits near the edge of the MVP window, making the date rule and watch-state signal visible without exposing live Jira data.",
           },
         ],
       },
@@ -633,10 +685,10 @@ export const content = {
       },
     ],
     spotlight: {
-      label: "真实客户项目 · 知识产权约束 · 进行中",
-      title: "Atlassian Home Dashboard — Jira Road Map",
+      label: "真实客户项目 · 知识产权约束 · 已完成生产交付",
+      title: "Atlassian Home Dashboard — Road Map Widget",
       intro:
-        "项目核心能力是通过 Forge 连接经过授权的真实 Jira 产品数据集，呈现后台用户、项目与版本信息，并将原始记录计算为可用于决策的运营指标。该校内项目已签署知识产权协议，相关使用权归 Atlassian 所有。",
+        "我参与推动 Jira Road Map Widget 从需求澄清、环境接入、真实数据验证走向生产交付。Forge 应用读取经过授权的 Jira 版本与工作项数据，计算进度，并将用户带回对应的 Jira 原生页面。",
       tags: [
         "COMP9900",
         "Atlassian Forge",
@@ -651,36 +703,86 @@ export const content = {
         text:
           "团队已签署校内知识产权协议，约定相关成果的使用权归 Atlassian 所有。作品集仅展示合成交互还原，不呈现任何真实 Jira 用户记录或客户机密数据。",
       },
-      processTitle: "从受控数据接入到决策证据",
+      summary: {
+        capabilityTitle: "我的核心贡献",
+        proofTitle: "可验证的交付证据",
+        demoTitle: "30天版本预览",
+        demoIntro:
+          "选择 Alpha 或 Beta，直观看到版本如何进入固定 MVP 窗口并转化为可行动的进度信号。",
+        caseCta: "查看完整案例",
+        demoCta: "播放30天演示",
+        privacyShort: "知识产权约束 · 作品集合成交互还原",
+      },
+      caseStudy: {
+        back: "返回个人简历",
+        eyebrow: "完整项目案例",
+        title: "从客户需求到生产交付",
+        intro:
+          "深入展示我在 Road Map Widget 中的个人贡献、数据流程、客户问题解决、验证证据与隐私边界。",
+      },
+      processTitle: "我贯穿完整交付周期的个人贡献",
       process: [
         {
-          title: "理解",
-          text: "梳理 Jira Home、Road Map 行为，以及仪表盘所需的用户、项目、版本和工作项记录。",
+          title: "需求澄清",
+          text: "把客户说明与既有 Jira Gadget 行为转化为明确的 30 天产品范围和数据要求。",
         },
         {
-          title: "治理",
-          text: "依据知识产权协议明确授权数据边界、保密要求与 Atlassian 对项目成果的使用权。",
+          title: "集成对齐",
+          text: "围绕 EAP、Premium 站点、权限与数据访问，持续与 Atlassian 行业导师对齐。",
         },
         {
-          title: "连接",
-          text: "设计 Forge API 查询，读取并标准化真实 Jira 用户、项目、版本与 Issue 数据。",
+          title: "真实验证",
+          text: "支持 Forge–Jira 数据契约、真实版本测试数据与跨成员的 Widget 集成流程。",
         },
         {
-          title: "计算",
-          text: "计算完成度、工作负载和版本可见性指标，并通过 Jira 原生跳转呈现分析结果。",
+          title: "客户协作",
+          text: "复现安装与访问阻塞，提供聚焦的证据，并向客户提出可执行的解决路径。",
         },
         {
-          title: "验证",
-          text: "先以企业规模合成数据验证权限、单元测试、端到端流程与性能，再进入授权环境核验。",
+          title: "生产交付",
+          text: "整合真实数据核验、演示准备、文档与交接，推动最终版本完成生产交付。",
         },
       ],
-      evidenceTitle: "这段客户实践体现了什么",
+      clientCase: {
+        eyebrow: "客户问题解决 · 细节已脱敏",
+        title: "把环境阻塞转化为可执行的交付路径",
+        stages: [
+          {
+            label: "问题",
+            title: "部署成功，但安装失败",
+            text: "Forge 构建本身正常，但 Jira 站点缺少安装与验证所需的管理员权限及项目访问。",
+          },
+          {
+            label: "我的行动",
+            title: "复现、举证、提出方案",
+            text: "我对照不同环境，复现失败位置，整理日志和截图，并提供两条清晰的解决路径。",
+          },
+          {
+            label: "结果",
+            title: "访问条件明确，交付继续推进",
+            text: "客户协助对齐环境并认可可行的 Jira 路径，使真实数据验证与生产交付得以完成。",
+          },
+        ],
+        note:
+          "作品集只概括解决过程，不公开客户姓名、站点地址、账户信息或内部消息。",
+      },
+      outcomes: {
+        eyebrow: "团队交付证据",
+        title: "生产结果由可复核的验证支撑",
+        items: [
+          { value: "32/32", label: "功能与系统检查通过" },
+          { value: "26", label: "单元断言通过" },
+          { value: "200", label: "生成版本规模验证" },
+          { value: "Forge", label: "生产环境部署" },
+        ],
+      },
+      evidenceTitle: "我在这段客户实践中的个人能力",
       evidence: [
-        "通过 Atlassian Forge 接入真实 Jira 数据集",
-        "将后台用户信息转化为安全可读的仪表盘视图",
-        "展示经过计算的版本与工作负载结果，而不只是原始数据",
-        "面向真实行业客户完成需求发现与沟通",
-        "将知识产权、访问控制和测试作为工程要求",
+        "把客户沟通具体化为：阻塞位置、证据、影响和需要确认的决策",
+        "建立并维护可用于联调与演示的 Jira 版本和工作项数据",
+        "在团队中连接产品需求、访问约束与共享数据契约",
+        "除持续线上交流外，也曾在 Atlassian 现场与客户面对面同步项目进展",
+        "在清晰展示交付证据的同时保护客户信息与知识产权",
       ],
       demo: {
         eyebrow: "连接数据模型 · 作品集合成视图",
@@ -705,11 +807,7 @@ export const content = {
           },
         ],
         windowLabel: "发布窗口",
-        windowOptions: {
-          30: "未来 30 天",
-          60: "未来 60 天",
-          90: "未来 90 天",
-        },
+        windowOption: "未来 30 天 · 固定 MVP 范围",
         columns: {
           release: "版本",
           due: "发布日期",
@@ -719,8 +817,26 @@ export const content = {
           analysis: "计算信号",
           action: "目标页面",
         },
-        action: "查看版本",
+        action: "播放可视化",
         empty: "该时间范围内没有演示版本。",
+        visual: {
+          chooserLabel: "选择版本演示",
+          dayPrefix: "第",
+          daySuffix: "天 / 共 30 天",
+          dueLabel: "目标日期",
+          progressLabel: "计算完成度",
+          itemsLabel: "已完成工作项",
+          replay: "重新播放数据流",
+          pipelineLabel: "Widget 如何处理数据",
+          pipeline: [
+            "读取 Jira 版本",
+            "应用 30 天规则",
+            "计算完成进度",
+            "返回原生链接",
+          ],
+          linkProof: "项目与版本目标页面已在 Jira 中完成验证",
+          privacy: "作品集合成交互还原 · 不展示任何客户记录",
+        },
         rows: [
           {
             name: "演示版本 Alpha",
@@ -731,6 +847,10 @@ export const content = {
             analysis: "按计划推进",
             tone: "positive",
             days: 18,
+            done: 124,
+            total: 172,
+            story:
+              "Alpha 展示临近平台版本如何进入 30 天窗口，并被转化为一眼可读的进度信号。",
           },
           {
             name: "演示版本 Beta",
@@ -741,26 +861,10 @@ export const content = {
             analysis: "需要关注",
             tone: "watch",
             days: 28,
-          },
-          {
-            name: "演示版本 Gamma",
-            due: "2026年9月15日",
-            progress: 34,
-            items: "63 / 185",
-            owner: "演示用户 03 · 应用",
-            analysis: "存在风险",
-            tone: "risk",
-            days: 48,
-          },
-          {
-            name: "演示版本 Delta",
-            due: "2026年9月29日",
-            progress: 21,
-            items: "34 / 162",
-            owner: "演示用户 04 · 核心",
-            analysis: "存在风险",
-            tone: "risk",
-            days: 78,
+            done: 88,
+            total: 152,
+            story:
+              "Beta 接近 MVP 时间边界，用合成数据直观说明日期筛选规则与关注状态。",
           },
         ],
       },
