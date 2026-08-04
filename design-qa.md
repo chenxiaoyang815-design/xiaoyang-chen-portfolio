@@ -1,121 +1,58 @@
-# Design QA
+# Design QA — Compact COMP9900 Summary + Case Study
 
 ## Comparison target
 
-- Source visual truth: `references/selected-concept.png`
-- Source dimensions: 864 × 1821 px
-- Update brief: preserve the selected Systems Observatory structure while expanding its technology palette, clarifying the authorised Jira-data/IP story, removing AI as a current study/career direction, and adding the UNSW Employment Award.
-- Implementation: local Vite preview at `http://localhost:4173/`
-- Desktop viewport: 1440 × 1000 CSS px at device scale factor 1
-- Mobile viewport: 390 × 844 CSS px at device scale factor 1
-- Primary state: Simplified Chinese, dark theme, 30-day synthetic Jira data window
+- Source visual truth: `/var/folders/_q/yvz21j3d6bv4jywy5ly71_7r0000gn/T/codex-clipboard-ff851a3f-d051-453f-b6cf-52b0598acd98.png`
+- Implementation URL: `http://127.0.0.1:4174/#spotlight`
+- Main-page implementation: `/private/tmp/portfolio-compact-summary-v5b.png`
+- Compact 30-day demo: `/private/tmp/portfolio-compact-demo-v5.png`
+- Full case-study view: `/private/tmp/portfolio-case-study-hero-v5.png`
+- Side-by-side comparison: `/private/tmp/portfolio-learn-more-comparison-v5.png`
+- Browser viewport: 1280 × 720 CSS pixels, device pixel ratio 1
+- Source pixels: 1930 × 1080, normalized to 1280 × 720 for comparison
+- Implementation pixels: 1280 × 720
+- State: Chinese main-page summary; Beta selected for the compact-demo capture; Chinese full case-study hero
 
-## Browser-rendered evidence
+## Findings
 
-- `qa/update-baseline-spotlight.png`
-- `qa/update-desktop-hero-v2.png`
-- `qa/update-desktop-spotlight-v2.png`
-- `qa/update-desktop-jira-data-v2.png`
-- `qa/update-desktop-work-colors-v2.png`
-- `qa/update-desktop-employment-award-v2.png`
-- `qa/update-mobile-hero-v2.png`
-- `qa/update-mobile-menu-v2.png`
-- `qa/update-mobile-spotlight-v2.png`
-- `qa/update-mobile-jira-data-table-v2.png`
-- `qa/update-mobile-employment-award-v2.png`
-
-## Normalization and comparison evidence
-
-- Focused hero: the source's first 864 × 600 px and the 1440 × 1000 implementation viewport were both normalized to 864 × 600 px.
-- Focused spotlight: the source's 864 × 600 px project region and the matching implementation viewport were both normalized to 864 × 600 px.
-- Overall direction: the complete source was placed beside four normalized implementation views covering the hero, governed Jira story, calculated data view and Employment Award.
-- Same theme, content language and principal interaction state were used within each comparison.
-- Full-view comparison: `qa/comparison-update-overview-side-by-side.png`
-- Focused hero comparison: `qa/comparison-update-hero-side-by-side.png`
-- Focused project comparison: `qa/comparison-update-spotlight-side-by-side.png`
-- Focused regions were required because typography, data-governance copy, multicolour process states and calculated-signal details are not legible in the full overview.
+- No actionable P0, P1, or P2 visual issues remain.
+- P3: The browser retains a lime keyboard-focus outline after automated tab selection. This is intentional accessibility feedback and does not affect the resting state.
+- P3: Mobile behavior is covered by responsive CSS rules but was not separately captured because the active in-app browser viewport is fixed at 1280 × 720 in this run.
 
 ## Required fidelity surfaces
 
-### Fonts and typography
+- Fonts and typography: Space Grotesk and IBM Plex Mono are preserved. Heading weight, line height, technical labels, and bilingual wrapping remain consistent with the original page.
+- Spacing and layout rhythm: The original two-column hero and wide technical grid are retained. The main-page project block is reduced to approximately 1.75 desktop viewports, while detailed material moves into the dedicated case-study view.
+- Colors and visual tokens: Deep navy, cyan, mint, amber, magenta, violet, and hairline borders continue to use the existing portfolio tokens. No new visual language was introduced.
+- Image quality and assets: This section requires no raster imagery. Existing Phosphor icons are used consistently; no placeholder imagery or handcrafted SVG assets were introduced.
+- Copy and content: The summary distinguishes personal contribution from team delivery evidence, keeps the 30-day scope visible, and does not expose customer names, site URLs, account details, private messages, or live Jira data.
 
-- Space Grotesk and IBM Plex Mono still reproduce the selected concept's geometric display type and technical labels.
-- English and Chinese headings retain the selected hierarchy, optical weight and compact line height without clipping.
-- The longer Jira/IP explanation wraps cleanly at desktop and mobile widths.
-- The Employment Award proposal remains readable as a two-column desktop feature and a single-column mobile story.
+## Full-view comparison evidence
 
-### Spacing and layout rhythm
+The normalized side-by-side comparison confirms that the implementation preserves the source hero composition, type hierarchy, tags, IP-governance treatment, and dark technical aesthetic. The intentional change is information density: the source devotes the full section to the detailed case, while the new main view immediately exposes three personal capabilities and verified outcomes before routing to the complete case study.
 
-- The left/right portrait hero, ruled sections, five-stage project process, evidence/data pairing and dense profile grid are preserved.
-- The IP/data-governance callout sits between project context and implementation process, so it strengthens rather than interrupts the narrative.
-- The seven-field Jira demonstration table fits the desktop panel and changes to labelled stacked rows on mobile.
-- No horizontal viewport overflow was detected at 1440 px or 390 px.
+## Focused region evidence
 
-### Colors and visual tokens
+- `/private/tmp/portfolio-compact-demo-v5.png` verifies that Alpha/Beta selection, the 30-day timeline, completion percentage, work-item total, calculated signal, replay control, and case-study CTA remain readable in the compact main-page version.
+- `/private/tmp/portfolio-case-study-hero-v5.png` verifies the dedicated sticky header, return action, language toggle, case-study hierarchy, and preservation of the original IP-governance project hero.
 
-- The original midnight navy/cyan/lime direction remains recognisable.
-- Electric violet, magenta, mint and amber now identify governance, connection, calculation, risk and award states.
-- Section surfaces use restrained solid navy, violet, teal and plum tints; project rails and process icons cycle through controlled semantic accents.
-- The expanded palette improves scanability without turning the interface into a gaming/cyberpunk treatment.
-- No CSS gradients are used.
+## Primary interactions tested
 
-### Image quality and asset fidelity
-
-- The supplied portrait remains unaltered at its native resolution; no identity-changing generated portrait is shipped.
-- The new 1672 × 941 multicolour data-observatory background is saved at `public/profile/data-observatory-background-v2.png`.
-- The generated background keeps the left copy area quiet and concentrates Jira-like data flows, user-record signals and calculated analytics on the right.
-- Phosphor Icons remain the only interface icon system; there are no handcrafted SVGs, emoji, CSS drawings or placeholder assets.
-
-### Copy and content
-
-- The project now states that Forge connects to authorised real Jira product datasets and surfaces backend user, project and release information plus calculated indicators.
-- The signed university intellectual-property agreement and Atlassian usage rights are visible in both languages.
-- The portfolio explicitly states that its user names and figures are synthetic and that no live Jira account or confidential client data is shown.
-- AI was removed from the current hero role, opportunity direction, metadata, degree focus and contact positioning; historical coursework, machine-learning evidence and the EY technical challenge remain factual.
-- The UNSW Employment Award records competitive CV selection, participation in an EY-collaborative real recruitment process, group discussion of an AI technical problem, and a proposal spanning value, architecture, governance, delivery risk and success metrics.
-
-## Interaction and browser checks
-
-- Language switch: passed; document language, metadata, hero role, project copy, Employment Award and CV targets changed correctly.
-- Jira data window: passed; switching from 30 to 60 days changed the visible synthetic release rows from two to three and updated the pressed state.
-- Mobile navigation: passed; menu open/close state and profile destination worked.
-- Primary CTA: passed; it lands on the governed Jira project spotlight.
-- Responsive table: passed; user/team and calculated-signal fields become labelled mobile rows.
-- Resume links: English and Chinese local PDF targets remain correct.
-- Responsive overflow: passed; scroll width equalled viewport width at 390 px.
-- Console: no errors or warnings during desktop, bilingual and mobile verification.
+- Alpha and Beta switch the selected compact release; Beta correctly renders day 28, 58% completion, 88/152 completed work items, and the watch-state signal.
+- Replay restarts the compact timeline animation.
+- “查看完整案例” opens `#case-jira-road-map` as a deep-linkable full view.
+- The full case study contains five delivery steps, three client-problem stages, four delivery outcomes, and two detailed release demonstrations.
+- The dedicated Chinese/English toggle works without leaving the case study.
+- “返回个人简历” restores `#spotlight` and the compact portfolio view.
+- Desktop horizontal overflow check passed: document width equals viewport width at 1280 pixels.
+- Production build passed with 4,580 transformed modules.
 
 ## Comparison history
 
-### Iteration 1 — original build
-
-- [P2] Chinese hero headline produced an orphan line.
-  - Fix: shortened the headline while preserving meaning.
-- [P2] The metric strip delayed the client spotlight.
-  - Fix: moved the metrics after the complete spotlight and redirected the primary CTA.
-
-### Iteration 2 — original handoff
-
-- No actionable P0, P1 or P2 differences remained.
-
-### Iteration 3 — current update
-
-- [P2] The single-colour system did not distinguish data governance, connection, calculation, risk and achievement content.
-  - Fix: introduced violet, magenta, mint and amber semantic accents plus distinct section surfaces and a new multicolour observatory asset.
-  - Post-fix evidence: `qa/update-desktop-hero-v2.png`, `qa/update-desktop-jira-data-v2.png` and `qa/update-desktop-work-colors-v2.png`.
-- [P2] The former spotlight emphasised roadmap visibility but did not make real Jira data connection, backend user records, computed indicators or IP rights sufficiently explicit.
-  - Fix: rebuilt the story around Understand → Govern → Connect → Calculate → Validate, added a governance banner, connected-data signals and user/calculation table fields.
-  - Post-fix evidence: `qa/update-desktop-spotlight-v2.png` and `qa/update-mobile-jira-data-table-v2.png`.
-- [P2] The Employment Award was absent and AI remained positioned as a current direction.
-  - Fix: added a dedicated Award feature and removed AI from current positioning while retaining factual historical technical evidence.
-  - Post-fix evidence: `qa/update-desktop-employment-award-v2.png` and `qa/update-mobile-employment-award-v2.png`.
-- Post-fix comparison found no remaining actionable P0, P1 or P2 issue.
+- Pass 1: The first normalized comparison found no P0, P1, or P2 mismatch. No visual fix loop was required.
 
 ## Follow-up polish
 
-- [P3] The authentic portrait's blue studio background remains brighter than the selected concept's dark cutout. This is intentionally retained to preserve identity authenticity.
-- [P3] The expanded Jira data table is denser than the original concept, but it is needed to demonstrate the newly requested backend user and calculated-result capability.
+- Capture and inspect the 640-pixel breakpoint in a future responsive QA pass when a resizable browser surface is available.
 
-## Final result
-
-final result: passed
+**final result: passed**
