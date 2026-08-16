@@ -414,13 +414,9 @@ export const content = {
       less: "Hide details",
       archive: {
         back: "Back to portfolio",
-        eyebrow: "COURSEWORK ARCHIVE · 4 PROJECTS",
-        title: "Selected technical projects, documented beyond the résumé.",
-        intro:
-          "For reviewers who want to go deeper: the problem framing, engineering decisions, validation evidence and practical value behind each result.",
-        navLabel: "Jump to a project",
-        decisions: "What I built and validated",
-        methods: "Methods and tools",
+        eyebrow: "PROJECT CASE",
+        decisions: "Project work",
+        methods: "Technology and methods",
       },
       projects: [
         {
@@ -1181,13 +1177,9 @@ export const content = {
       less: "收起详情",
       archive: {
         back: "返回个人简历",
-        eyebrow: "课程项目档案 · 4 个项目",
-        title: "把简历里的项目成果，展开为可核验的工程过程。",
-        intro:
-          "供希望进一步了解的评审查看：每个项目的问题定义、工程选择、验证证据，以及结果能够解决的实际问题。",
-        navLabel: "快速跳转到项目",
-        decisions: "我完成并验证的工作",
-        methods: "方法与工具",
+        eyebrow: "项目案例",
+        decisions: "项目工作",
+        methods: "技术与方法",
       },
       projects: [
         {

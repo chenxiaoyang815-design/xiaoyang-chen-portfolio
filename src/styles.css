@@ -7743,6 +7743,15 @@ ol {
   overflow: clip;
 }
 
+.course-project-page {
+  padding-block: clamp(42px, 6vw, 88px) clamp(72px, 9vw, 128px);
+}
+
+.course-case--single {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
 .course-archive__hero {
   display: grid;
   grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
@@ -7920,7 +7929,7 @@ ol {
   align-items: start;
 }
 
-.course-case__content h2 {
+.course-case__content h1 {
   max-width: 920px;
   margin: 8px 0 0;
   color: var(--white);
@@ -7969,7 +7978,7 @@ ol {
   border-left: 1px solid color-mix(in srgb, var(--project-accent) 28%, transparent);
 }
 
-.course-case__details h3 {
+.course-case__details h2 {
   margin: 0 0 18px;
   color: var(--project-accent);
   font-family: "IBM Plex Mono", monospace;
@@ -8183,7 +8192,7 @@ ol {
     padding-top: 0;
   }
 
-  .course-case__content h2 {
+  .course-case__content h1 {
     font-size: 1.75rem;
   }
 

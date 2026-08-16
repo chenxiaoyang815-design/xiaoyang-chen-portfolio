@@ -831,17 +831,20 @@ function CourseProjectsPage({
   language,
   onLanguageChange,
   onClose,
-  onSelectProject,
   selectedProjectId,
   onOpenFuelLab,
   onOpenSolarLab,
 }) {
+  const selectedIndex = Math.max(
+    0,
+    copy.work.projects.findIndex((project) => project.id === selectedProjectId),
+  );
+  const project = copy.work.projects[selectedIndex];
+  const Icon = projectIcons[selectedIndex];
+
   useEffect(() => {
-    if (!selectedProjectId) return;
     const frame = window.requestAnimationFrame(() => {
-      document
-        .getElementById(`course-project-${selectedProjectId}`)
-        ?.scrollIntoView({ block: "start", behavior: "auto" });
+      window.scrollTo({ top: 0, behavior: "auto" });
     });
     return () => window.cancelAnimationFrame(frame);
   }, [selectedProjectId, language]);
@@ -870,108 +873,67 @@ function CourseProjectsPage({
       </header>
 
       <main className="course-archive-main">
-        <section className="course-archive__hero section-shell" data-reveal>
-          <p className="eyebrow">{copy.work.archive.eyebrow}</p>
-          <h1>{copy.work.archive.title}</h1>
-          <p>{copy.work.archive.intro}</p>
-          <div className="course-archive__metrics" aria-label={copy.metricsSummary.ariaLabel}>
-            {copy.metrics.map((metric) => (
-              <span key={metric.value}>
-                <strong>{metric.value}</strong>
-                <small>{metric.label}</small>
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <nav className="course-archive__navigator section-shell" aria-label={copy.work.archive.navLabel}>
-          <span>{copy.work.archive.navLabel}</span>
-          <div>
-            {copy.work.projects.map((project, index) => (
-              <button
-                className={selectedProjectId === project.id ? "is-active" : ""}
-                type="button"
-                key={project.id}
-                onClick={() => onSelectProject(project.id)}
-              >
-                <small>0{index + 1}</small>
-                {project.title}
-              </button>
-            ))}
-          </div>
-        </nav>
-
-        <section className="course-archive__projects section-shell">
-          {copy.work.projects.map((project, index) => {
-            const Icon = projectIcons[index];
-            return (
-              <article
-                className="course-case project"
-                id={`course-project-${project.id}`}
-                key={project.id}
-                data-reveal
-              >
-                <aside className="course-case__rail">
-                  <span>0{index + 1}</span>
-                  <Icon size={30} weight="duotone" aria-hidden="true" />
-                </aside>
-                <div className="course-case__content">
-                  <header>
-                    <div>
-                      <p className="project__type">{project.type}</p>
-                      <h2>{project.title}</h2>
-                    </div>
-                    <time>{project.date}</time>
-                  </header>
-                  <p className="course-case__summary">{project.summary}</p>
-                  <div className="project__highlights">
-                    {project.highlights.map((highlight) => (
-                      <span key={highlight.label}>
-                        <strong>{highlight.value}</strong>
-                        <small>{highlight.label}</small>
-                      </span>
+        <section className="course-project-page section-shell">
+          <article className="course-case course-case--single project" data-reveal>
+            <aside className="course-case__rail">
+              <span>0{selectedIndex + 1}</span>
+              <Icon size={30} weight="duotone" aria-hidden="true" />
+            </aside>
+            <div className="course-case__content">
+              <header>
+                <div>
+                  <p className="project__type">{project.type}</p>
+                  <h1>{project.title}</h1>
+                </div>
+                <time>{project.date}</time>
+              </header>
+              <p className="course-case__summary">{project.summary}</p>
+              <div className="project__highlights">
+                {project.highlights.map((highlight) => (
+                  <span key={highlight.label}>
+                    <strong>{highlight.value}</strong>
+                    <small>{highlight.label}</small>
+                  </span>
+                ))}
+              </div>
+              <div className="course-case__details">
+                <div>
+                  <h2>{copy.work.archive.decisions}</h2>
+                  <ul>
+                    {project.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+                <aside>
+                  <h2>{copy.work.archive.methods}</h2>
+                  <div className="tag-list">
+                    {project.tech.map((tag) => (
+                      <span key={tag}>{tag}</span>
                     ))}
                   </div>
-                  <div className="course-case__details">
-                    <div>
-                      <h3>{copy.work.archive.decisions}</h3>
-                      <ul>
-                        {project.points.map((point) => (
-                          <li key={point}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <aside>
-                      <h3>{copy.work.archive.methods}</h3>
-                      <div className="tag-list">
-                        {project.tech.map((tag) => (
-                          <span key={tag}>{tag}</span>
-                        ))}
-                      </div>
-                    </aside>
-                  </div>
-                  <ProjectEvidence project={project} />
-                  {project.id === "fuel-evidence-lab" ||
-                  project.id === "solar-evidence-lab" ? (
-                    <div className="project__actions">
-                      <button
-                        className="project__lab-button"
-                        type="button"
-                        onClick={
-                          project.id === "solar-evidence-lab"
-                            ? onOpenSolarLab
-                            : onOpenFuelLab
-                        }
-                      >
-                        {project.labCta}
-                        <ArrowRight size={18} aria-hidden="true" />
-                      </button>
-                    </div>
-                  ) : null}
+                </aside>
+              </div>
+              <ProjectEvidence project={project} />
+              {project.id === "fuel-evidence-lab" ||
+              project.id === "solar-evidence-lab" ? (
+                <div className="project__actions">
+                  <button
+                    className="project__lab-button"
+                    type="button"
+                    onClick={
+                      project.id === "solar-evidence-lab"
+                        ? onOpenSolarLab
+                        : onOpenFuelLab
+                    }
+                  >
+                    {project.labCta}
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </button>
                 </div>
-              </article>
-            );
-          })}
+              ) : null}
+            </div>
+          </article>
         </section>
       </main>
     </div>
@@ -1291,10 +1253,13 @@ export function App() {
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    const selectedCourseProject = copy.work.projects.find(
+      (project) => project.id === courseProjectRoute,
+    );
     document.title = caseStudyOpen
       ? `${copy.spotlight.title} — ${copy.hero.name}`
       : courseProjectRoute !== null
-        ? `${copy.work.archive.title} — ${copy.hero.name}`
+        ? `${selectedCourseProject?.title ?? copy.work.projects[0].title} — ${copy.hero.name}`
         : copy.meta.title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute("content", copy.meta.description);
@@ -1388,15 +1353,6 @@ export function App() {
     setCourseProjectRoute(projectId);
   };
 
-  const selectCourseProject = (projectId) => {
-    window.history.replaceState(
-      { courseProjects: true },
-      "",
-      `#course-projects/${encodeURIComponent(projectId)}`,
-    );
-    setCourseProjectRoute(projectId);
-  };
-
   const closeCourseProjects = () => {
     window.history.replaceState(null, "", "#work");
     setCourseProjectRoute(null);
@@ -1426,7 +1382,6 @@ export function App() {
           language={language}
           onLanguageChange={setLanguage}
           onClose={closeCourseProjects}
-          onSelectProject={selectCourseProject}
           selectedProjectId={courseProjectRoute}
           onOpenFuelLab={() => setFuelLabOpen(true)}
           onOpenSolarLab={() => setSolarLabOpen(true)}
