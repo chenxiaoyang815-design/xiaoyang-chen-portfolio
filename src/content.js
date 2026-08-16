@@ -107,10 +107,10 @@ export const content = {
           },
           {
             label: "WHAT I DID",
-            title: "Client coordination, integration checks and final delivery",
+            title: "Project integration, client coordination and handover",
             text:
-              "I clarified requirements, reproduced access and installation blockers, coordinated Jira test data with the final interface, and organised the report, demo evidence and handover.",
-            points: ["Client communication and problem resolution", "Data verification, evidence and handover"],
+              "I connected the client brief with work owned by different teammates: reviewing shared fields and interfaces, resolving delivery blockers, and authoring the final report and handover around one consistent release.",
+            points: ["Cross-module field and interface review", "Final report authorship and client handover"],
           },
           {
             label: "WHY IT MATTERED",
@@ -124,10 +124,10 @@ export const content = {
           "The full case study contains the delivery process, client communication, test evidence, screenshots and the interactive 30-day release demo.",
       },
       contribution: {
-        eyebrow: "MY ROLE · DELIVERY, CLIENT COLLABORATION & INTEGRATION",
-        title: "I turned scattered blockers into a verifiable product delivery.",
+        eyebrow: "MY ROLE · PROJECT INTEGRATION & CLIENT HANDOVER",
+        title: "I made separately owned work fit one client-ready delivery.",
         intro:
-          "My contribution extended beyond a single screen. I connected the brief, client feedback, access constraints, Jira data, team verification and final handover—so each problem had an owner, a next action and evidence of closure.",
+          "I acted as an integration point across client requirements, environment constraints, team-owned modules, test evidence, the final report I authored, source references and handover—keeping them aligned to the same product version.",
         cards: [
           {
             skill: "PRODUCT JUDGEMENT · REQUIREMENTS",
@@ -142,16 +142,16 @@ export const content = {
               "I reproduced EAP, Premium, Site Admin and installation issues, then sent the client concise evidence, impact and concrete resolution options instead of a vague request for help.",
           },
           {
-            skill: "SYSTEM INTEGRATION · DATA VERIFICATION",
-            title: "Connect Jira data to visible behaviour",
+            skill: "CROSS-TEAM INTEGRATION · FIELD REVIEW",
+            title: "Make separately owned modules work as one",
             text:
-              "I maintained realistic release and work-item data, checked filtering, status, completion and native links, and helped align the shared data contract with the final interface.",
+              "I reviewed the shared data fields and interfaces across team modules, checked naming, meaning, required values and hand-off assumptions, and helped each owner resolve mismatches before final integration.",
           },
           {
-            skill: "DELIVERY · HANDOVER",
-            title: "Close the loop across product and evidence",
+            skill: "REPORT AUTHORSHIP · CLIENT HANDOVER",
+            title: "Author the final report and client handover",
             text:
-              "I brought together production checks, client confirmation, report material, demo evidence and the final handover so the delivered version could be reviewed and continued by others.",
+              "I wrote and integrated the final project report end to end, obtained technical-owner confirmation for the relevant sections, and packaged its evidence, source references and limitations for the client.",
           },
         ],
         valueEyebrow: "THE VALUE I ADDED",
@@ -162,20 +162,18 @@ export const content = {
             text: "Helped move the delivery from the earlier Jira Gadget path to the required Atlassian Home Widget form.",
           },
           {
-            title: "Faster decisions",
-            text: "Converted permission and environment ambiguity into specific questions the client and team could act on.",
+            title: "Fewer integration gaps",
+            text: "Reviewed shared fields, interfaces and hand-offs so different owners' modules could be combined without silent contract drift.",
           },
           {
-            title: "Reviewable delivery",
-            text: "Kept implementation, testing, documentation and handover aligned to one final, evidence-backed version.",
+            title: "Client-ready delivery",
+            text: "Authored the final report and aligned implementation, test evidence, source references and handover around one reviewable release.",
           },
         ],
       },
       deliveryProof: {
         eyebrow: "CLIENT & PRODUCT EVIDENCE",
         title: "The work I helped drive left client and product evidence.",
-        intro:
-          "These screenshots verify the outcome; the decisions, coordination and verification above explain my personal value. Select either image to inspect the evidence view.",
         closeLabel: "Close evidence image",
         items: [
           {
@@ -214,20 +212,20 @@ export const content = {
           text: "Translated the client brief and the existing Jira gadget into a precise 30-day product scope and data requirements.",
         },
         {
-          title: "Align",
-          text: "Coordinated EAP, Premium-site, permission and data-access questions with the Atlassian industry mentors.",
+          title: "Coordinate",
+          text: "Turned access, scope and platform uncertainty into specific questions, owners and next actions for the client and team.",
         },
         {
           title: "Integrate",
-          text: "Supported the Forge-to-Jira data contract, real release test data and cross-team integration of the widget flow.",
+          text: "Reviewed shared Forge-to-Jira fields, module interfaces and each teammate's outputs so independently built work could operate as one widget.",
         },
         {
-          title: "Resolve",
-          text: "Reproduced installation and access blockers, shared focused evidence and proposed practical resolution paths to the client.",
+          title: "Verify",
+          text: "Connected production checks, test results, screenshots and limitations to the exact implementation and source state they supported.",
         },
         {
-          title: "Deliver",
-          text: "Brought together real-data verification, demo readiness, documentation and production handover for the final delivery.",
+          title: "Hand over",
+          text: "Authored the final report, collected section-owner confirmations, built the client package and closed the delivery with traceable evidence.",
         },
       ],
       clientCase: {
@@ -266,10 +264,10 @@ export const content = {
       evidenceTitle: "What I personally brought to the engagement",
       evidence: [
         "Kept client conversations specific: exact blocker, evidence, impact and requested decision",
-        "Built and maintained realistic Jira version and issue data for integration and demonstration",
-        "Connected product requirements, access constraints and the shared response contract across the team",
+        "Reviewed shared data fields and interfaces so each owner's module could integrate cleanly",
+        "Authored the complete final project report and reconciled each owner's technical content into one consistent narrative",
+        "Built the client-facing handover package and checked its source, secrets, checksum and release integrity",
         "Discussed project progress face to face with the Atlassian client as well as through regular online communication",
-        "Protected customer information while making delivery evidence clear and reviewable",
       ],
       demo: {
         eyebrow: "CONNECTED DATA MODEL · SYNTHETIC PORTFOLIO VIEW",
@@ -858,10 +856,10 @@ export const content = {
           },
           {
             label: "我做了什么",
-            title: "客户沟通、集成验证与最终交付",
+            title: "项目整合、客户协调与最终交接",
             text:
-              "我负责澄清需求，复现访问和安装阻塞，协调 Jira 测试数据与最终界面验证，并整理报告、演示证据和交接材料。",
-            points: ["客户沟通与问题推进", "数据核验、交付证据与项目交接"],
+              "我把客户需求与不同成员负责的工作连接起来：审核共享字段和模块接口，推动解决交付阻塞，并围绕同一版本完整撰写最终报告与交接材料。",
+            points: ["跨模块字段与接口审核", "完整报告撰写与客户交接"],
           },
           {
             label: "带来的价值",
@@ -875,10 +873,10 @@ export const content = {
           "完整案例中包含交付流程、客户沟通、测试结果、客户确认截图以及30天版本交互演示。",
       },
       contribution: {
-        eyebrow: "我的角色 · 项目交付、客户协作与集成验证",
-        title: "我把分散的问题推进成可验证、可交接的产品结果。",
+        eyebrow: "我的角色 · 项目整合与客户交接",
+        title: "让不同负责人完成的工作成为一份可交付的产品。",
         intro:
-          "我的工作不止完成某一个页面，而是连接项目说明、客户反馈、访问条件、Jira 数据、团队验证与最终交接：让每个问题都有人负责、有下一步行动，也有完成后的证据。",
+          "我承担了项目中的整合枢纽角色，连接客户需求、环境约束、各成员模块、测试证据、由我完整撰写的最终报告、源代码引用和交接材料，并确保它们对应同一个产品版本。",
         cards: [
           {
             skill: "产品判断 · 需求分析",
@@ -893,16 +891,16 @@ export const content = {
               "我复现 EAP、Premium、Site Admin 与安装权限问题，向客户提供准确截图、影响和可选解决路径，而不是笼统地请求帮助。",
           },
           {
-            skill: "系统集成 · 数据验证",
-            title: "把 Jira 数据连接到可见结果",
+            skill: "跨成员集成 · 字段审核",
+            title: "让各自负责的模块组合成一个产品",
             text:
-              "我维护用于联调的版本与工作项数据，核对筛选、状态、完成率和原生链接，并协助团队让共享数据契约与最终界面保持一致。",
+              "我审核各成员模块使用的共享数据字段与接口，核对命名、含义、必填值和交接约定，并协助每位负责人解决最终集成前的不一致问题。",
           },
           {
-            skill: "交付推进 · 项目交接",
-            title: "让产品、证据和交接形成闭环",
+            skill: "报告撰写 · 客户交接",
+            title: "完整撰写最终报告与客户交付材料",
             text:
-              "我汇总生产验证、客户确认、报告材料、演示证据与最终交接内容，使交付版本能够被复核，也能由后续人员继续维护。",
+              "我从头到尾撰写并整合最终项目报告，再由相关技术负责人核对对应章节，同时将证据、源代码引用与限制说明整理为客户交接包。",
           },
         ],
         valueEyebrow: "我为项目带来的价值",
@@ -913,20 +911,18 @@ export const content = {
             text: "协助团队从早期 Jira Gadget 路径转向客户要求的 Atlassian Home Widget 形态。",
           },
           {
-            title: "缩短沟通与决策路径",
-            text: "把权限和环境的不确定性转化为客户与团队可以直接处理的具体问题。",
+            title: "减少团队集成缺口",
+            text: "审核共享字段、模块接口和交接约定，避免不同负责人之间出现隐性的契约偏差。",
           },
           {
-            title: "形成可复核的交付",
-            text: "让实现、测试、文档与交接对应同一个最终版本，并由证据支撑。",
+            title: "形成客户可接手的交付",
+            text: "完整撰写最终报告，并让实现、测试证据、源代码引用和交接材料围绕同一个可复核版本保持一致。",
           },
         ],
       },
       deliveryProof: {
         eyebrow: "客户与产品证据",
         title: "我参与推动的交付，留下了客户确认与产品证据。",
-        intro:
-          "截图负责证明结果；上面的判断、协作与验证才是我的个人价值。点击图片可查看证据视图。",
         closeLabel: "关闭证据图片",
         items: [
           {
@@ -965,20 +961,20 @@ export const content = {
           text: "把客户说明与既有 Jira Gadget 行为转化为明确的 30 天产品范围和数据要求。",
         },
         {
-          title: "集成对齐",
-          text: "围绕 EAP、Premium 站点、权限与数据访问，持续与 Atlassian 行业导师对齐。",
+          title: "协作推进",
+          text: "把访问、范围和平台方面的不确定性转化为客户与团队可以处理的具体问题、负责人和下一步。",
         },
         {
-          title: "真实验证",
-          text: "支持 Forge–Jira 数据契约、真实版本测试数据与跨成员的 Widget 集成流程。",
+          title: "模块集成",
+          text: "审核 Forge–Jira 共享字段、模块接口和各成员输出，使独立开发的内容能够组合为完整 Widget。",
         },
         {
-          title: "客户协作",
-          text: "复现安装与访问阻塞，提供聚焦的证据，并向客户提出可执行的解决路径。",
+          title: "证据核验",
+          text: "将生产检查、测试结果、截图与限制条件对应到准确的实现版本和源代码状态。",
         },
         {
-          title: "生产交付",
-          text: "整合真实数据核验、演示准备、文档与交接，推动最终版本完成生产交付。",
+          title: "客户交接",
+          text: "完整撰写最终报告，收集各章节负责人的确认，构建客户交付包，并用可追溯证据完成交接。",
         },
       ],
       clientCase: {
@@ -1017,10 +1013,10 @@ export const content = {
       evidenceTitle: "我在这段客户实践中的个人能力",
       evidence: [
         "把客户沟通具体化为：阻塞位置、证据、影响和需要确认的决策",
-        "建立并维护可用于联调与演示的 Jira 版本和工作项数据",
-        "在团队中连接产品需求、访问约束与共享数据契约",
+        "审核共享数据字段与模块接口，确保各负责人组件能够顺利集成",
+        "完整撰写最终项目报告，将各负责人的技术内容整合为一致叙事",
+        "构建客户交接包，并完成源代码、敏感信息、校验值与版本完整性检查",
         "除持续线上交流外，也曾在 Atlassian 现场与客户面对面同步项目进展",
-        "在清晰展示交付证据的同时保护客户信息与知识产权",
       ],
       demo: {
         eyebrow: "连接数据模型 · 作品集合成视图",

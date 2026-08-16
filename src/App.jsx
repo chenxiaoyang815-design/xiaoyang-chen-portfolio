@@ -446,7 +446,6 @@ function SpotlightCaseStudy({ copy, language, onLanguageChange, onClose }) {
             <p className="eyebrow">{copy.spotlight.deliveryProof.eyebrow}</p>
             <h3 id="delivery-proof-title">{copy.spotlight.deliveryProof.title}</h3>
           </div>
-          <p>{copy.spotlight.deliveryProof.intro}</p>
         </header>
         <div className="delivery-proof__grid">
           {copy.spotlight.deliveryProof.items.map((item, index) => (
