@@ -52,6 +52,15 @@ const capabilityIcons = [Code, Database, Sparkle, ChartLineUp, TreeStructure, Te
 const signalIcons = [Database, UsersThree, ChartLineUp];
 const toolIcons = [BookOpenText, Code, Browser, Database, RocketLaunch, UsersThree];
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const courseProjectFromHash = () => {
+  const match = window.location.hash.match(/^#course-projects(?:\/([^/]+))?$/);
+  if (!match) return null;
+  try {
+    return match[1] ? decodeURIComponent(match[1]) : "";
+  } catch {
+    return "";
+  }
+};
 
 function LanguageToggle({ language, onChange, copy, compact = false }) {
   return (
@@ -686,9 +695,7 @@ function Tools({ copy }) {
   );
 }
 
-function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
-  const [expandedProject, setExpandedProject] = useState(null);
-
+function Work({ copy, onOpenCourseProject }) {
   return (
     <section className="work section-shell" id="work">
       <SectionHeader
@@ -707,10 +714,9 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
       <div className="project-grid">
         {copy.work.projects.map((project, index) => {
           const Icon = projectIcons[index];
-          const expanded = expandedProject === project.id;
           return (
             <article
-              className={`project project--compact${expanded ? " is-expanded" : ""}`}
+              className="project project--compact"
               key={project.title}
               data-reveal
             >
@@ -743,114 +749,232 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
                 <button
                   className="project__more"
                   type="button"
-                  aria-expanded={expanded}
-                  onClick={() => setExpandedProject(expanded ? null : project.id)}
+                  onClick={() => onOpenCourseProject(project.id)}
                 >
-                  {expanded ? copy.work.less : copy.work.more}
-                  <ArrowDown size={17} aria-hidden="true" />
+                  {copy.work.more}
+                  <ArrowRight size={17} aria-hidden="true" />
                 </button>
-                {expanded ? (
-                  <div className="project__expanded">
-                {project.id === "mapreduce-psr" && project.evidence ? (
-                  <div
-                    className="mapreduce-evidence"
-                    aria-label={project.evidence.ariaLabel}
-                  >
-                    <div className="mapreduce-evidence__flow">
-                      {project.evidence.steps.map((step, stepIndex) => (
-                        <div className="mapreduce-evidence__step-wrap" key={step.label}>
-                          <div className="mapreduce-evidence__step">
-                            <span>{step.label}</span>
-                            <strong>{step.value}</strong>
-                            <small>{step.meta}</small>
-                          </div>
-                          {stepIndex < project.evidence.steps.length - 1 ? (
-                            <ArrowRight
-                              className="mapreduce-evidence__arrow"
-                              size={20}
-                              aria-hidden="true"
-                            />
-                          ) : null}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mapreduce-evidence__result">
-                      <div>
-                        <span>{project.evidence.sampleLabel}</span>
-                        <strong>{project.evidence.sampleContext}</strong>
-                      </div>
-                      <div className="mapreduce-evidence__metric">
-                        <strong>{project.evidence.sampleMetric}</strong>
-                        <small>{project.evidence.sampleNote}</small>
-                      </div>
-                    </div>
-                    <p className="mapreduce-evidence__note">
-                      {project.evidence.distributedNote}
-                    </p>
-                  </div>
-                ) : null}
-                {project.id === "postgresql-evidence" && project.evidence ? (
-                  <div
-                    className="database-evidence"
-                    aria-label={project.evidence.ariaLabel}
-                  >
-                    <div className="database-evidence__stats">
-                      {project.evidence.stats.map((stat) => (
-                        <div key={stat.label}>
-                          <strong>{stat.value}</strong>
-                          <span>{stat.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="database-evidence__answers">
-                      <p>{project.evidence.answerLabel}</p>
-                      <div>
-                        {project.evidence.answers.map((answer) => (
-                          <article key={answer.label}>
-                            <span>{answer.label}</span>
-                            <strong>{answer.value}</strong>
-                          </article>
-                        ))}
-                      </div>
-                    </div>
-                    <p className="database-evidence__note">{project.evidence.note}</p>
-                  </div>
-                ) : null}
-                <ul>
-                  {project.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <div className="tag-list">
-                  {project.tech.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-                {project.id === "fuel-evidence-lab" ||
-                project.id === "solar-evidence-lab" ? (
-                  <div className="project__actions">
-                    <button
-                      className="project__lab-button"
-                      type="button"
-                      onClick={
-                        project.id === "solar-evidence-lab"
-                          ? onOpenSolarLab
-                          : onOpenFuelLab
-                      }
-                    >
-                      {project.labCta}
-                      <ArrowRight size={18} aria-hidden="true" />
-                    </button>
-                  </div>
-                ) : null}
-                  </div>
-                ) : null}
               </div>
             </article>
           );
         })}
       </div>
     </section>
+  );
+}
+
+function ProjectEvidence({ project }) {
+  if (project.id === "mapreduce-psr" && project.evidence) {
+    return (
+      <div className="mapreduce-evidence" aria-label={project.evidence.ariaLabel}>
+        <div className="mapreduce-evidence__flow">
+          {project.evidence.steps.map((step, stepIndex) => (
+            <div className="mapreduce-evidence__step-wrap" key={step.label}>
+              <div className="mapreduce-evidence__step">
+                <span>{step.label}</span>
+                <strong>{step.value}</strong>
+                <small>{step.meta}</small>
+              </div>
+              {stepIndex < project.evidence.steps.length - 1 ? (
+                <ArrowRight className="mapreduce-evidence__arrow" size={20} aria-hidden="true" />
+              ) : null}
+            </div>
+          ))}
+        </div>
+        <div className="mapreduce-evidence__result">
+          <div>
+            <span>{project.evidence.sampleLabel}</span>
+            <strong>{project.evidence.sampleContext}</strong>
+          </div>
+          <div className="mapreduce-evidence__metric">
+            <strong>{project.evidence.sampleMetric}</strong>
+            <small>{project.evidence.sampleNote}</small>
+          </div>
+        </div>
+        <p className="mapreduce-evidence__note">{project.evidence.distributedNote}</p>
+      </div>
+    );
+  }
+
+  if (project.id === "postgresql-evidence" && project.evidence) {
+    return (
+      <div className="database-evidence" aria-label={project.evidence.ariaLabel}>
+        <div className="database-evidence__stats">
+          {project.evidence.stats.map((stat) => (
+            <div key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="database-evidence__answers">
+          <p>{project.evidence.answerLabel}</p>
+          <div>
+            {project.evidence.answers.map((answer) => (
+              <article key={answer.label}>
+                <span>{answer.label}</span>
+                <strong>{answer.value}</strong>
+              </article>
+            ))}
+          </div>
+        </div>
+        <p className="database-evidence__note">{project.evidence.note}</p>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function CourseProjectsPage({
+  copy,
+  language,
+  onLanguageChange,
+  onClose,
+  onSelectProject,
+  selectedProjectId,
+  onOpenFuelLab,
+  onOpenSolarLab,
+}) {
+  useEffect(() => {
+    if (!selectedProjectId) return;
+    const frame = window.requestAnimationFrame(() => {
+      document
+        .getElementById(`course-project-${selectedProjectId}`)
+        ?.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [selectedProjectId, language]);
+
+  return (
+    <div className="course-archive-view">
+      <header className="case-study-header">
+        <button type="button" onClick={onClose}>
+          <ArrowLeft size={19} weight="bold" aria-hidden="true" />
+          {copy.work.archive.back}
+        </button>
+        <button
+          className="course-archive__brand"
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <span className="brand__mark">[XC]</span>
+          <span className="case-study-header__title">{copy.work.archive.eyebrow}</span>
+        </button>
+        <LanguageToggle
+          language={language}
+          onChange={onLanguageChange}
+          copy={copy}
+          compact
+        />
+      </header>
+
+      <main className="course-archive-main">
+        <section className="course-archive__hero section-shell" data-reveal>
+          <p className="eyebrow">{copy.work.archive.eyebrow}</p>
+          <h1>{copy.work.archive.title}</h1>
+          <p>{copy.work.archive.intro}</p>
+          <div className="course-archive__metrics" aria-label={copy.metricsSummary.ariaLabel}>
+            {copy.metrics.map((metric) => (
+              <span key={metric.value}>
+                <strong>{metric.value}</strong>
+                <small>{metric.label}</small>
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <nav className="course-archive__navigator section-shell" aria-label={copy.work.archive.navLabel}>
+          <span>{copy.work.archive.navLabel}</span>
+          <div>
+            {copy.work.projects.map((project, index) => (
+              <button
+                className={selectedProjectId === project.id ? "is-active" : ""}
+                type="button"
+                key={project.id}
+                onClick={() => onSelectProject(project.id)}
+              >
+                <small>0{index + 1}</small>
+                {project.title}
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        <section className="course-archive__projects section-shell">
+          {copy.work.projects.map((project, index) => {
+            const Icon = projectIcons[index];
+            return (
+              <article
+                className="course-case project"
+                id={`course-project-${project.id}`}
+                key={project.id}
+                data-reveal
+              >
+                <aside className="course-case__rail">
+                  <span>0{index + 1}</span>
+                  <Icon size={30} weight="duotone" aria-hidden="true" />
+                </aside>
+                <div className="course-case__content">
+                  <header>
+                    <div>
+                      <p className="project__type">{project.type}</p>
+                      <h2>{project.title}</h2>
+                    </div>
+                    <time>{project.date}</time>
+                  </header>
+                  <p className="course-case__summary">{project.summary}</p>
+                  <div className="project__highlights">
+                    {project.highlights.map((highlight) => (
+                      <span key={highlight.label}>
+                        <strong>{highlight.value}</strong>
+                        <small>{highlight.label}</small>
+                      </span>
+                    ))}
+                  </div>
+                  <div className="course-case__details">
+                    <div>
+                      <h3>{copy.work.archive.decisions}</h3>
+                      <ul>
+                        {project.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <aside>
+                      <h3>{copy.work.archive.methods}</h3>
+                      <div className="tag-list">
+                        {project.tech.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+                    </aside>
+                  </div>
+                  <ProjectEvidence project={project} />
+                  {project.id === "fuel-evidence-lab" ||
+                  project.id === "solar-evidence-lab" ? (
+                    <div className="project__actions">
+                      <button
+                        className="project__lab-button"
+                        type="button"
+                        onClick={
+                          project.id === "solar-evidence-lab"
+                            ? onOpenSolarLab
+                            : onOpenFuelLab
+                        }
+                      >
+                        {project.labCta}
+                        <ArrowRight size={18} aria-hidden="true" />
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
+        </section>
+      </main>
+    </div>
   );
 }
 
@@ -1162,13 +1286,16 @@ export function App() {
   const [caseStudyOpen, setCaseStudyOpen] = useState(
     () => window.location.hash === "#case-jira-road-map",
   );
+  const [courseProjectRoute, setCourseProjectRoute] = useState(courseProjectFromHash);
   const copy = content[language];
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
     document.title = caseStudyOpen
       ? `${copy.spotlight.title} — ${copy.hero.name}`
-      : copy.meta.title;
+      : courseProjectRoute !== null
+        ? `${copy.work.archive.title} — ${copy.hero.name}`
+        : copy.meta.title;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute("content", copy.meta.description);
     try {
@@ -1176,17 +1303,18 @@ export function App() {
     } catch {
       // The page remains fully functional when persistence is unavailable.
     }
-  }, [caseStudyOpen, copy, language]);
+  }, [caseStudyOpen, copy, courseProjectRoute, language]);
 
   useEffect(() => {
-    const syncCaseStudy = () => {
+    const syncPageRoute = () => {
       setCaseStudyOpen(window.location.hash === "#case-jira-road-map");
+      setCourseProjectRoute(courseProjectFromHash());
     };
-    window.addEventListener("hashchange", syncCaseStudy);
-    window.addEventListener("popstate", syncCaseStudy);
+    window.addEventListener("hashchange", syncPageRoute);
+    window.addEventListener("popstate", syncPageRoute);
     return () => {
-      window.removeEventListener("hashchange", syncCaseStudy);
-      window.removeEventListener("popstate", syncCaseStudy);
+      window.removeEventListener("hashchange", syncPageRoute);
+      window.removeEventListener("popstate", syncPageRoute);
     };
   }, []);
 
@@ -1209,7 +1337,7 @@ export function App() {
     );
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [caseStudyOpen, language]);
+  }, [caseStudyOpen, courseProjectRoute, language]);
 
   useEffect(() => {
     const closeMenu = () => setMenuOpen(false);
@@ -1251,6 +1379,32 @@ export function App() {
     });
   };
 
+  const openCourseProject = (projectId) => {
+    window.history.pushState(
+      { courseProjects: true },
+      "",
+      `#course-projects/${encodeURIComponent(projectId)}`,
+    );
+    setCourseProjectRoute(projectId);
+  };
+
+  const selectCourseProject = (projectId) => {
+    window.history.replaceState(
+      { courseProjects: true },
+      "",
+      `#course-projects/${encodeURIComponent(projectId)}`,
+    );
+    setCourseProjectRoute(projectId);
+  };
+
+  const closeCourseProjects = () => {
+    window.history.replaceState(null, "", "#work");
+    setCourseProjectRoute(null);
+    window.requestAnimationFrame(() => {
+      document.getElementById("work")?.scrollIntoView({ block: "start" });
+    });
+  };
+
   if (caseStudyOpen) {
     return (
       <div className={`portfolio portfolio--${language}`}>
@@ -1260,6 +1414,37 @@ export function App() {
           onLanguageChange={setLanguage}
           onClose={closeCaseStudy}
         />
+      </div>
+    );
+  }
+
+  if (courseProjectRoute !== null) {
+    return (
+      <div className={`portfolio portfolio--${language}`}>
+        <CourseProjectsPage
+          copy={copy}
+          language={language}
+          onLanguageChange={setLanguage}
+          onClose={closeCourseProjects}
+          onSelectProject={selectCourseProject}
+          selectedProjectId={courseProjectRoute}
+          onOpenFuelLab={() => setFuelLabOpen(true)}
+          onOpenSolarLab={() => setSolarLabOpen(true)}
+        />
+        {fuelLabOpen ? (
+          <FuelEvidenceLab
+            language={language}
+            onLanguageChange={() => setLanguage(language === "en" ? "zh" : "en")}
+            onClose={() => setFuelLabOpen(false)}
+          />
+        ) : null}
+        {solarLabOpen ? (
+          <SolarEvidenceLab
+            language={language}
+            onLanguageChange={() => setLanguage(language === "en" ? "zh" : "en")}
+            onClose={() => setSolarLabOpen(false)}
+          />
+        ) : null}
       </div>
     );
   }
@@ -1279,11 +1464,7 @@ export function App() {
         <Tools copy={copy} />
         <Capabilities copy={copy} />
         <SpotlightSummary copy={copy} onOpenCaseStudy={openCaseStudy} />
-        <Work
-          copy={copy}
-          onOpenFuelLab={() => setFuelLabOpen(true)}
-          onOpenSolarLab={() => setSolarLabOpen(true)}
-        />
+        <Work copy={copy} onOpenCourseProject={openCourseProject} />
         <About copy={copy} />
         <Profile copy={copy} />
       </main>

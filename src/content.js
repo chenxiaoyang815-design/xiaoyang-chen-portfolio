@@ -410,8 +410,18 @@ export const content = {
       intro:
         "Four projects covering time-series forecasting, distributed computation, data-quality analysis and relational database design. Implementation details open when needed.",
       projectLabel: "Project",
-      more: "View details",
+      more: "Open case study",
       less: "Hide details",
+      archive: {
+        back: "Back to portfolio",
+        eyebrow: "COURSEWORK ARCHIVE · 4 PROJECTS",
+        title: "Selected technical projects, documented beyond the résumé.",
+        intro:
+          "For reviewers who want to go deeper: the problem framing, engineering decisions, validation evidence and practical value behind each result.",
+        navLabel: "Jump to a project",
+        decisions: "What I built and validated",
+        methods: "Methods and tools",
+      },
       projects: [
         {
           id: "solar-evidence-lab",
@@ -1167,8 +1177,18 @@ export const content = {
       intro:
         "四个项目分别展示时间序列预测、分布式计算、数据质量分析与关系数据库设计；需要时可展开查看实现细节。",
       projectLabel: "项目",
-      more: "查看更多",
+      more: "打开项目案例",
       less: "收起详情",
+      archive: {
+        back: "返回个人简历",
+        eyebrow: "课程项目档案 · 4 个项目",
+        title: "把简历里的项目成果，展开为可核验的工程过程。",
+        intro:
+          "供希望进一步了解的评审查看：每个项目的问题定义、工程选择、验证证据，以及结果能够解决的实际问题。",
+        navLabel: "快速跳转到项目",
+        decisions: "我完成并验证的工作",
+        methods: "方法与工具",
+      },
       projects: [
         {
           id: "solar-evidence-lab",
