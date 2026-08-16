@@ -789,8 +789,8 @@ export const content = {
     },
     hero: {
       eyebrow: "从数据到实际影响",
-      titleA: "我让复杂数据",
-      titleB: "真正产生价值。",
+      titleA: "让数据可用",
+      titleB: "让结果可信",
       name: "陈萧仰",
       role: "数据工程 · 数据分析 · 软件交付",
       summary:
