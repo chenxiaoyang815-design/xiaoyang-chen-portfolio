@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpenText,
+  Browser,
   Briefcase,
   Brain,
   ChartLineUp,
@@ -49,6 +50,7 @@ const pipelineIcons = [Database, FunnelSimple, ChartLineUp, LinkSimple];
 const projectIcons = [Flask, Network, ChartLineUp, Database];
 const capabilityIcons = [Code, Database, Sparkle, ChartLineUp, TreeStructure, TestTube];
 const signalIcons = [Database, UsersThree, ChartLineUp];
+const toolIcons = [BookOpenText, Code, Browser, Database, RocketLaunch, UsersThree];
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 function LanguageToggle({ language, onChange, copy, compact = false }) {
@@ -82,10 +84,10 @@ function SectionHeader({ eyebrow, title, intro, align = "left" }) {
 function Header({ copy, language, setLanguage, menuOpen, setMenuOpen }) {
   const links = [
     ["experience", copy.nav.experience],
-    ["work", copy.nav.work],
+    ["tools", copy.nav.tools],
     ["capabilities", copy.nav.capabilities],
-    ["about", copy.nav.about],
-    ["profile", copy.nav.profile],
+    ["spotlight", copy.nav.spotlight],
+    ["work", copy.nav.work],
     ["contact", copy.nav.contact],
   ];
 
@@ -158,7 +160,7 @@ function Hero({ copy, language }) {
           </div>
           <p className="hero__summary">{copy.hero.summary}</p>
           <div className="hero__actions">
-            <a className="button button--primary" href="#work">
+            <a className="button button--primary" href="#spotlight">
               {copy.hero.primary}
               <ArrowRight size={18} weight="bold" aria-hidden="true" />
             </a>
@@ -231,26 +233,8 @@ function Metrics({ copy }) {
   );
 }
 
-function SpotlightSummary({ copy, language, onOpenCaseStudy }) {
-  const shownRows = copy.spotlight.demo.rows;
-  const [activeReleaseIndex, setActiveReleaseIndex] = useState(0);
-  const [demoRun, setDemoRun] = useState(0);
-  const activeRelease = shownRows[activeReleaseIndex] ?? shownRows[0];
-  const featuredCapabilities = [
-    { ...copy.spotlight.process[2], Icon: Database },
-    { ...copy.spotlight.process[3], Icon: ChatCenteredText },
-    { ...copy.spotlight.process[4], Icon: RocketLaunch },
-  ];
-
-  useEffect(() => {
-    setActiveReleaseIndex(0);
-    setDemoRun((run) => run + 1);
-  }, [language]);
-
-  const runReleaseDemo = (index = activeReleaseIndex) => {
-    setActiveReleaseIndex(index);
-    setDemoRun((run) => run + 1);
-  };
+function SpotlightSummary({ copy, onOpenCaseStudy }) {
+  const briefIcons = [Database, ChatCenteredText, RocketLaunch];
 
   return (
     <section
@@ -278,103 +262,26 @@ function SpotlightSummary({ copy, language, onOpenCaseStudy }) {
         </div>
       </div>
 
-      <div className="spotlight-summary__core" data-reveal>
-        <section className="spotlight-summary__capability" aria-labelledby="spotlight-capability-title">
-          <h3 id="spotlight-capability-title">{copy.spotlight.summary.capabilityTitle}</h3>
-          <div>
-            {featuredCapabilities.map(({ Icon, title, text }, index) => (
-              <article key={title}>
+      <section className="spotlight-brief" aria-label={copy.spotlight.brief.ariaLabel} data-reveal>
+        {copy.spotlight.brief.items.map((item, index) => {
+          const Icon = briefIcons[index];
+          return (
+            <article key={item.label}>
+              <header>
                 <span>0{index + 1}</span>
-                <Icon size={23} weight="duotone" aria-hidden="true" />
-                <h4>{title}</h4>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="spotlight-summary__proof" aria-labelledby="spotlight-proof-title">
-          <h3 id="spotlight-proof-title">{copy.spotlight.summary.proofTitle}</h3>
-          <div>
-            {copy.spotlight.outcomes.items.map((item, index) => (
-              <article key={item.label}>
-                <span>0{index + 1}</span>
-                <strong>{item.value}</strong>
-                <p>{item.label}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      <section className="spotlight-summary__demo" id="spotlight-demo" data-reveal>
-        <header>
-          <div>
-            <p className="eyebrow">{copy.spotlight.demo.windowOption}</p>
-            <h3>{copy.spotlight.summary.demoTitle}</h3>
-            <p>{copy.spotlight.summary.demoIntro}</p>
-          </div>
-          <button type="button" onClick={() => runReleaseDemo()}>
-            <Play size={17} weight="fill" aria-hidden="true" />
-            {copy.spotlight.summary.demoCta}
-          </button>
-        </header>
-
-        <div className="spotlight-summary__demo-body">
-          <div className="compact-release-tabs" role="tablist" aria-label={copy.spotlight.demo.visual.chooserLabel}>
-            {shownRows.map((row, index) => (
-              <button
-                className={index === activeReleaseIndex ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={index === activeReleaseIndex}
-                key={row.name}
-                onClick={() => runReleaseDemo(index)}
-              >
-                <span>{row.name}</span>
-                <small>{row.due}</small>
-                <strong>{row.progress}%</strong>
-              </button>
-            ))}
-          </div>
-
-          <div
-            className={`compact-release-stage compact-release-stage--${activeRelease.tone}`}
-            key={`${activeRelease.name}-${demoRun}`}
-            role="tabpanel"
-            style={{
-              "--release-progress": `${activeRelease.progress}%`,
-              "--release-day": `${Math.min(100, (activeRelease.days / 30) * 100)}%`,
-            }}
-          >
-            <div className="compact-release-stage__timeline">
-              <span className="compact-release-stage__fill" />
-              <span className="compact-release-stage__marker">
-                {copy.spotlight.demo.visual.dayPrefix} {activeRelease.days} {copy.spotlight.demo.visual.daySuffix}
-              </span>
-            </div>
-            <div className="compact-release-stage__scale" aria-hidden="true">
-              <span>0</span>
-              <span>10</span>
-              <span>20</span>
-              <span>30</span>
-            </div>
-            <div className="compact-release-stage__result">
-              <div>
-                <span>{copy.spotlight.demo.visual.progressLabel}</span>
-                <strong>{activeRelease.progress}%</strong>
-              </div>
-              <div>
-                <span>{copy.spotlight.demo.visual.itemsLabel}</span>
-                <strong>{activeRelease.done} / {activeRelease.total}</strong>
-              </div>
-              <div>
-                <span>{copy.spotlight.demo.columns.analysis}</span>
-                <strong>{activeRelease.analysis}</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+                <Icon size={25} weight="duotone" aria-hidden="true" />
+              </header>
+              <small>{item.label}</small>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <ul>
+                {item.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </article>
+          );
+        })}
       </section>
 
       <div className="spotlight-summary__actions" data-reveal>
@@ -382,7 +289,7 @@ function SpotlightSummary({ copy, language, onOpenCaseStudy }) {
           {copy.spotlight.summary.caseCta}
           <ArrowRight size={18} weight="bold" aria-hidden="true" />
         </button>
-        <p>{copy.spotlight.caseStudy.intro}</p>
+        <p>{copy.spotlight.brief.detailHint}</p>
       </div>
     </section>
   );
@@ -392,12 +299,30 @@ function SpotlightCaseStudy({ copy, language, onLanguageChange, onClose }) {
   const shownRows = copy.spotlight.demo.rows;
   const [activeReleaseIndex, setActiveReleaseIndex] = useState(0);
   const [demoRun, setDemoRun] = useState(0);
+  const [activeProofIndex, setActiveProofIndex] = useState(null);
   const activeRelease = shownRows[activeReleaseIndex] ?? shownRows[0];
+  const activeProof =
+    activeProofIndex === null ? null : copy.spotlight.deliveryProof.items[activeProofIndex];
 
   useEffect(() => {
     setActiveReleaseIndex(0);
     setDemoRun((run) => run + 1);
+    setActiveProofIndex(null);
   }, [language]);
+
+  useEffect(() => {
+    if (!activeProof) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setActiveProofIndex(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeProof]);
 
   const runReleaseDemo = (index) => {
     setActiveReleaseIndex(index);
@@ -511,6 +436,44 @@ function SpotlightCaseStudy({ copy, language, onLanguageChange, onClose }) {
               <strong>{item.value}</strong>
               <p>{item.label}</p>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="delivery-proof" aria-labelledby="delivery-proof-title" data-reveal>
+        <header>
+          <div>
+            <p className="eyebrow">{copy.spotlight.deliveryProof.eyebrow}</p>
+            <h3 id="delivery-proof-title">{copy.spotlight.deliveryProof.title}</h3>
+          </div>
+          <p>{copy.spotlight.deliveryProof.intro}</p>
+        </header>
+        <div className="delivery-proof__grid">
+          {copy.spotlight.deliveryProof.items.map((item, index) => (
+            <button
+              className={`delivery-proof__card delivery-proof__card--${index + 1}`}
+              type="button"
+              key={item.title}
+              onClick={() => setActiveProofIndex(index)}
+              aria-haspopup="dialog"
+            >
+              <span className="delivery-proof__visual">
+                <img
+                  src={assetPath(item.image)}
+                  alt={item.alt}
+                  style={{ objectPosition: item.position }}
+                />
+                <span className="delivery-proof__status">
+                  <Check size={15} weight="bold" aria-hidden="true" />
+                  {item.status}
+                </span>
+              </span>
+              <span className="delivery-proof__copy">
+                <small>{item.label}</small>
+                <strong>{item.title}</strong>
+                <span>{item.caption}</span>
+              </span>
+            </button>
           ))}
         </div>
       </section>
@@ -661,13 +624,72 @@ function SpotlightCaseStudy({ copy, language, onLanguageChange, onClose }) {
           )}
         </div>
       </div>
+
+      {activeProof ? (
+        <div
+          className="proof-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeProof.title}
+          onClick={() => setActiveProofIndex(null)}
+        >
+          <div className="proof-lightbox__panel" onClick={(event) => event.stopPropagation()}>
+            <header>
+              <div>
+                <span>{activeProof.label}</span>
+                <strong>{activeProof.title}</strong>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveProofIndex(null)}
+                aria-label={copy.spotlight.deliveryProof.closeLabel}
+              >
+                <X size={22} aria-hidden="true" />
+              </button>
+            </header>
+            <img src={assetPath(activeProof.image)} alt={activeProof.alt} />
+            <p>{activeProof.caption}</p>
+          </div>
+        </div>
+      ) : null}
         </section>
       </main>
     </div>
   );
 }
 
+function Tools({ copy }) {
+  return (
+    <section className="tools section-shell" id="tools">
+      <SectionHeader eyebrow={copy.tools.eyebrow} title={copy.tools.title} intro={copy.tools.intro} />
+      <div className="tools-grid">
+        {copy.tools.groups.map((group, index) => {
+          const Icon = toolIcons[index];
+          return (
+            <article className="tool-card" key={group.title} data-reveal>
+              <header>
+                <span>0{index + 1}</span>
+                <Icon size={26} weight="duotone" aria-hidden="true" />
+              </header>
+              <h3>{group.title}</h3>
+              <p>{group.description}</p>
+              <div className="tool-card__products">
+                {group.products.map((product) => (
+                  <span key={product}>{product}</span>
+                ))}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <p className="tools__note" data-reveal>{copy.tools.note}</p>
+    </section>
+  );
+}
+
 function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
+  const [expandedProject, setExpandedProject] = useState(null);
+
   return (
     <section className="work section-shell" id="work">
       <SectionHeader
@@ -675,11 +697,24 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
         title={copy.work.title}
         intro={copy.work.intro}
       />
-      <div className="project-list">
+      <div className="course-metrics" aria-label={copy.metricsSummary.ariaLabel} data-reveal>
+        {copy.metrics.map((metric) => (
+          <article key={metric.value}>
+            <strong>{metric.value}</strong>
+            <span>{metric.label}</span>
+          </article>
+        ))}
+      </div>
+      <div className="project-grid">
         {copy.work.projects.map((project, index) => {
           const Icon = projectIcons[index];
+          const expanded = expandedProject === project.id;
           return (
-            <article className="project" key={project.title} data-reveal>
+            <article
+              className={`project project--compact${expanded ? " is-expanded" : ""}`}
+              key={project.title}
+              data-reveal
+            >
               <div className="project__rail">
                 <span>0{index + 1}</span>
                 <Icon size={28} aria-hidden="true" />
@@ -693,6 +728,30 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
                   <time>{project.date}</time>
                 </header>
                 <p className="project__summary">{project.summary}</p>
+                <div className="project__highlights">
+                  {project.highlights.map((highlight) => (
+                    <span key={highlight.label}>
+                      <strong>{highlight.value}</strong>
+                      <small>{highlight.label}</small>
+                    </span>
+                  ))}
+                </div>
+                <div className="tag-list project__tags--preview">
+                  {project.tech.slice(0, 3).map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                <button
+                  className="project__more"
+                  type="button"
+                  aria-expanded={expanded}
+                  onClick={() => setExpandedProject(expanded ? null : project.id)}
+                >
+                  {expanded ? copy.work.less : copy.work.more}
+                  <ArrowDown size={17} aria-hidden="true" />
+                </button>
+                {expanded ? (
+                  <div className="project__expanded">
                 {project.id === "mapreduce-psr" && project.evidence ? (
                   <div
                     className="mapreduce-evidence"
@@ -783,6 +842,8 @@ function Work({ copy, onOpenFuelLab, onOpenSolarLab }) {
                       {project.labCta}
                       <ArrowRight size={18} aria-hidden="true" />
                     </button>
+                  </div>
+                ) : null}
                   </div>
                 ) : null}
               </div>
@@ -880,7 +941,31 @@ function Capabilities({ copy }) {
 }
 
 function About({ copy }) {
-  const principleIcons = [Target, ChartLineUp, ShieldCheck];
+  const [expanded, setExpanded] = useState(false);
+  const summaryCards = [
+    {
+      Icon: Brain,
+      eyebrow: copy.about.academic.eyebrow,
+      title: copy.about.academic.title,
+      text: copy.about.academic.summary,
+      tags: copy.about.academic.principles.map((item) => item.title),
+    },
+    {
+      Icon: Cube,
+      eyebrow: copy.about.cube.eyebrow,
+      title: copy.about.cube.title,
+      text: copy.about.cube.summary,
+      tags: copy.about.cube.steps,
+      metric: "13 × 13",
+    },
+    {
+      Icon: Compass,
+      eyebrow: copy.about.life.eyebrow,
+      title: copy.about.life.title,
+      text: copy.about.life.summary,
+      tags: copy.about.life.tags,
+    },
+  ];
 
   return (
     <section className="about section-shell" id="about">
@@ -890,70 +975,61 @@ function About({ copy }) {
         intro={copy.about.intro}
       />
 
-      <div className="about-grid">
-        <article className="about-card about-card--academic" data-reveal>
-          <header>
-            <Brain size={30} weight="duotone" aria-hidden="true" />
-            <div>
-              <span>{copy.about.academic.eyebrow}</span>
-              <h3>{copy.about.academic.title}</h3>
+      <div className="about-summary-grid" data-reveal>
+        {summaryCards.map(({ Icon, eyebrow, title, text, tags, metric }, index) => (
+          <article key={title}>
+            <header>
+              <span>0{index + 1}</span>
+              <Icon size={28} weight="duotone" aria-hidden="true" />
+            </header>
+            <small>{eyebrow}</small>
+            {metric ? <strong className="about-summary__metric">{metric}</strong> : null}
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <div className="about-summary__tags">
+              {tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
-          </header>
-          <p>{copy.about.academic.text}</p>
-          <div className="about-principles">
-            {copy.about.academic.principles.map((principle, index) => {
-              const Icon = principleIcons[index];
-              return (
+          </article>
+        ))}
+      </div>
+
+      <button
+        className="section-expand"
+        type="button"
+        aria-expanded={expanded}
+        onClick={() => setExpanded((open) => !open)}
+      >
+        {expanded ? copy.about.less : copy.about.more}
+        <ArrowDown size={18} aria-hidden="true" />
+      </button>
+
+      {expanded ? (
+        <div className="about-details">
+          <article>
+            <h3>{copy.about.academic.title}</h3>
+            <p>{copy.about.academic.text}</p>
+            <div className="about-principles">
+              {copy.about.academic.principles.map((principle) => (
                 <div key={principle.title}>
-                  <Icon size={21} aria-hidden="true" />
                   <h4>{principle.title}</h4>
                   <p>{principle.text}</p>
                 </div>
-              );
-            })}
-          </div>
-        </article>
-
-        <article className="about-card about-card--life" data-reveal>
-          <header>
-            <Compass size={30} weight="duotone" aria-hidden="true" />
-            <div>
-              <span>{copy.about.life.eyebrow}</span>
-              <h3>{copy.about.life.title}</h3>
+              ))}
             </div>
-          </header>
-          <p>{copy.about.life.text}</p>
-          <div className="about-life__tags" aria-label={copy.about.life.tagLabel}>
-            {copy.about.life.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-        </article>
-
-        <article className="about-card about-card--cube" data-reveal>
-          <div className="about-cube__visual" aria-hidden="true">
-            <Cube size={64} weight="duotone" />
-            <strong>13 × 13</strong>
-            <span>{copy.about.cube.visualLabel}</span>
-          </div>
-          <div className="about-cube__content">
-            <header>
-              <span>{copy.about.cube.eyebrow}</span>
-              <h3>{copy.about.cube.title}</h3>
-            </header>
+          </article>
+          <article>
+            <h3>{copy.about.cube.title}</h3>
             <blockquote>{copy.about.cube.quote}</blockquote>
             <p>{copy.about.cube.text}</p>
-            <ol className="about-cube__steps">
-              {copy.about.cube.steps.map((step, index) => (
-                <li key={step}>
-                  <span>0{index + 1}</span>
-                  <strong>{step}</strong>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </article>
-      </div>
+          </article>
+          <article>
+            <h3>{copy.about.life.title}</h3>
+            <p>{copy.about.life.text}</p>
+          </article>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -962,8 +1038,8 @@ function Profile({ copy }) {
   return (
     <section className="profile section-shell" id="profile">
       <SectionHeader eyebrow={copy.profile.eyebrow} title={copy.profile.title} />
-      <div className="profile-grid">
-        <article className="profile-panel profile-panel--employment" data-reveal>
+      <div className="profile-summary" data-reveal>
+        <article className="profile-summary__award">
           <header>
             <Briefcase size={29} weight="duotone" aria-hidden="true" />
             <div>
@@ -972,93 +1048,29 @@ function Profile({ copy }) {
             </div>
             <time>{copy.profile.employmentAward.date}</time>
           </header>
-          <div className="employment-award__body">
-            <div>
-              <strong>{copy.profile.employmentAward.badge}</strong>
-              <p>{copy.profile.employmentAward.text}</p>
-            </div>
-            <div className="employment-award__proposal">
-              <h4>{copy.profile.employmentAward.proposalTitle}</h4>
-              <ul>
-                {copy.profile.employmentAward.proposal.map((item) => (
-                  <li key={item}>
-                    <Check size={16} weight="bold" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <strong>{copy.profile.employmentAward.badge}</strong>
+          <p>{copy.profile.employmentAward.summary}</p>
         </article>
 
-        <article className="profile-panel profile-panel--leadership" data-reveal>
-          <header>
-            <UsersThree size={27} aria-hidden="true" />
-            <h3>{copy.profile.leadershipTitle}</h3>
-          </header>
-          <div className="profile-list">
-            {copy.profile.leadership.map((item) => (
-              <div key={item.title}>
-                <time>{item.date}</time>
-                <h4>{item.title}</h4>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="profile-panel" data-reveal>
+        <article>
           <header>
             <Medal size={27} aria-hidden="true" />
-            <h3>{copy.profile.awardsTitle}</h3>
+            <h3>{copy.profile.highlightsTitle}</h3>
           </header>
-          <ul className="check-list">
-            {copy.profile.awards.map((item) => (
-              <li key={item}>
-                <Check size={17} weight="bold" aria-hidden="true" />
-                <span>{item}</span>
-              </li>
+          <ul className="profile-summary__list">
+            {copy.profile.highlights.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </article>
 
-        <article className="profile-panel" data-reveal>
+        <article>
           <header>
-            <BookOpenText size={27} aria-hidden="true" />
-            <h3>{copy.profile.publicationsTitle}</h3>
+            <UsersThree size={27} aria-hidden="true" />
+            <h3>{copy.profile.readinessTitle}</h3>
           </header>
-          <ul className="document-list">
-            {copy.profile.publications.map((item) => (
-              <li key={item}>
-                <FileText size={18} aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="profile-panel" data-reveal>
-          <header>
-            <ShieldCheck size={27} aria-hidden="true" />
-            <h3>{copy.profile.certificationsTitle}</h3>
-          </header>
-          <ul className="document-list">
-            {copy.profile.certifications.map((item) => (
-              <li key={item}>
-                <FileText size={18} aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="profile-panel profile-panel--languages" data-reveal>
-          <header>
-            <Target size={27} aria-hidden="true" />
-            <h3>{copy.profile.languagesTitle}</h3>
-          </header>
-          <ul>
-            {copy.profile.languages.map((item) => (
+          <ul className="profile-summary__list">
+            {copy.profile.readiness.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -1265,18 +1277,14 @@ export function App() {
       <main>
         <Hero copy={copy} language={language} />
         <Experience copy={copy} />
-        <Metrics copy={copy} />
+        <Tools copy={copy} />
+        <Capabilities copy={copy} />
+        <SpotlightSummary copy={copy} onOpenCaseStudy={openCaseStudy} />
         <Work
           copy={copy}
           onOpenFuelLab={() => setFuelLabOpen(true)}
           onOpenSolarLab={() => setSolarLabOpen(true)}
         />
-        <SpotlightSummary
-          copy={copy}
-          language={language}
-          onOpenCaseStudy={openCaseStudy}
-        />
-        <Capabilities copy={copy} />
         <About copy={copy} />
         <Profile copy={copy} />
       </main>
