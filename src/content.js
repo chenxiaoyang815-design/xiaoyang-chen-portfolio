@@ -11,8 +11,10 @@ export const content = {
       short: "中文",
     },
     nav: {
-      work: "Selected work",
+      work: "Course projects",
       experience: "Experience",
+      spotlight: "Client delivery",
+      tools: "Software",
       capabilities: "Capabilities",
       about: "About",
       profile: "Profile",
@@ -28,7 +30,7 @@ export const content = {
       role: "Data Engineering · Analytics · Software Delivery",
       summary:
         "I turn ambiguous requirements and complex datasets into reliable data systems, decision-ready analytics and software that people can trust.",
-      primary: "View selected projects",
+      primary: "View client delivery",
       secondary: "Download English CV",
       availability: "Open to data engineering, analytics and software opportunities",
       location: "Sydney, Australia",
@@ -68,7 +70,7 @@ export const content = {
       label: "REAL CLIENT PROJECT · IP-GOVERNED · PRODUCTION DELIVERED",
       title: "Atlassian Home Dashboard — Road Map Widget",
       intro:
-        "I helped take a Jira Road Map widget from requirement discovery and access setup through real-data validation and production delivery. The Forge app reads authorised Jira release and work-item data, calculates progress, and returns users to the relevant native Jira destinations.",
+        "A Jira release-roadmap widget built into Atlassian Home. It reads authorised project, release and work-item data, shows upcoming 30-day progress, and links users back to the relevant Jira pages.",
       tags: [
         "COMP9900",
         "Atlassian Forge",
@@ -92,6 +94,111 @@ export const content = {
         caseCta: "Explore the case study",
         demoCta: "Play 30-day demo",
         privacyShort: "IP-governed · synthetic portfolio reconstruction",
+      },
+      brief: {
+        ariaLabel: "Project, personal contribution and value summary",
+        items: [
+          {
+            label: "WHAT THE PRODUCT DOES",
+            title: "A 30-day Jira release view inside Atlassian Home",
+            text:
+              "The widget brings upcoming releases and progress into the Atlassian Home Dashboard, so users can understand delivery status without first opening each Jira project.",
+            points: ["Authorised Jira release and work-item data", "Progress, issue counts and native Jira links"],
+          },
+          {
+            label: "WHAT I DID",
+            title: "Client coordination, integration checks and final delivery",
+            text:
+              "I clarified requirements, reproduced access and installation blockers, coordinated Jira test data with the final interface, and organised the report, demo evidence and handover.",
+            points: ["Client communication and problem resolution", "Data verification, evidence and handover"],
+          },
+          {
+            label: "WHY IT MATTERED",
+            title: "The team reached the right product form and a reviewable release",
+            text:
+              "My work helped move the project from the earlier Jira Gadget path to the required Home Widget, turn unclear blockers into concrete actions, and keep the final delivery consistent.",
+            points: ["Home Widget confirmed by Atlassian", "Implementation, testing and handover aligned"],
+          },
+        ],
+        detailHint:
+          "The full case study contains the delivery process, client communication, test evidence, screenshots and the interactive 30-day release demo.",
+      },
+      contribution: {
+        eyebrow: "MY ROLE · DELIVERY, CLIENT COLLABORATION & INTEGRATION",
+        title: "I turned scattered blockers into a verifiable product delivery.",
+        intro:
+          "My contribution extended beyond a single screen. I connected the brief, client feedback, access constraints, Jira data, team verification and final handover—so each problem had an owner, a next action and evidence of closure.",
+        cards: [
+          {
+            skill: "PRODUCT JUDGEMENT · REQUIREMENTS",
+            title: "Turn feedback into an executable scope",
+            text:
+              "When the Home Dashboard requirement was clarified, I translated it into a focused migration and acceptance checklist: 30-day releases, progress, issue counts and native Jira destinations.",
+          },
+          {
+            skill: "CLIENT COMMUNICATION · PROBLEM SOLVING",
+            title: "Make environment blockers actionable",
+            text:
+              "I reproduced EAP, Premium, Site Admin and installation issues, then sent the client concise evidence, impact and concrete resolution options instead of a vague request for help.",
+          },
+          {
+            skill: "SYSTEM INTEGRATION · DATA VERIFICATION",
+            title: "Connect Jira data to visible behaviour",
+            text:
+              "I maintained realistic release and work-item data, checked filtering, status, completion and native links, and helped align the shared data contract with the final interface.",
+          },
+          {
+            skill: "DELIVERY · HANDOVER",
+            title: "Close the loop across product and evidence",
+            text:
+              "I brought together production checks, client confirmation, report material, demo evidence and the final handover so the delivered version could be reviewed and continued by others.",
+          },
+        ],
+        valueEyebrow: "THE VALUE I ADDED",
+        valueTitle: "Direction, momentum and trust",
+        values: [
+          {
+            title: "Correct product direction",
+            text: "Helped move the delivery from the earlier Jira Gadget path to the required Atlassian Home Widget form.",
+          },
+          {
+            title: "Faster decisions",
+            text: "Converted permission and environment ambiguity into specific questions the client and team could act on.",
+          },
+          {
+            title: "Reviewable delivery",
+            text: "Kept implementation, testing, documentation and handover aligned to one final, evidence-backed version.",
+          },
+        ],
+      },
+      deliveryProof: {
+        eyebrow: "CLIENT & PRODUCT EVIDENCE",
+        title: "The work I helped drive left client and product evidence.",
+        intro:
+          "These screenshots verify the outcome; the decisions, coordination and verification above explain my personal value. Select either image to inspect the evidence view.",
+        closeLabel: "Close evidence image",
+        items: [
+          {
+            image: "project-evidence/client-acceptance-redacted.png",
+            label: "01 · CLIENT CONFIRMATION",
+            status: "Confirmed",
+            title: "Atlassian confirmed the delivered build is a Home Dashboard widget",
+            caption:
+              "The internal object URL is irreversibly redacted; names and the confirmation wording remain visible for verification.",
+            alt: "Slack delivery thread with the private Atlassian object URL redacted and a client confirmation that the build is a Home Dashboard widget",
+            position: "center 73%",
+          },
+          {
+            image: "project-evidence/atlassian-home-widget.png",
+            label: "02 · PRODUCT INTEGRATION",
+            status: "Deployed",
+            title: "Road Map Widget appears inside the Atlassian Home add-widget flow",
+            caption:
+              "The deployed widget is discoverable from Marketplace within home.atlassian.com. This shows product integration, not a claim of a public Marketplace listing.",
+            alt: "Atlassian Home add-widget screen showing Road Map Widget in the Marketplace tab",
+            position: "center 31%",
+          },
+        ],
       },
       caseStudy: {
         back: "Back to portfolio",
@@ -144,16 +251,16 @@ export const content = {
           },
         ],
         note:
-          "This portfolio summarises the exchange without publishing client names, site URLs, account details or private messages.",
+          "The portfolio shows only selected delivery evidence and does not disclose private object URLs, account data, credentials or internal access details.",
       },
       outcomes: {
         eyebrow: "TEAM DELIVERY EVIDENCE",
         title: "A production result backed by visible checks",
         items: [
-          { value: "32/32", label: "functional & system checks passed" },
-          { value: "26", label: "unit assertions passed" },
-          { value: "200", label: "generated releases in scale testing" },
-          { value: "Forge", label: "production deployment" },
+          { value: "Home", label: "required widget form delivered" },
+          { value: "26/26", label: "service tests passed" },
+          { value: "3/3", label: "scale-test levels passed" },
+          { value: "5", label: "authorised Jira releases verified in Home" },
         ],
       },
       evidenceTitle: "What I personally brought to the engagement",
@@ -249,12 +356,54 @@ export const content = {
         ],
       },
     },
-    work: {
-      eyebrow: "SELECTED PROJECTS",
-      title: "Engineering depth, measured in evidence.",
+    tools: {
+      eyebrow: "SOFTWARE & WORK ENVIRONMENTS",
+      title: "The software I use across analysis, development and delivery.",
       intro:
-        "Projects spanning machine-learning forecasting, distributed data processing, data quality and database engineering.",
+        "A practical working environment spanning data exploration, Python and front-end development, office collaboration and production delivery.",
+      groups: [
+        {
+          title: "Notebook analysis",
+          description: "Reproducible exploration, data checks, modelling experiments and visual explanation.",
+          products: ["Anaconda Navigator", "Jupyter Notebook", "JupyterLab", "MATLAB"],
+        },
+        {
+          title: "Python development",
+          description: "Structured implementation, debugging, testing and maintainable project workflows.",
+          products: ["PyCharm", "Python", "Conda environments", "Linux Terminal"],
+        },
+        {
+          title: "Front-end development",
+          description: "Responsive interfaces, component-based implementation, local testing and production builds.",
+          products: ["Visual Studio Code", "React", "Vite", "npm", "HTML / CSS", "Browser DevTools"],
+        },
+        {
+          title: "Data platforms",
+          description: "Relational querying, pipeline work and distributed processing across project scales.",
+          products: ["PostgreSQL", "MySQL", "Hadoop", "Apache Spark"],
+        },
+        {
+          title: "Product delivery",
+          description: "Version control, client collaboration, cloud integration and release handover.",
+          products: ["Git & GitHub", "Jira Software", "Atlassian Forge", "Docker", "GitHub Pages", "Slack"],
+        },
+        {
+          title: "Office & communication",
+          description: "Everyday documentation, presentations, reporting, meetings and team communication.",
+          products: ["Microsoft Word", "PowerPoint", "Excel", "Outlook", "Microsoft Teams", "Google Workspace"],
+        },
+      ],
+      note:
+        "Used across internship automation, UNSW data projects, portfolio development and the Atlassian Home Dashboard client delivery.",
+    },
+    work: {
+      eyebrow: "COURSE PROJECTS",
+      title: "Data engineering, machine learning and database projects.",
+      intro:
+        "Four projects covering time-series forecasting, distributed computation, data-quality analysis and relational database design. Implementation details open when needed.",
       projectLabel: "Project",
+      more: "View details",
+      less: "Hide details",
       projects: [
         {
           id: "solar-evidence-lab",
@@ -263,6 +412,10 @@ export const content = {
           date: "Mar 2026",
           summary:
             "An evidence-led PyTorch workflow that integrates 24 annual files, forecasts seven future horizons and tests whether additional model complexity delivers measurable value.",
+          highlights: [
+            { value: "8,766", label: "daily records" },
+            { value: "22", label: "model artefacts" },
+          ],
           points: [
             "Integrated 8,766 daily records from 1996–2019 and removed 1,163 quality-flagged observations.",
             "Trained 22 model artefacts across custom losses, transfer learning, multi-task learning, MC Dropout and attention.",
@@ -279,6 +432,10 @@ export const content = {
           date: "Sep 2025",
           summary:
             "Turned sales transaction logs into a decision-ready shortlist: for every region and year, identify the product categories earning more profit per sales dollar than the local benchmark.",
+          highlights: [
+            { value: "Top-K", label: "decision output" },
+            { value: "MapReduce", label: "distributed execution" },
+          ],
           points: [
             "Grouped transactions by region, year and category across Hadoop workers, with reliable date, CSV and numeric parsing.",
             "Used local pre-aggregation before network transfer, reducing repeated data passed through the distributed job.",
@@ -322,6 +479,10 @@ export const content = {
           date: "Mar 2025",
           summary:
             "A reproducible analysis of 59,256 January 2025 FuelCheck records, built to show how reliable engineering choices become decision-ready price evidence.",
+          highlights: [
+            { value: "59,256", label: "price records" },
+            { value: "97.36%", label: "exact geo match" },
+          ],
           points: [
             "Repaired 28,151 structurally inconsistent rows through schema-aware ingestion without a hard-coded breakpoint.",
             "Achieved 97.36% exact postcode–suburb matching and 100% coverage with a clearly labelled deterministic fallback.",
@@ -338,6 +499,10 @@ export const content = {
           date: "Sep 2024",
           summary:
             "Built a reusable PostgreSQL access layer over the 50 MB MyMyUNSW database, turning a dense relational schema into reliable answers about performance, teaching coverage and course dependencies—awarded 99/100.",
+          highlights: [
+            { value: "99/100", label: "project score" },
+            { value: "20", label: "supplied autotests" },
+          ],
           points: [
             "Translated a multi-table university data model into eight reusable SQL views and two parameterised PL/pgSQL functions.",
             "Handled NULL marks, repeated course attempts, credit-weighted WAM and staff with multiple organisational roles without hard-coded records.",
@@ -491,12 +656,16 @@ export const content = {
     },
     about: {
       eyebrow: "HOW I THINK & LIVE",
-      title: "Curiosity, discipline and a life beyond the screen.",
+      title: "Engineering habits and life outside work.",
       intro:
-        "The same habits shape my engineering and my life: stay open to the unknown, break complexity into workable parts and keep the whole system in view.",
+        "Three things shape how I work: evidence, structured problem solving and curiosity.",
+      more: "View the full story",
+      less: "Hide details",
       academic: {
         eyebrow: "ACADEMIC & ENGINEERING MINDSET",
         title: "Evidence before complexity.",
+        summary:
+          "I define the question, data boundary and baseline before adding complexity; experiments and error analysis decide what is worth keeping.",
         text:
           "I do not treat complexity itself as a sign of rigour. I start by defining the question and data boundaries, establish an interpretable baseline, and then use experiments, comparisons and error analysis to decide whether a more complex method earns its place. A result matters; knowing where it holds matters just as much.",
         principles: [
@@ -520,6 +689,8 @@ export const content = {
       life: {
         eyebrow: "LIFE & EXPLORATION",
         title: "I feel most alive when the route is unfamiliar.",
+        summary:
+          "I enjoy travelling alone and exploring Australia's coastlines and natural landscapes; unfamiliar routes keep me observant and adaptable.",
         text:
           "I love life, adventure and the freedom of travelling alone. An unfamiliar journey gives me space to observe new places without rushing to a conclusion, while Australia's blue skies, coastlines and open landscapes remind me to slow down and stay curious. Exploration helps me return to engineering with a wider view and a calmer mind.",
         tagLabel: "Personal interests",
@@ -528,6 +699,8 @@ export const content = {
       cube: {
         eyebrow: "FOCUS PRACTICE",
         title: "A 13×13 cube is systems thinking in your hands.",
+        summary:
+          "Solving a 13×13 cube trains me to break a large state into smaller parts while protecting the structure already completed.",
         visualLabel: "HIGH-ORDER CUBE",
         quote:
           "Break complexity into solvable parts, focus on the next move and protect the stability of the whole.",
@@ -537,70 +710,28 @@ export const content = {
       },
     },
     profile: {
-      eyebrow: "LEADERSHIP, RECOGNITION & RESEARCH",
-      title: "Technical discipline with a wider point of view.",
+      eyebrow: "SELECTED CREDENTIALS",
+      title: "Recognition, leadership and professional readiness.",
+      highlightsTitle: "Recognition & leadership",
+      highlights: [
+        "Outstanding Graduate · Xiamen University of Technology (2024)",
+        "Leadership Foundations Program · UNSW Employability, AHEGS recognised (2025)",
+        "ICPC Preliminary · UNSW room coordination and technical support volunteer (2025)",
+      ],
+      readinessTitle: "Verified qualifications",
+      readiness: [
+        "Business Data Analyst Occupational Ability Certificate · Level 4",
+        "National Computer Rank Examination · Level 3 Network Technology",
+        "English · IELTS 6.5 overall, Listening 7.0",
+      ],
       employmentAward: {
         eyebrow: "CAREER READINESS · EY-COLLABORATIVE PROCESS",
         title: "UNSW Employment Award",
         date: "May–Jul 2026",
         badge: "COMPETITIVELY SELECTED",
-        text:
-          "Selected through a competitive CV review and completed an end-to-end, real-world recruitment process developed with EY. For the group technical challenge, the team examined an AI problem from multiple stakeholder perspectives and produced a structured project proposal rather than a single-feature answer.",
-        proposalTitle: "Proposal dimensions",
-        proposal: [
-          "Problem framing & stakeholder value",
-          "Solution architecture & technical feasibility",
-          "Data governance, privacy & responsible AI",
-          "Delivery roadmap, risks & team ownership",
-          "Success metrics & executive communication",
-        ],
+        summary:
+          "Selected through competitive CV review for an EY-collaborative recruitment process; contributed to a stakeholder-aware AI proposal covering feasibility, governance, delivery and success measures.",
       },
-      leadershipTitle: "Leadership & community",
-      leadership: [
-        {
-          title: "ICPC Preliminary · UNSW volunteer",
-          date: "Sep 2025",
-          text: "Managed an examination room, prepared the competition environment, handled real-time technical issues, ensured rule compliance, and secured post-event submissions.",
-        },
-        {
-          title: "Leadership Foundations Program · UNSW Employability",
-          date: "Apr 2025",
-          text: "AHEGS-recognised training in leadership, communication, teamwork, self-awareness, resilience and inclusive collaboration.",
-        },
-        {
-          title: "China International Fair for Investment & Trade volunteer",
-          date: "Mar 2021",
-          text: "Supported cost monitoring and financial tracking at the 21st CIFIT and received a volunteer certificate.",
-        },
-      ],
-      awardsTitle: "Awards",
-      awards: [
-        "UNSW Employment Award · selected through competitive CV review (May–Jul 2026)",
-        "Second Prize · 6th National Mathematics Competition for College Students, non-mathematics group (Jul 2023)",
-        "First Prize · 2023 Algorithm Competition for College Students, national level (Apr 2023)",
-        "Third Prize · 4th National Mathematical Ability Challenge, national level (Mar 2023)",
-        "Third Prize Scholarship · Xiamen University of Technology (2023)",
-        "Outstanding Graduate · Xiamen University of Technology (2024)",
-      ],
-      publicationsTitle: "Publications",
-      publications: [
-        "Research on Internet Technologies in Big Data Information Security · 智慧引航, issues 7–8 (2023)",
-        "Research on Geographic Information System Technologies in a Computer Network Context · 科学与生活, issue 7 (2023)",
-      ],
-      certificationsTitle: "Certifications",
-      certifications: [
-        "Software Copyright Registration · Analytic Hierarchy Process Data Evaluation Software V1.0 · 2025SR0042252 (Jan 2025)",
-        "CS50x: Introduction to Computer Science · Harvard University (Nov 2024)",
-        "Business Data Analyst Occupational Ability Certificate · Level 4 (Aug 2024)",
-        "National Computer Rank Examination · Level 3 Network Technology · 35673501862609",
-        "MIIT Talent Evaluation Certificate · Mathematical Modelling · GXRCCP018202209695",
-      ],
-      languagesTitle: "Languages & working style",
-      languages: [
-        "Mandarin Chinese · native",
-        "English · working proficiency; CET-6; IELTS 6.5 (Listening 7.0)",
-        "Research-led problem solving and clear communication that moves decisions toward delivery",
-      ],
     },
     contact: {
       eyebrow: "LET’S BUILD SOMETHING USEFUL",
@@ -631,8 +762,10 @@ export const content = {
       short: "EN",
     },
     nav: {
-      work: "精选项目",
+      work: "课程项目",
       experience: "经历",
+      spotlight: "真实交付",
+      tools: "软件工具",
       capabilities: "能力",
       about: "关于我",
       profile: "个人履历",
@@ -648,7 +781,7 @@ export const content = {
       role: "数据工程 · 数据分析 · 软件交付",
       summary:
         "我将模糊需求与复杂数据转化为可靠的数据系统、可用于决策的分析结果，以及值得用户信赖的软件产品。",
-      primary: "查看精选项目",
+      primary: "查看真实项目交付",
       secondary: "下载中文简历",
       availability: "开放数据工程、分析与软件方向工作机会",
       location: "澳大利亚 · 悉尼",
@@ -688,7 +821,7 @@ export const content = {
       label: "真实客户项目 · 知识产权约束 · 已完成生产交付",
       title: "Atlassian Home Dashboard — Road Map Widget",
       intro:
-        "我参与推动 Jira Road Map Widget 从需求澄清、环境接入、真实数据验证走向生产交付。Forge 应用读取经过授权的 Jira 版本与工作项数据，计算进度，并将用户带回对应的 Jira 原生页面。",
+        "这是一个嵌入 Atlassian Home 的 Jira 版本路线图小组件。它读取经过授权的项目、版本和工作项数据，展示未来30天的进度，并提供返回 Jira 原生页面的链接。",
       tags: [
         "COMP9900",
         "Atlassian Forge",
@@ -712,6 +845,111 @@ export const content = {
         caseCta: "查看完整案例",
         demoCta: "播放30天演示",
         privacyShort: "知识产权约束 · 作品集合成交互还原",
+      },
+      brief: {
+        ariaLabel: "项目内容、个人贡献与项目价值摘要",
+        items: [
+          {
+            label: "项目是什么",
+            title: "放在 Atlassian Home 里的 Jira 版本进度视图",
+            text:
+              "小组件把即将发布的版本和完成进度集中到 Home Dashboard，让用户不必逐个打开 Jira 项目，也能快速了解交付状态。",
+            points: ["读取经过授权的 Jira 版本与工作项数据", "展示进度、工作项数量和 Jira 原生链接"],
+          },
+          {
+            label: "我做了什么",
+            title: "客户沟通、集成验证与最终交付",
+            text:
+              "我负责澄清需求，复现访问和安装阻塞，协调 Jira 测试数据与最终界面验证，并整理报告、演示证据和交接材料。",
+            points: ["客户沟通与问题推进", "数据核验、交付证据与项目交接"],
+          },
+          {
+            label: "带来的价值",
+            title: "让团队回到正确产品形态，并完成可复核交付",
+            text:
+              "我的工作协助项目从早期 Jira Gadget 路径转向客户要求的 Home Widget，把不清楚的权限与环境问题变成具体行动，并保持最终版本一致。",
+            points: ["Atlassian 确认 Home Widget 产品形态", "实现、测试、文档与交接保持一致"],
+          },
+        ],
+        detailHint:
+          "完整案例中包含交付流程、客户沟通、测试结果、客户确认截图以及30天版本交互演示。",
+      },
+      contribution: {
+        eyebrow: "我的角色 · 项目交付、客户协作与集成验证",
+        title: "我把分散的问题推进成可验证、可交接的产品结果。",
+        intro:
+          "我的工作不止完成某一个页面，而是连接项目说明、客户反馈、访问条件、Jira 数据、团队验证与最终交接：让每个问题都有人负责、有下一步行动，也有完成后的证据。",
+        cards: [
+          {
+            skill: "产品判断 · 需求分析",
+            title: "把客户反馈变成可执行范围",
+            text:
+              "Home Dashboard 要求重新明确后，我将反馈整理为迁移与验收清单，聚焦30天版本、完成率、工作项数量和 Jira 原生目标页面。",
+          },
+          {
+            skill: "客户沟通 · 问题解决",
+            title: "把环境阻塞说清楚并推动解决",
+            text:
+              "我复现 EAP、Premium、Site Admin 与安装权限问题，向客户提供准确截图、影响和可选解决路径，而不是笼统地请求帮助。",
+          },
+          {
+            skill: "系统集成 · 数据验证",
+            title: "把 Jira 数据连接到可见结果",
+            text:
+              "我维护用于联调的版本与工作项数据，核对筛选、状态、完成率和原生链接，并协助团队让共享数据契约与最终界面保持一致。",
+          },
+          {
+            skill: "交付推进 · 项目交接",
+            title: "让产品、证据和交接形成闭环",
+            text:
+              "我汇总生产验证、客户确认、报告材料、演示证据与最终交接内容，使交付版本能够被复核，也能由后续人员继续维护。",
+          },
+        ],
+        valueEyebrow: "我为项目带来的价值",
+        valueTitle: "方向、推进与可信度",
+        values: [
+          {
+            title: "回到正确产品方向",
+            text: "协助团队从早期 Jira Gadget 路径转向客户要求的 Atlassian Home Widget 形态。",
+          },
+          {
+            title: "缩短沟通与决策路径",
+            text: "把权限和环境的不确定性转化为客户与团队可以直接处理的具体问题。",
+          },
+          {
+            title: "形成可复核的交付",
+            text: "让实现、测试、文档与交接对应同一个最终版本，并由证据支撑。",
+          },
+        ],
+      },
+      deliveryProof: {
+        eyebrow: "客户与产品证据",
+        title: "我参与推动的交付，留下了客户确认与产品证据。",
+        intro:
+          "截图负责证明结果；上面的判断、协作与验证才是我的个人价值。点击图片可查看证据视图。",
+        closeLabel: "关闭证据图片",
+        items: [
+          {
+            image: "project-evidence/client-acceptance-redacted.png",
+            label: "01 · 客户确认",
+            status: "已确认",
+            title: "Atlassian 客户确认交付版本已成为 Home Dashboard Widget",
+            caption:
+              "内部对象链接已做不可逆遮盖；人员姓名与客户确认原文予以保留，便于核验真实性。",
+            alt: "内部 Atlassian 对象链接已遮盖的 Slack 交付讨论，显示客户确认该版本已成为 Home Dashboard Widget",
+            position: "center 73%",
+          },
+          {
+            image: "project-evidence/atlassian-home-widget.png",
+            label: "02 · 产品落位",
+            status: "已部署",
+            title: "Road Map Widget 已进入 Atlassian Home 的添加小工具流程",
+            caption:
+              "部署版本可在 home.atlassian.com 的 Marketplace 标签内被检索。该证据说明产品集成完成，不等同于宣称公开 Marketplace 上架。",
+            alt: "Atlassian Home 添加小工具界面，在 Marketplace 标签中显示 Road Map Widget",
+            position: "center 31%",
+          },
+        ],
       },
       caseStudy: {
         back: "返回个人简历",
@@ -764,16 +1002,16 @@ export const content = {
           },
         ],
         note:
-          "作品集只概括解决过程，不公开客户姓名、站点地址、账户信息或内部消息。",
+          "作品集只展示经过筛选的交付证据，不公开内部对象链接、账户数据、凭证或访问细节。",
       },
       outcomes: {
         eyebrow: "团队交付证据",
         title: "生产结果由可复核的验证支撑",
         items: [
-          { value: "32/32", label: "功能与系统检查通过" },
-          { value: "26", label: "单元断言通过" },
-          { value: "200", label: "生成版本规模验证" },
-          { value: "Forge", label: "生产环境部署" },
+          { value: "Home", label: "完成客户要求的 Widget 形态" },
+          { value: "26/26", label: "服务测试通过" },
+          { value: "3/3", label: "规模测试层级通过" },
+          { value: "5", label: "授权 Jira 版本在 Home 中核验" },
         ],
       },
       evidenceTitle: "我在这段客户实践中的个人能力",
@@ -869,11 +1107,52 @@ export const content = {
         ],
       },
     },
+    tools: {
+      eyebrow: "软件产品与工作环境",
+      title: "覆盖分析、开发与交付的实际软件工具。",
+      intro: "从数据探索、Python 与前端开发，到日常办公协作和生产交付。",
+      groups: [
+        {
+          title: "Notebook 分析",
+          description: "用于可复现的数据探索、质量检查、模型实验与图表表达。",
+          products: ["Anaconda Navigator", "Jupyter Notebook", "JupyterLab", "MATLAB"],
+        },
+        {
+          title: "Python 开发",
+          description: "用于结构化实现、调试、测试与可维护的项目工作流。",
+          products: ["PyCharm", "Python", "Conda 环境", "Linux Terminal"],
+        },
+        {
+          title: "前端开发",
+          description: "用于响应式界面、组件化实现、本地调试与生产构建。",
+          products: ["Visual Studio Code", "React", "Vite", "npm", "HTML / CSS", "浏览器开发者工具"],
+        },
+        {
+          title: "数据平台",
+          description: "用于关系查询、数据流水线与不同规模下的分布式处理。",
+          products: ["PostgreSQL", "MySQL", "Hadoop", "Apache Spark"],
+        },
+        {
+          title: "产品交付",
+          description: "用于版本管理、客户协作、云端集成与发布交接。",
+          products: ["Git & GitHub", "Jira Software", "Atlassian Forge", "Docker", "GitHub Pages", "Slack"],
+        },
+        {
+          title: "办公与沟通",
+          description: "用于日常文档、演示汇报、数据表格、会议和团队沟通。",
+          products: ["Microsoft Word", "PowerPoint", "Excel", "Outlook", "Microsoft Teams", "Google Workspace"],
+        },
+      ],
+      note: "以上工具用于企业实习、UNSW 数据项目、个人作品集开发与 Atlassian Home Dashboard 客户交付。",
+    },
     work: {
-      eyebrow: "精选项目",
-      title: "用可验证的成果体现工程深度。",
-      intro: "项目覆盖机器学习预测、分布式处理、数据质量与数据库工程。",
+      eyebrow: "课程项目",
+      title: "数据工程、机器学习与数据库实践。",
+      intro:
+        "四个项目分别展示时间序列预测、分布式计算、数据质量分析与关系数据库设计；需要时可展开查看实现细节。",
       projectLabel: "项目",
+      more: "查看更多",
+      less: "收起详情",
       projects: [
         {
           id: "solar-evidence-lab",
@@ -882,6 +1161,10 @@ export const content = {
           date: "2026年3月",
           summary:
             "构建以证据为核心的 PyTorch 预测流程：整合 24 个年度文件、预测未来 7 个时间跨度，并验证增加模型复杂度是否真正带来价值。",
+          highlights: [
+            { value: "8,766", label: "逐日记录" },
+            { value: "22", label: "模型权重" },
+          ],
           points: [
             "整合 1996–2019 年 8,766 条逐日记录，剔除 1,163 条质量异常观测。",
             "训练 22 个模型权重，覆盖自定义损失、迁移学习、多任务学习、MC Dropout 与 Attention。",
@@ -898,6 +1181,10 @@ export const content = {
           date: "2025年9月",
           summary:
             "把销售交易流水转为可直接用于判断的清单：针对每个区域和年份，找出“每 1 元销售创造的利润”高于当地整体基准的品类。",
+          highlights: [
+            { value: "Top-K", label: "决策输出" },
+            { value: "MapReduce", label: "分布式执行" },
+          ],
           points: [
             "在 Hadoop 工作节点上按区域、年份和品类拆分交易数据，并可靠处理日期、CSV 与金额字段。",
             "数据跨节点传输前先在本地预汇总，减少分布式任务需要搬运的重复信息。",
@@ -940,6 +1227,10 @@ export const content = {
           date: "2025年3月",
           summary:
             "对 2025 年 1 月 59,256 条 FuelCheck 记录进行可复现分析，展示可靠的数据工程选择如何转化为可用于决策的价格证据。",
+          highlights: [
+            { value: "59,256", label: "价格记录" },
+            { value: "97.36%", label: "地理精确匹配" },
+          ],
           points: [
             "通过字段结构识别自动修复 28,151 行不一致数据，不依赖硬编码的分界行。",
             "“邮编–城区”精确匹配率达到 97.36%，通过明确标注的确定性回退实现 100% 覆盖。",
@@ -956,6 +1247,10 @@ export const content = {
           date: "2024年9月",
           summary:
             "在 50 MB 的 MyMyUNSW 数据库上构建可复用 PostgreSQL 访问层，把复杂关系模型转化为有关学生表现、教学覆盖和课程依赖的可靠答案，项目获得 99/100。",
+          highlights: [
+            { value: "99/100", label: "项目评分" },
+            { value: "20", label: "课程自动测试" },
+          ],
           points: [
             "将多表高校数据模型封装为 8 个可复用 SQL 视图和 2 个参数化 PL/pgSQL 函数。",
             "正确处理空成绩、重复修读、学分加权 WAM，以及教师同时隶属多个组织等真实数据条件。",
@@ -1105,12 +1400,16 @@ export const content = {
     },
     about: {
       eyebrow: "思考方式与生活",
-      title: "保持好奇，也保持把复杂问题做完的耐心。",
+      title: "工程方法与工作之外的生活。",
       intro:
-        "无论工程还是生活，我都愿意走进未知：先观察，再把复杂问题拆成可推进的部分，同时始终保留对整体系统的判断。",
+        "三件事最能说明我的工作方式：重视证据、善于拆解问题，也保持对未知的好奇。",
+      more: "查看更多",
+      less: "收起详情",
       academic: {
         eyebrow: "学术与工程方法",
         title: "让证据先于复杂度。",
+        summary:
+          "我会先定义问题、数据边界与可解释基线，再用实验和误差分析判断是否需要增加复杂度。",
         text:
           "我不会把复杂度本身当成专业。在学术与工程中，我习惯先定义问题和数据边界，建立可解释的基线，再用实验、对照与误差分析判断更复杂的方法是否真正值得。结果重要，知道结果在什么条件下成立同样重要。",
         principles: [
@@ -1131,6 +1430,8 @@ export const content = {
       life: {
         eyebrow: "生活与探索",
         title: "我喜欢没有预设答案的旅程。",
+        summary:
+          "我喜欢独自旅行，也喜欢探索澳洲的海岸与自然；陌生路线让我保持观察力、适应力和好奇心。",
         text:
           "我热爱生活，也愿意走进未知。我享受独自旅行，在陌生的城市与路线中观察新的风景，也喜欢自由漫步于澳洲的蓝天、海岸和自然之间。旅行让我学会不急于对陌生环境下结论，而是先感受、理解，再找到自己的节奏；回到工程问题时，也因此拥有更开阔、更平静的视角。",
         tagLabel: "个人兴趣",
@@ -1139,6 +1440,8 @@ export const content = {
       cube: {
         eyebrow: "专注力训练",
         title: "13阶魔方，是握在手中的系统工程。",
+        summary:
+          "13阶魔方训练我把庞大状态拆成局部步骤，同时保护已经完成的整体结构。",
         visualLabel: "超高阶魔方",
         quote: "把复杂问题拆成可解的局部，专注当前一步，同时守住整个系统的稳定。",
         text:
@@ -1147,70 +1450,28 @@ export const content = {
       },
     },
     profile: {
-      eyebrow: "领导力、荣誉与研究",
-      title: "以更宽的视角支撑技术严谨性。",
+      eyebrow: "重点履历",
+      title: "荣誉、领导力与职业准备。",
+      highlightsTitle: "荣誉与领导力",
+      highlights: [
+        "厦门理工学院 2024 届优秀毕业生",
+        "Leadership Foundations Program · UNSW Employability，AHEGS 认可（2025）",
+        "ICPC 预赛 · UNSW 考场统筹与技术支持志愿者（2025）",
+      ],
+      readinessTitle: "可核验资格",
+      readiness: [
+        "商业数据分析师职业能力证书 · 四级",
+        "全国计算机等级考试 · 三级网络技术",
+        "英语 · IELTS 总分 6.5，听力 7.0",
+      ],
       employmentAward: {
         eyebrow: "职业准备 · EY 合作招聘流程",
         title: "UNSW Employment Award",
         date: "2026年5–7月",
         badge: "简历竞争入选",
-        text:
-          "通过具有竞争性的简历筛选入选，全程参与由 UNSW 与 EY 合作设计的真实招聘流程。面对给定的 AI 技术问题，团队从多类利益相关者视角展开充分讨论，并形成结构化、多维度的项目提案，而非只提出单一功能方案。",
-        proposalTitle: "提案覆盖维度",
-        proposal: [
-          "问题定义与利益相关者价值",
-          "解决方案架构与技术可行性",
-          "数据治理、隐私与负责任 AI",
-          "交付路线、项目风险与团队分工",
-          "成功指标与管理层沟通",
-        ],
+        summary:
+          "通过竞争性简历筛选入选 EY 合作招聘流程；围绕真实 AI 技术问题，从利益相关者、技术可行性、数据治理、交付路线和成功指标形成团队提案。",
       },
-      leadershipTitle: "领导力与社会实践",
-      leadership: [
-        {
-          title: "ICPC 预赛 · UNSW 志愿者",
-          date: "2025年9月",
-          text: "统筹一间考场，完成竞赛环境准备与维护，处理实时技术问题，确保规则合规，并完成赛后系统维护与安全数据汇总。",
-        },
-        {
-          title: "Leadership Foundations Program · UNSW Employability",
-          date: "2025年4月",
-          text: "AHEGS 认可项目，系统训练领导力、沟通、协作、自我觉察、抗压韧性与包容性团队意识。",
-        },
-        {
-          title: "中国国际投资贸易洽谈会志愿者",
-          date: "2021年3月",
-          text: "在第二十一届投洽会协助成本监控与财务跟踪，并获得志愿者证书。",
-        },
-      ],
-      awardsTitle: "荣誉与奖项",
-      awards: [
-        "UNSW Employment Award · 通过简历竞争入选（2026年5–7月）",
-        "第六届全国大学生数学竞赛（非数学组）二等奖（2023年7月）",
-        "2023 年大学生算法竞赛全国一等奖（2023年4月）",
-        "第四届全国数学能力挑战赛全国三等奖（2023年3月）",
-        "厦门理工学院三等奖学金（2023）",
-        "厦门理工学院优秀毕业生（2024）",
-      ],
-      publicationsTitle: "出版信息",
-      publications: [
-        "《大数据信息安全领域的互联网技术研究》，《智慧引航》2023年第7–8期",
-        "《计算机网络背景下的地理信息系统技术研究》，《科学与生活》2023年第7期",
-      ],
-      certificationsTitle: "证书",
-      certifications: [
-        "层次分析法数据评价软件 V1.0 · 软件著作权登记号 2025SR0042252（2025年1月）",
-        "CS50x: Introduction to Computer Science · Harvard University（2024年11月）",
-        "商业数据分析师职业能力证书 · 四级（2024年8月）",
-        "全国计算机等级考试 · 三级网络技术 · 35673501862609",
-        "工业和信息化人才评价证书 · 数学建模 · GXRCCP018202209695",
-      ],
-      languagesTitle: "语言与工作方式",
-      languages: [
-        "中文 · 母语",
-        "英语 · 可作为工作语言；英语六级；IELTS 6.5（听力 7.0）",
-        "以研究驱动解决难题，以清晰表达促进决策与落地",
-      ],
     },
     contact: {
       eyebrow: "共同构建有价值的产品",
