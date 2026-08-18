@@ -309,16 +309,18 @@ ol {
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
-  margin-bottom: 24px;
-  padding: 7px 11px;
-  border: 1px solid rgba(142, 124, 255, 0.72);
+  min-height: 0;
+  margin-bottom: 7px;
+  padding: 0;
+  border: 0;
   color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
 .hero h1 {
   max-width: 720px;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   color: var(--white);
   font-size: clamp(3rem, 5.6vw, 5.25rem);
   font-weight: 600;
@@ -343,17 +345,22 @@ ol {
 }
 
 .hero__identity {
-  margin-bottom: 24px;
-  padding-left: 18px;
-  border-left: 2px solid var(--violet);
+  max-width: 620px;
+  margin-bottom: 28px;
+  padding: 15px 18px 17px;
+  border-top: 1px solid rgba(36, 199, 244, 0.28);
+  border-bottom: 1px solid rgba(36, 199, 244, 0.28);
+  border-left: 3px solid var(--cyan);
+  background: linear-gradient(90deg, rgba(36, 199, 244, 0.1), rgba(8, 26, 54, 0.28) 72%, transparent);
 }
 
 .hero__identity h2 {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   color: var(--white);
-  font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+  font-size: clamp(2.05rem, 3.2vw, 3rem);
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
 }
 
 .hero__identity p {
@@ -4556,7 +4563,16 @@ ol {
   }
 
   .hero__eyebrow {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
+  }
+
+  .hero__identity {
+    margin-bottom: 24px;
+    padding: 13px 14px 15px;
+  }
+
+  .hero__identity h2 {
+    font-size: 2.15rem;
   }
 
   .hero h1 {

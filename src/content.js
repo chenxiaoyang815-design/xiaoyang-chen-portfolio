@@ -23,14 +23,14 @@ export const content = {
       close: "Close navigation",
     },
     hero: {
-      eyebrow: "DATA TO IMPACT",
+      eyebrow: "RÉSUMÉ · PROJECT PORTFOLIO",
       titleA: "I build systems that make",
       titleB: "complex data useful.",
       name: "Xiaoyang Chen",
       role: "Data Engineering · Analytics · Software Delivery",
       summary:
         "I turn ambiguous requirements and complex datasets into reliable data systems, decision-ready analytics and software that people can trust.",
-      primary: "View client delivery",
+      primary: "View project work",
       secondary: "Download English CV",
       availability: "Open to data engineering, analytics and software opportunities",
       location: "Sydney, Australia",
@@ -559,7 +559,7 @@ export const content = {
     },
     experience: {
       eyebrow: "EXPERIENCE & EDUCATION",
-      title: "Industry delivery and data training at Australia's #1 university.",
+      title: "Experience & Education",
       industryTitle: "Industry experience",
       educationTitle: "Education",
       industry: {
@@ -788,14 +788,14 @@ export const content = {
       close: "关闭导航",
     },
     hero: {
-      eyebrow: "从数据到实际影响",
+      eyebrow: "个人简历 · 项目作品集",
       titleA: "让数据可用",
       titleB: "让结果可信",
       name: "陈萧仰",
       role: "数据工程 · 数据分析 · 软件交付",
       summary:
         "我将模糊需求与复杂数据转化为可靠的数据系统、可用于决策的分析结果，以及值得用户信赖的软件产品。",
-      primary: "查看真实项目交付",
+      primary: "查看项目作品",
       secondary: "下载中文简历",
       availability: "开放数据工程、分析与软件方向工作机会",
       location: "澳大利亚 · 悉尼",
@@ -1317,7 +1317,7 @@ export const content = {
     },
     experience: {
       eyebrow: "工作与教育经历",
-      title: "产业实践与澳洲第一高校的数据训练。",
+      title: "工作经历与教育背景",
       industryTitle: "产业经历",
       educationTitle: "教育经历",
       industry: {

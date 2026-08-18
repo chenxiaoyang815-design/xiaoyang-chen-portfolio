@@ -158,15 +158,15 @@ function Hero({ copy, language }) {
           aria-hidden="true"
         />
         <div className="hero__content" data-reveal>
-          <p className="eyebrow hero__eyebrow">{copy.hero.eyebrow}</p>
+          <div className="hero__identity">
+            <p className="eyebrow hero__eyebrow">{copy.hero.eyebrow}</p>
+            <h2>{copy.hero.name}</h2>
+            <p>{copy.hero.role}</p>
+          </div>
           <h1>
             <span>{copy.hero.titleA}</span>
             <strong>{copy.hero.titleB}</strong>
           </h1>
-          <div className="hero__identity">
-            <h2>{copy.hero.name}</h2>
-            <p>{copy.hero.role}</p>
-          </div>
           <p className="hero__summary">{copy.hero.summary}</p>
           <div className="hero__actions">
             <a className="button button--primary" href="#spotlight">
